@@ -36,22 +36,24 @@ void test_find_path(void)
 {
     // arrange
     t_pipex p;
+
     p.envp = environ; // use actual environment variables
 
     // act
     char **result = find_path(&p);
-
-    // print PATH environment variable and result
-    printf("PATH: %s\n", getenv("PATH"));
-    printf("Result: %s\n", *result);
-
-    // assert
-    TEST_ASSERT_NOT_NULL(result);
-
     // Check that the returned path is part of the PATH environment variable
     char *path_env = getenv("PATH");
     TEST_ASSERT_NOT_NULL(path_env);
-    TEST_ASSERT_NOT_NULL(strstr(path_env, *result));
+    // print PATH environment variable and result
+    printf("PATH: %s\n", getenv("PATH"));
+    while (*result != NULL)
+    {
+        printf("Result: %s\n", *result);
+        
+        TEST_ASSERT_NOT_NULL(strstr(path_env, *result));
+        result++;
+        
+    }
 }
 
 int main(void)
