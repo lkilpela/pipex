@@ -1,5 +1,4 @@
 #include "pipex.h"
-#include "unity.h"
 
 void setUp(void)
 {
@@ -14,13 +13,20 @@ void tearDown(void)
 void test_function_should_do_blah(void)
 {
     // arrange
-    int expected = 42;
-    
+    t_pipex p;
+    char *envp[] = {
+        "OTHER=other",
+        "PATH=/usr/local/bin:/usr/bin:/bin",
+        NULL
+    };      
+    p.envp = envp;
+
     // act
-    int actual = my_function(); // replace with your function
-    
+    char *result = find_path(&p);
+
     // assert
-    TEST_ASSERT_EQUAL_INT(expected, actual);
+    TEST_ASSERT_NOT_NULL(result);
+    TEST_ASSERT_EQUAL_STRING("/usr/local/bin", result);
 }
 
 int main(void)

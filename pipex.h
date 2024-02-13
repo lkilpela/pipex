@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 12:47:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:46:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <stdio.h> // perror
 # include <string.h> //strerror
 # include <sys/wait.h> // wait, waitpid
-# include "../lib/libft/include/libft.h"
+# include "lib/libft/include/libft.h"
+# include "test/unity/src/unity.h" // Test framework
 
 typedef enum e_error
 {
@@ -47,5 +48,7 @@ typedef struct s_pipex
 	char	**paths;
 	char	**cmd;
 }				t_pipex;
+
+char	*find_path(t_pipex *p);
 
 #endif
