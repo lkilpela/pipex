@@ -30,13 +30,14 @@ $(NAME): $(OBJS)
 	@echo "[pipex] Built target pipex"
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(TEST_OBJS)
 	@make clean -C $(LIBFT)
 	@echo "[pipex] Object files cleaned."
 
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)/build
+	@rm -rf run_test
 	@echo "[pipex] Everything deleted."
 
 re: fclean all

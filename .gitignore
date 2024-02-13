@@ -57,5 +57,6 @@ dkms.conf
 # VS Code settings
 .vscode/
 
-# pipex-error-tester directory
-pipex-error-tester/
+# test directory
+test/
+run_test
