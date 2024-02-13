@@ -16,8 +16,8 @@ all: libft $(NAME)
 libft:
 	@make -C $(LIBFT)
 
-test: libft $(TEST_OBJS)
-	@$(CC) $(CFLAGS) $(TEST_OBJS) $(UNITY) $(LIBS) $(HDRS) -o run_test
+test: libft $(TEST_OBJS) $(OBJS)
+	@$(CC) $(CFLAGS) $(TEST_OBJS) $(OBJS) $(UNITY) $(LIBS) $(HDRS) -o run_test
 	@echo "[pipex] Running test..."
 	@./run_test
 
