@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 11:55:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:06:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,16 @@
 # include <sys/wait.h> // wait, waitpid
 # include "../lib/libft/include/libft.h"
 
+typedef struct s_pipex
+{
+    int     argc;
+    char    **argv;
+    char    **envp;
+    pid_t   *pids;
+    int     infile;
+    int     outfile;
+    char    **paths;
+    char    **cmd;
+}              t_pipex;
 
 #endif
