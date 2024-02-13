@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 14:50:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/13 21:36:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ typedef enum e_error
 
 typedef struct s_pipex
 {
-	int		argc;
-	char	**argv;
 	char	**envp;
 	pid_t	*pids;
 	int		infile;
 	int		outfile;
 	char	**paths;
-	char	**cmd;
+	char	**cmd1;
+	char	**cmd2;
 }				t_pipex;
 
 char	**find_path(t_pipex *p);
