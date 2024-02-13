@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 13:01:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:05:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // "PATH=/usr/local/bin:/usr/bin:/bin"
-static char *find_path(t_pipex *p)
+char *find_path(t_pipex *p)
 {
 	int	i;
 
