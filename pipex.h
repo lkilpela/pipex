@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 10:23:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:41:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 typedef enum e_error
 {
-	NO_ERROR,
+	ERR_NONE,
 	ERR_FORK,
 	ERR_PIPE,
 	ERR_DUP2,
