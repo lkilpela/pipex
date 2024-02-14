@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 12:31:39 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:35:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 enum	e_error
 {
 	ERR_NONE,
+	ERR_SYNTAX,
+	ERR_MEM,
 	ERR_FORK,
 	ERR_PIPE,
 	ERR_DUP2,
@@ -38,8 +40,7 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_READ,
-	ERR_WRITE,
-	ERR_MEM
+	ERR_WRITE	
 };
 
 typedef struct s_pipex
