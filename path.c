@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 15:39:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:44:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_paths(char **paths)
 }
 
 //Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-char **find_path(t_pipex *p)
+char **get_envpaths(t_pipex *p)
 {
 	int	i;
 
@@ -41,31 +41,39 @@ char **find_path(t_pipex *p)
 	return(ft_split(p->envp[i] + 5, ':'));
 }
 
-char *executable_path(t_pipex *p)
+char	*executable_path(t_pipex *p)
 {
 	int		i;
-	char 	*slash_path;
-	char	*full_path;
-	
+
 	i = 0;
-	if (!p->cmd || !(*p->cmd))
-		return (NULL);	
-	p->paths = find_path(p);
+	if (!p->cmd || !*p->cmd)
+		return (NULL);
+	else if (ft_strchr(*p->cmd, '/'))
+		return (ft_strdup(*p->cmd));
+	p->paths = get_envpaths(p);
 	if (!p->paths)
 		return (NULL);
+	p->slash_path = ft_strjoin("/", *p->cmd);
+	if (!p->slash_path)
+		perror("Error: memory allocation failed\n");
+	return (get_executable(p));
+}
+
+// Find the full path of the executable for the command (/usr/local/bin/grep)
+char	*get_executable(t_pipex *p)
+{
+	int		i;
+
+	i = 0;
 	while (p->paths[i])
 	{
-		slash_path = ft_strjoin(p->paths[i], "/");
-		full_path = ft_strjoin(slash_path, p->cmd);
-		free(slash_path);
-		if (access(full_path, F_OK) == 0)
-		{
-			free_paths(p->paths);
-			return (full_path);
-		}
-		free(full_path);
+		p->full_path = ft_strjoin(p->paths, p->slash_path);
+		if (!p->full_path)
+			perror()
+		free(p->slash_path);
+		if (access(p->full_path, F_OK | X_OK) == 0)
+			return (p->full_path);
+		free(p->full_path);
 		i++;
 	}
-	free_paths(p->paths);
-	return (NULL);
 }
