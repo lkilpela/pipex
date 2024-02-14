@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 12:35:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:19:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <stdio.h> // perror
 # include <string.h> //strerror
 # include <sys/wait.h> // wait, waitpid
-
-# include "test/unity/src/unity.h" // Test framework
 
 # define PERMISSIONS	0644
 

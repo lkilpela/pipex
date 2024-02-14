@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 12:31:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:52:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_paths(char **paths)
 }
 
 //Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-static char **get_envpaths(t_pipex *p)
+char **get_envpaths(t_pipex *p)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ static char **get_envpaths(t_pipex *p)
 }
 
 // determining the full path of an executable command
-static char	*find_command(t_pipex *p)
+char	*find_command(t_pipex *p)
 {
 	int	i;
 
