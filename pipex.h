@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 11:27:01 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:33:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "lib/libft/include/libft.h"
 # include "test/unity/src/unity.h" // Test framework
 
-enum e_error
+enum	e_error
 {
 	ERR_NONE,
 	ERR_FORK,
