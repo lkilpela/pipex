@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 22:25:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:23:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef enum e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_READ,
-	ERR_WRITE
+	ERR_WRITE,
+	ERR_MEM
 }			t_error;
 
 typedef struct s_pipex
