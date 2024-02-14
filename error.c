@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 10:54:01 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:56:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	error(int e)
         perror("Memory allocation failed");
     else
         perror("Unknown error");
-    exit(1);
+    exit(EXIT_FAILURE);
 }
