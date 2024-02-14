@@ -6,12 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 11:33:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:46:16 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+# include "lib/libft/include/libft.h"
 
 # include <fcntl.h> //open
 //close, read, write, access, dup, dup2, execve, fork, pipe, unlink
@@ -20,8 +22,10 @@
 # include <stdio.h> // perror
 # include <string.h> //strerror
 # include <sys/wait.h> // wait, waitpid
-# include "lib/libft/include/libft.h"
+
 # include "test/unity/src/unity.h" // Test framework
+
+# define PERMISSIONS	0644
 
 enum	e_error
 {
