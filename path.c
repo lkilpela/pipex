@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 11:26:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:31:20 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_paths(char **paths)
 }
 
 //Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-char **get_envpaths(t_pipex *p)
+static char **get_envpaths(t_pipex *p)
 {
 	int	i;
 
@@ -41,9 +41,10 @@ char **get_envpaths(t_pipex *p)
 	return(ft_split(p->envp[i] + 5, ':'));
 }
 
-char	*executable_path(t_pipex *p)
+// determining the full path of an executable command
+static char	*find_command(t_pipex *p)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!p->cmd || !*p->cmd)
@@ -56,13 +57,13 @@ char	*executable_path(t_pipex *p)
 	p->slash_path = ft_strjoin("/", *p->cmd);
 	if (!p->slash_path)
 		return (ERR_MEM);
-	return (get_executable(p));
+	return (find_executable(p));
 }
 
-// Find the full path of the executable for the command (/usr/local/bin/grep)
-char	*get_executable(t_pipex *p)
+// concatenates the directory, '/' & command to form a path to the executable
+char	*find_executable(t_pipex *p)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (p->paths[i])
