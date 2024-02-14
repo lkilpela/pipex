@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/13 22:44:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:10:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,13 @@ char	*get_executable(t_pipex *p)
 	{
 		p->full_path = ft_strjoin(p->paths, p->slash_path);
 		if (!p->full_path)
-			perror()
+			perror("Error: memory allocation failed\n");
 		free(p->slash_path);
 		if (access(p->full_path, F_OK | X_OK) == 0)
+		{
+			free_paths(p->paths);
 			return (p->full_path);
+		}
 		free(p->full_path);
 		i++;
 	}
