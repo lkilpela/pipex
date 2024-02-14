@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 11:46:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:31:39 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ typedef struct s_pipex
 	char	*slash_path;
 }				t_pipex;
 
-char	**get_envpaths(t_pipex *p);
+char	*find_executable(t_pipex *p);
 
 #endif
