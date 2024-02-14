@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 10:24:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:26:02 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ char	*get_executable(t_pipex *p)
 		free(p->full_path);
 		i++;
 	}
+	free_paths(p->paths);
+	return (NULL);
 }
