@@ -2,11 +2,11 @@ NAME = pipex
 CFLAGS = -Wall -Wextra -Werror -std=c99 -fsanitize=address -g
 
 LIBFT = lib/libft
-UNITY = test/unity/src/unity.c
+UNITY = unity
 
-HDRS = -I./include -I $(LIBFT)/includes -I $(UNITY)/src
+HDRS = -I./include -I $(LIBFT)/include -I $(UNITY)/src/unity.h
 LIBS = $(LIBFT)/build/libft.a
-SRCS = path.c 
+SRCS = path.c
 TEST_SRCS = test_path.c
 OBJS = $(SRCS:%.c=%.o)
 TEST_OBJS = $(TEST_SRCS:%.c=%.o)
@@ -16,8 +16,11 @@ all: libft $(NAME)
 libft:
 	@make -C $(LIBFT)
 
+unity:
+	@cmake $(UNITY) -B $(UNITY)/build && make -C $(UNITY)/build
+
 test: libft $(TEST_OBJS) $(OBJS)
-	@$(CC) $(CFLAGS) $(TEST_OBJS) $(OBJS) $(UNITY) $(LIBS) $(HDRS) -o run_test
+	$(CC) $(CFLAGS) $(TEST_OBJS) $(OBJS) $(UNITY)/libunity.a $(LIBS) $(HDRS) -o run_test
 	@echo "[pipex] Running test..."
 	@./run_test
 
@@ -37,6 +40,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)/build
+	@rm -rf $(UNITY)/build
 	@rm -rf run_test
 	@echo "[pipex] Everything deleted."
 

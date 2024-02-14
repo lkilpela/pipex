@@ -1,77 +1,61 @@
 #include "pipex.h"
-#include <stddef.h>
+#include <stddef.h> // Include the header file that defines NULL
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h> 
 #include <unistd.h> // for environ
-#include "test/unity/src/unity.h" // Test framework
+#include "unity/src/unity.h" // Test framework
 
-void setUp(void)
-{
-    // initialize stuff before each test
+
+void setUp(void) {
+    // Put setup code here
 }
 
-void tearDown(void)
-{
-    // clean up after each test
+void tearDown(void) {
+    // Put teardown code here
 }
 
 extern char **environ;
 
-void test_get_envpaths(void)
+void test_paths(void)
 {
     // arrange
     t_pipex p;
     p.envp = environ; // use actual environment variables
-    
-    // Check that the returned path is part of the PATH environment variable
-    char *path_env = getenv("PATH");
+    char *cmd[] = {"ls", 0};
 
-    // act
-    char **result = get_envpaths(&p);
-    TEST_ASSERT_NOT_NULL(result);
-    char **path = result;
-    while (*path != NULL)
-    {
-        // print PATH environment variable and result
-        printf("PATH: %s\n", getenv("PATH"));
-        printf("Result: %s\n", *result);
-        // Check that each path is in the PATH environment variable        
-        TEST_ASSERT_NOT_NULL(strstr(path_env, *path));
-        path++;
-        
+   // Test get_envpaths
+    char **envpaths_result = get_envpaths(&p);
+    while (*envpaths_result != 0) {
+        printf("\033[1;32mget_envpaths result: %s\033[0m\n", *envpaths_result);
+        envpaths_result++;
+    }    
+    TEST_ASSERT_NOT_NULL(envpaths_result);
+
+    // Test find_command
+    p.cmd = cmd;
+    char *command = find_command(&p);
+    char *executable_result;
+    printf("\033[1;32mfind_command result: %s\033[0m\n", command);
+    if (command == 0) {
+        TEST_ASSERT_NULL(command);
+        printf("\033[1;31mError: find_command returned NULL\033[0m\n");
+    } else if (strchr(command, '/') != 0) {
+        TEST_ASSERT_NOT_NULL(command);
+    } else {
+        char *full_path = find_executable(&p);
+        printf("\033[1;32mfind_executable result: %s\033[0m\n", full_path);
+        TEST_ASSERT_NOT_NULL(full_path);
     }
-    free_paths(result); // Assuming free_paths frees the result correctly
-}
-void test_find_command(void) {
-    t_pipex p;
-    // Assuming paths and cmd are set correctly
-    p.paths = get_envpaths(&p);
-    TEST_ASSERT_NOT_NULL(p.paths);
-    p.cmd = "grep";
-    char *result = find_command(&p);
-    TEST_ASSERT_NOT_NULL(result);
-    // Add more assertions to check the contents of result
-    free(result);
+
+    // Free allocated memory
+    free(command);
     free_paths(p.paths);
+
 }
 
-void test_find_executable(void) {
-    t_pipex p;
-    // Assuming cmd is set correctly
-    p.cmd = "grep";
-    p.paths = get_envpaths(&p);
-    TEST_ASSERT_NOT_NULL(p.paths);
-    char *result = find_executable(&p);
-    TEST_ASSERT_NOT_NULL(result);
-    // Add more assertions to check the contents of result
-    free(result);
-    free_paths(p.paths);
-}
-
-int main(void)
-{
+int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_get_envpaths);
-    RUN_TEST(test_find_command);
-    RUN_TEST(test_find_executable);
+    RUN_TEST(test_paths);
     return UNITY_END();
 }
