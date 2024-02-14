@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 10:47:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:54:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	error(t_error e)
+void	error(int e)
 {
     if (e == ERR_FORK)
         perror("fork failed");

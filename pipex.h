@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/14 10:41:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:54:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "lib/libft/include/libft.h"
 # include "test/unity/src/unity.h" // Test framework
 
-typedef enum e_error
+enum e_error
 {
 	ERR_NONE,
 	ERR_FORK,
@@ -36,7 +36,7 @@ typedef enum e_error
 	ERR_READ,
 	ERR_WRITE,
 	ERR_MEM
-}			t_error;
+};
 
 typedef struct s_pipex
 {
@@ -48,7 +48,6 @@ typedef struct s_pipex
 	char	**cmd;
 	char	*full_path;
 	char	*slash_path
-´
 }				t_pipex;
 
 char	**get_envpaths(t_pipex *p);
