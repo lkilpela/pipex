@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 20:47:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:14:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_new_argument(t_tokenize *t)
 	int		i;
 
 	i = 0;
-	if (!in_quotes && (*t->arg != ' ')) 
+	if (!t->in_quotes && (*t->arg != ' ')) 
 	{
 		t->arg_count++;
 		// Allocate a new larger array
@@ -73,19 +73,18 @@ void null_terminate_array(t_tokenize *t)
     t->args[t->arg_count - 1] = NULL;
 }
 
-char **tokenize(const char *str) 
+char **tokenize(t_tokenize *t) 
 {
-    t_tokenize t = {0, 0, 0, NULL, NULL, strdup(str)};
-    t.arg = t.new_str;
+	t_tokenize t = {0, 0, 0, NULL, NULL, ft_strdup(str)};
+	t->arg = t->new_str;
 
-    while (*t.arg) {
-        start_new_argument(&t);
-        handle_quotes_and_backslashes(&t);
-        end_argument(&t);
-        t.arg++;
-    }
-
-    null_terminate_array(&t);
-
-    return t.args;
+	while (*t->arg) 
+	{
+		start_new_argument(&t);
+		handle_quotes_and_backslashes(&t);
+		end_argument(&t);
+		t->arg++;
+	}
+	null_terminate_array(&t);
+	return (t->args);
 }
