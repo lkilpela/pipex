@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 15:20:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:23:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ enum	e_error
 	ERR_READ,
 	ERR_WRITE	
 };
+typedef struct s_tokenize
+{
+	int		in_quotes;
+	int		backslash;
+	int 	arg_count;
+	char	**args;
+	char	*arg;
+	char	*new_str;
+}				t_tokenize;
 
 typedef struct s_pipex
 {
