@@ -6,11 +6,25 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:27:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:02:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	init(int argc, char **argv, char **envp, t_pipex *p)
+{
+	p->argc = argc;
+	p->argv = argv;
+	p->envp = envp;
+	p->infile = -1;
+	p->outfile = -1;
+	p->paths = NULL;
+	p->child_path = NULL;
+	p->parent_path = NULL;
+	p->child_cmd= NULL;
+	p->parent_cmd = NULL;
+}
 
 void	free_paths(char **paths)
 {
@@ -27,10 +41,10 @@ void	free_paths(char **paths)
 
 static void	cleanup(t_pipex *p)
 {
-	if (p->full_path)
-		free(p->full_path);
-	if (p->slash_cmd)
-		free(p->slash_cmd);
+	if (p->child_path)
+		free(p->child_path);
+	if (p->parent_path)
+		free(p->parent_path);
 	if (p->paths)
 		free_paths(p->paths);
 }
