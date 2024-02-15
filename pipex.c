@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 14:09:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:22:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	handle_syntax(t_pipex *p)
 static void	open_files(t_pipex *p)
 {
 	p->infile = open(p->argv[1], O_RDONLY);
-	p->outfile = open(p->argv[p->argc -1],
+	p->outfile = open(p->argv[p->argc - ],
 				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
 	if (p->infile == -1 || p->outfile == -1)
 		error(ERR_OPEN);
