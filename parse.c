@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 14:25:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:00:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ char **tokenize(t_pipex *p, char *cmd)
 {
 	int i;
 	
-		
+	i = 0;
+	if(p->cmd_args == NULL)
+		return (NULL);	
 }
