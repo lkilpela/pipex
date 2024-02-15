@@ -6,34 +6,34 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 21:59:17 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:32:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // grep Hello | awk "'{count++} END {print count}'" 
-void	start_new_argument(t_tokenize *t) 
+void	start_new_argument(t_tokenize *t)
 {
 	char	**new_args;
 	int		i;
 
 	i = 0;
-	if (!t->in_quotes && (*t->arg != ' ')) 
+	if (!t->in_quotes && (*t->arg != ' '))
 	{
-		t->arg_count++;
+		t->count++;
 		// Allocate a new larger array
-		new_args = malloc(sizeof(char *) * t->arg_count);
+		new_args = malloc(sizeof(char *) * (t->count + 1));
 		if (new_args == NULL)
 			error(ERR_MEM);
 		// Copy the old elements to the new array
-		while (i < t->arg_count - 1) 
+		while (i < t->count - 1)
 		{
 			new_args[i] = t->args[i];
 			i++;
 		}
 		// Add the new argument to the new array
-		new_args[t->arg_count - 1] = t->arg;
+		new_args[t->count - 1] = t->arg;
 		// Free the old array
 		free(t->args);
 		// Use the new array
@@ -41,49 +41,49 @@ void	start_new_argument(t_tokenize *t)
 	}
 }
 
-void handle_quotes_and_backslashes(t_tokenize *t) 
+void	handle_quotes_and_backslashes(t_tokenize *t)
 {
-    if (t->backslash) 
+	if (t->backslash)
 	{
-        t->backslash = 0;
-    } 
-	else if (*t->arg == '\\') 
+		t->backslash = 0;
+	}
+	else if (*t->arg == '\\')
 	{
-        t->backslash = 1;
-    } 
-	else if (*t->arg == '"') 
+		t->backslash = 1;
+	}
+	else if (*t->arg == '"')
 	{
-        t->in_quotes = !t->in_quotes;
-    }
+		t->in_quotes = !t->in_quotes;//! operator to toggle a boolean value
+	}
 }
 
-void end_argument(t_tokenize *t) {
-	if (!t->in_quotes && (*t->arg == ' ')) 
+void	end_argument(t_tokenize *t)
+{
+	if (!t->in_quotes && (*t->arg == ' '))
 		*t->arg = '\0';
 }
 
-void null_terminate_array(t_tokenize *t) 
+void	null_terminate_array(t_tokenize *t)
 {
 	t->arg_count++;
 	t->args = realloc(t->args, sizeof(char *) * t->arg_count);
-	if (t->args == NULL) 
+	if (t->args == NULL)
 		return (NULL);
 	t->args[t->arg_count - 1] = NULL;
 }
 
-char **tokenize(char *cmd) 
+char	**tokenize(char *cmd)
 {
-	t_tokenize t;
-	
+	t_tokenize	t;
+
 	t.in_quotes = 0;
 	t.backslash = 0;
 	t.arg_count = 0;
 	t.args = NULL;
 	t.arg = NULL;
 	t.new_str = ft_strdup(cmd);
-	
 	t.arg = t.new_str;
-	while (*t.arg) 
+	while (*t.arg)
 	{
 		start_new_argument(&t);
 		handle_quotes_and_backslashes(&t);
