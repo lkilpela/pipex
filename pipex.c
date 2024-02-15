@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:09:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:19:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int main(int argc, char **argv)
     p.argc = argc;
     p.argv = argv;
 
-    handle
+    handle_syntax(&p);
 }
