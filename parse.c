@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 21:15:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:59:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void handle_quotes_and_backslashes(t_tokenize *t)
 
 void end_argument(t_tokenize *t) {
 	if (!t->in_quotes && (*t->arg == ' ')) 
-	{
 		*t->arg = '\0';
-	}
 }
 
 void null_terminate_array(t_tokenize *t) 
@@ -73,18 +71,25 @@ void null_terminate_array(t_tokenize *t)
 	t->args[t->arg_count - 1] = NULL;
 }
 
-char **tokenize(t_tokenize *t) 
+char **tokenize(char *cmd) 
 {
-	t_tokenize t = {0, 0, 0, NULL, NULL, ft_strdup(str)};
-	t->arg = t->new_str;
-
-	while (*t->arg) 
+	t_tokenize t;
+	
+	t.in_quotes = 0;
+	t.backslash = 0;
+	t.arg_count = 0;
+	t.args = NULL;
+	t.arg = NULL;
+	t.new_str = ft_strdup(cmd);
+	
+	t.arg = t.new_str;
+	while (*t.arg) 
 	{
 		start_new_argument(&t);
 		handle_quotes_and_backslashes(&t);
 		end_argument(&t);
-		t->arg++;
+		t.arg++;
 	}
 	null_terminate_array(&t);
-	return (t->args);
+	return (t.args);
 }

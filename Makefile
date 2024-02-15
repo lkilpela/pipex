@@ -1,5 +1,5 @@
 NAME = pipex
-CFLAGS = -Wall -Wextra -Werror -std=c99 -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 LIBFT = lib/libft
 UNITY = unity
