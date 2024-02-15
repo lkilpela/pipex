@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 13:49:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:50:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 //Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-char	**get_envpaths(t_pipex *p)
+static char	**get_envpaths(t_pipex *p)
 {
 	int	i;
 
