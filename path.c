@@ -6,11 +6,24 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 10:30:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:33:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+//Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
+char	**get_envpaths(t_pipex *p)
+{
+	int	i;
+
+	i = 0;
+	while (p->envp[i] && ft_strncmp(p->envp[i], "PATH=", 5) != 0)
+		i++;
+	if (!p->envp[i] || ft_strlen(p->envp[i]) < 5)
+		return (NULL);
+	return (ft_split(p->envp[i] + 5, ':'));
+}
 
 // concatenates the directory, '/' & cmd to form a full path to the executable
 char	*find_executable(t_pipex *p)
@@ -29,18 +42,6 @@ char	*find_executable(t_pipex *p)
 		i++;
 	}
 	return (NULL);
-}
-//Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-char **get_envpaths(t_pipex *p)
-{
-	int	i;
-
-	i = 0;
-	while (p->envp[i] && ft_strncmp(p->envp[i], "PATH=", 5) != 0)
-		i++;
-	if (!p->envp[i] || ft_strlen(p->envp[i]) < 5)
-		return (NULL);
-	return (ft_split(p->envp[i] + 5, ':'));
 }
 
 // determining the full path of a command
