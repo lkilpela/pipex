@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 15:02:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:20:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_pipex
 	char    *parent_path;
 	char	**child_cmd;
 	char	**parent_cmd;
-	char	**cmd_args;
 }				t_pipex;
 
 void	init(int argc, char **argv, char **envp, t_pipex *p);
