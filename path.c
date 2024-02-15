@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 13:48:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:49:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ char	**get_envpaths(t_pipex *p)
 }
 
 // concatenates the directory, '/' & cmd to form a full path to the executable
-char	*find_executable(t_pipex *p, char *cmd)
+static char	*find_executable(t_pipex *p, char *cmd)
 {
-	int	i;
-	char* path;
-	char* command;
+	char	*path;
+	char	*command;
+	int		i;
 	
 	command = ft_strjoin("/", cmd); //"/ls" or "/grep"
 	if (!command)
