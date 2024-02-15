@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 10:33:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:47:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*find_executable(t_pipex *p)
 	i = 0;
 	while (p->paths[i])
 	{
-		p->full_path = ft_strjoin(p->paths[i], p->slash_path);
+		p->full_path = ft_strjoin(p->paths[i], p->slash_cmd);
 		if (!p->full_path)
 			return (NULL);
 		if (access(p->full_path, F_OK | X_OK) == 0)
@@ -58,17 +58,17 @@ char	*find_command(t_pipex *p)
 	p->paths = get_envpaths(p);
 	if (!p->paths)
 		return (NULL);
-	p->slash_path = ft_strjoin("/", *p->cmd);
-	if (!p->slash_path)
+	p->slash_cmd = ft_strjoin("/", *p->cmd); //"/ls" or "/grep"
+	if (!p->slash_cmd)
 	{
 		free_paths(p->paths);
 		return (NULL);
 	}
-	command = find_executable(p);
-	if (!command)
+	p->full_path = find_executable(p);
+	if (!p->full_path)
 	{
-		free(p->slash_path);
+		free(p->slash_cmd);
 		free_paths(p->paths);
 	}
-	return (command);
+	return (p->full_path);
 }
