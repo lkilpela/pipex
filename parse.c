@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 21:14:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:15:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ void handle_quotes_and_backslashes(t_tokenize *t)
 }
 
 void end_argument(t_tokenize *t) {
-    if (!t->in_quotes && (*t->arg == ' ')) 
+	if (!t->in_quotes && (*t->arg == ' ')) 
 	{
-        *t->arg = '\0';
-    }
+		*t->arg = '\0';
+	}
 }
 
 void null_terminate_array(t_tokenize *t) 
 {
-    t->arg_count++;
-    t->args = realloc(t->args, sizeof(char *) * t->arg_count);
-    if (t->args == NULL) 
+	t->arg_count++;
+	t->args = realloc(t->args, sizeof(char *) * t->arg_count);
+	if (t->args == NULL) 
 		return (NULL);
-    t->args[t->arg_count - 1] = NULL;
+	t->args[t->arg_count - 1] = NULL;
 }
 
 char **tokenize(t_tokenize *t) 
