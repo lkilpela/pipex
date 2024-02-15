@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 08:49:35 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 10:09:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:31:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,4 @@ void	free_paths(char **paths)
 		i++;
 	}
 	free(paths);
-}
-
-char    *cleanup(t_pipex *p)
-{
-	if (p->paths)
-	{
-		free_paths(p->paths);
-		p->paths = NULL;
-	}
-	if (slash->path)
-	{
-		free(p->paths);
-		p->paths = NULL;
-	}
-    return (NULL);
 }
