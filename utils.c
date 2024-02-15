@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:24:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:27:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ static void	cleanup(t_pipex *p)
 		free(p->slash_cmd);
 	if (p->paths)
 		free_paths(p->paths);
-	// Add more cleanup code as needed...
 }
 
 void	error(t_pipex *p, int e)
 {
-	const char *error_messages[] = {
+	const char	*error_messages[] = {
 		"No error",
 		"Syntax: ./pipex infile cmd1 cmd2 outfile",
 		"Memory allocation failed",
@@ -52,9 +51,10 @@ void	error(t_pipex *p, int e)
 		"read failed",
 		"write failed"
 	};
+
 	cleanup(p);
 	if (e < 0 || e >= sizeof(error_messages) / sizeof(error_messages[0]))
-		e = 0;  // Default to "No error" if e is out of range
+		e = 0;
 	perror(error_messages[e]);
 	exit(EXIT_FAILURE);
 }
