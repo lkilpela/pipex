@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 14:02:08 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:28:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init(int argc, char **argv, char **envp, t_pipex *p)
 	p->argc = argc;
 	p->argv = argv;
 	p->envp = envp;
+	p->pids = -1;
 	p->infile = -1;
 	p->outfile = -1;
 	p->paths = NULL;

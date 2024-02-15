@@ -6,15 +6,17 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 13:26:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:25:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char **tokenize(t_pipex *p)
-{
-    int i;
+// grep Hello | awk "'{count++} END {print count}'" 
 
-    p->cmd = malloc()
+char **tokenize(t_pipex *p, char *cmd)
+{
+	int i;
+	
+		
 }
