@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:19:49 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:24:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,23 @@ static void	cleanup(t_pipex *p)
 
 void	error(t_pipex *p, int e)
 {
+	const char *error_messages[] = {
+		"No error",
+		"Syntax: ./pipex infile cmd1 cmd2 outfile",
+		"Memory allocation failed",
+		"fork failed",
+		"pipe failed",
+		"dup2 failed",
+		"execve failed",
+		"malloc failed",
+		"open failed",
+		"close failed",
+		"read failed",
+		"write failed"
+	};
 	cleanup(p);
-	if (e == ERR_SYNTAX)
-		perror("Syntax: ./pipex infile cmd1 cmd2 outfile\n");
-	else if (e == ERR_FORK)
-		perror("fork failed\n");
-	else if (e == ERR_PIPE)
-		perror("pipe failed\n");
-	else if (e == ERR_DUP2)
-		perror("dup2 failed\n");
-	else if (e == ERR_EXECVE)
-		perror("execve failed\n");
-	else if (e == ERR_MALLOC)
-		perror("malloc failed\n");
-	else if (e == ERR_OPEN)
-		perror("open failed\n");
-	else if (e == ERR_CLOSE)
-		perror("close failed\n");
-	else if (e == ERR_READ)
-		perror("read failed\n");
-	else if (e == ERR_WRITE)
-		perror("write failed\n");
-	else if (e == ERR_MEM)
-		perror("Memory allocation failed\n");
-	else
-		perror("Unknown error\n");
+	if (e < 0 || e >= sizeof(error_messages) / sizeof(error_messages[0]))
+		e = 0;  // Default to "No error" if e is out of range
+	perror(error_messages[e]);
 	exit(EXIT_FAILURE);
 }
