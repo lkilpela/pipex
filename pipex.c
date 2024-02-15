@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:19:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:30:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ static void	open_files(t_pipex *p)
 		error(ERR_OPEN);
 }
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
     t_pipex p;
 
     p.argc = argc;
     p.argv = argv;
+	p.envp = envp;
 
     handle_syntax(&p);
 }
