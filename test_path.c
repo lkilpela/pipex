@@ -22,7 +22,7 @@ void test_paths(void)
     // arrange
     t_pipex p;
     p.envp = environ; // use actual environment variables
-    char *cmd[] = {"ls", 0};
+    char *cmd[] = {"wc", 0};
 
    // Test get_envpaths
     char **envpaths_result = get_envpaths(&p);
@@ -36,7 +36,7 @@ void test_paths(void)
     p.cmd = cmd;
     char *command = find_command(&p);
     char *executable_result;
-    printf("\033[1;32mfind_command result: %s\033[0m\n", command);
+    printf("\033[1;34mfind_command result: %s\033[0m\n", command);
     if (command == 0) {
         TEST_ASSERT_NULL(command);
         printf("\033[1;31mError: find_command returned NULL\033[0m\n");
