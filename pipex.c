@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:30:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:02:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int main(int argc, char **argv, char **envp)
 {
     t_pipex p;
 
-    p.argc = argc;
-    p.argv = argv;
-	p.envp = envp;
-
+	init
     handle_syntax(&p);
 }
