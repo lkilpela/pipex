@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 10:47:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:48:56 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,45 @@ char	**get_envpaths(t_pipex *p)
 }
 
 // concatenates the directory, '/' & cmd to form a full path to the executable
-char	*find_executable(t_pipex *p)
+char	*find_executable(t_pipex *p, char *cmd)
 {
 	int	i;
-
+	char* path;
+	char* command;
+	
+	command = ft_strjoin("/", cmd); //"/ls" or "/grep"
+	if (!command)
+		return (NULL);
 	i = 0;
 	while (p->paths[i])
 	{
-		p->full_path = ft_strjoin(p->paths[i], p->slash_cmd);
-		if (!p->full_path)
-			return (NULL);
-		if (access(p->full_path, F_OK | X_OK) == 0)
-			return (p->full_path);
-		free(p->full_path);
+		path = ft_strjoin(p->paths[i], command);
+		if (!path || access(path, F_OK | X_OK) == 0)
+		{
+			free(command);
+			return (path);
+		}
+		free(path);
 		i++;
 	}
+	free(command);
 	return (NULL);
 }
 
 // determining the full path of a command
-char	*find_command(t_pipex *p)
+char	*find_command(t_pipex *p, char *cmd)
 {
 	int		i;
 	char	*command;
 
-	i = 0;
-	if (!p->cmd || !*p->cmd)
+	i = 0; 
+	if (!cmd)
 		return (NULL);
-	else if (ft_strchr(*p->cmd, '/'))
-		return (ft_strdup(*p->cmd));
-	p->paths = get_envpaths(p);
+	else if (ft_strchr(cmd, '/')) //"/usr/bin/grep"
+		return (cmd);
+	if(!p->paths)
+		p->paths = get_envpaths(p);
 	if (!p->paths)
 		return (NULL);
-	p->slash_cmd = ft_strjoin("/", *p->cmd); //"/ls" or "/grep"
-	if (!p->slash_cmd)
-	{
-		free_paths(p->paths);
-		return (NULL);
-	}
-	p->full_path = find_executable(p);
-	if (!p->full_path)
-	{
-		free(p->slash_cmd);
-		free_paths(p->paths);
-	}
-	return (p->full_path);
+	return (find_executable(p, cmd));
 }

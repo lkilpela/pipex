@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 10:56:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:48:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ typedef struct s_pipex
 	int		infile;
 	int		outfile;
 	char	**paths;
-	char	**cmd;
-	char	*full_path;
-	char	*slash_cmd;
+	char	*child_path;
+	char    *parent_path;
+	char	**child_cmd;
+	char	**parent_cmd;
 }				t_pipex;
 
 void	free_paths(char **paths);
-char 	**get_envpaths(t_pipex *p);
-char	*find_command(t_pipex *p);
-char	*find_executable(t_pipex *p);
+char	*find_command(t_pipex *p, char *cmd)
 
 #endif
