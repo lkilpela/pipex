@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 11:17:51 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:19:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_paths(char **paths)
 	free(paths);
 }
 
-void cleanup(t_pipex *p)
+static void	cleanup(t_pipex *p)
 {
 	if (p->full_path)
 		free(p->full_path);
