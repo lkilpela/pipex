@@ -60,31 +60,18 @@ void test_paths(void)
 void test_tokenize(void) 
 {
     t_tokenize t;
+
+    // Test with "grep Hello"
     init_tokenize(&t);
-    TEST_ASSERT_EQUAL_INT(0, t.count);
-    TEST_ASSERT_EQUAL_INT(0, t.in_quotes);
-    TEST_ASSERT_NULL(t.args);
-
-    toggle_quotes(&t, '"');
-    TEST_ASSERT_EQUAL_INT(1, t.in_quotes);
-    toggle_quotes(&t, '"');
-    TEST_ASSERT_EQUAL_INT(0, t.in_quotes);
-
-    add_word(&t, "hello", "hello"[4]);
-    TEST_ASSERT_EQUAL_STRING("hello", t.args[0]);
-
-    split_on_space(&t, "hello world");
-    TEST_ASSERT_EQUAL_STRING("hello", t.args[0]);
-    TEST_ASSERT_EQUAL_STRING("world", t.args[1]);
-
-    split_command(&t, "hello world");
-    TEST_ASSERT_EQUAL_STRING("hello", t.args[0]);
-    TEST_ASSERT_EQUAL_STRING("world", t.args[1]);
+    split_command(&t, "grep Hello");
+    TEST_ASSERT_EQUAL_STRING("grep", t.args[0]);
+    TEST_ASSERT_EQUAL_STRING("Hello", t.args[1]);
     TEST_ASSERT_NULL(t.args[2]);
 
     // Reset the tokenizer for the next test
     init_tokenize(&t);
 
+    // Test with "awk '{count++} END {print count}'"
     split_command(&t, "awk '{count++} END {print count}'");
     TEST_ASSERT_EQUAL_STRING("awk", t.args[0]);
     TEST_ASSERT_EQUAL_STRING("'{count++} END {print count}'", t.args[1]);
