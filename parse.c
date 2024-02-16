@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 08:47:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:02:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // awk "'{count++} END {print count}'" 
-void	start_new_argument(t_tokenize *t)
+void	start_new_argument(t_tokenize *t, char *start, int len)
 {
 	char	**new_args;
 	int		i;
@@ -22,22 +22,13 @@ void	start_new_argument(t_tokenize *t)
 	if (!t->in_quotes && (*t->arg != ' '))
 	{
 		t->count++;
-		// Allocate a new larger array
-		new_args = malloc(sizeof(char *) * (t->count + 1));
+		new_args = resize_array(t->args, t->count -1, t->count);
 		if (new_args == NULL)
 			error(ERR_MEM);
-		// Copy the old elements to the new array
-		while (i < t->count - 1)
-		{
-			new_args[i] = t->args[i];
-			i++;
-		}
-		// Add the new argument to the new array
-		new_args[t->count - 1] = t->arg;
-		// Free the old array
-		free(t->args);
-		// Use the new array
-		t->args = new_args;
+		new_args[t->count - 1] = ft_strndup(start, len); // Add new argument at the end
+		if (new_args[t->count - 1] == NULL)
+			error(ERR_MEM);
+		t->args = new_args; // Use the new array
 	}
 }
 
@@ -65,11 +56,14 @@ void	end_argument(t_tokenize *t)
 
 void	null_terminate_array(t_tokenize *t)
 {
+	char	**new_args;
+	
 	t->count++;
-	t->args = malloc(t->args, sizeof(char *) * (t->count + 1));
-	if (t->args == NULL)
-		return (NULL);
-	t->args[t->count - 1] = NULL;
+	new_args = resize_array(t->args, t->count -1, t->count);
+	if (new_args == NULL)
+		return;
+	new_args[t->count - 1] = NULL;
+	t->args = new_args;
 }
 
 char	**parse_command(char *cmd)
