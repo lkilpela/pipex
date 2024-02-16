@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 14:00:19 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:01:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_tokenize(t_tokenize *t)
 void	toggle_quotes(t_tokenize *t, char c)
 {
 	if (c == '"' || c == '\'')
-	t->in_quotes = !t->in_quotes;
+		t->in_quotes = !t->in_quotes;
 }
 
 void	add_word(t_tokenize *t, char *start, char *end)
@@ -53,7 +53,7 @@ void	split_on_space(t_tokenize *t, char *cmd)
 		add_word(t, start, end);
 }
 
-void    split_command(t_tokenize *t, char *cmd)
+void	split_command(t_tokenize *t, char *cmd)
 {
 	char	*start;
 	char	*end;
