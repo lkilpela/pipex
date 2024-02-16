@@ -6,9 +6,16 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 15:40:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:42:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+void    redirect_input(char *infile)
+{
+    int fd;
+
+    fd = open(infile, O_RDONLY);
+    
+}
