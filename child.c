@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 15:52:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:54:59 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,44 @@ void    execute_first_command(char *cmd, t_pipex *p)
             error(ERR_WAITPID);
     }
 }
+
+void    setup_pipe(int pipefd[2])
+{
+    if (pipe(pipefd) == -1)
+        error(ERR_PIPE);
+}
+
+void execute_second_command(char *cmd, char **args, int pipefd[2])
+{
+    // Fork a new process
+    pid_t pid = fork();
+    if (pid == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid == 0) {
+        // This is the child process. Redirect its standard input to the pipe.
+        if (dup2(pipefd[0], STDIN_FILENO) == -1) {
+            perror("dup2");
+            exit(EXIT_FAILURE);
+        }
+
+        // Execute the command.
+        if (execve(cmd, args, NULL) == -1) {
+            perror("execve");
+            exit(EXIT_FAILURE);
+        }
+    } else {
+        // This is the parent process. Wait for the child to finish.
+        int status;
+        if (waitpid(pid, &status, 0) == -1) {
+            perror("waitpid");
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
 void   redirect_output(char *outfile)
 {
     int fd;
@@ -54,6 +92,30 @@ void   redirect_output(char *outfile)
         error(ERR_DUP2);
     if (close(fd) == -1)
         error(ERR_CLOSE);    
+}
+
+void cleanup(int pipefd[2], pid_t pid1, pid_t pid2)
+{
+    // Close the pipe file descriptors
+    if (close(pipefd[0]) == -1) {
+        perror("close");
+        exit(EXIT_FAILURE);
+    }
+    if (close(pipefd[1]) == -1) {
+        perror("close");
+        exit(EXIT_FAILURE);
+    }
+
+    // Wait for the child processes to finish
+    int status;
+    if (waitpid(pid1, &status, 0) == -1) {
+        perror("waitpid");
+        exit(EXIT_FAILURE);
+    }
+    if (waitpid(pid2, &status, 0) == -1) {
+        perror("waitpid");
+        exit(EXIT_FAILURE);
+    }
 }
 
 int main(int argc, char **argv, char **envp)
