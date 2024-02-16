@@ -6,11 +6,19 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 13:52:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:57:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void init_tokenize(t_tokenize *t)
+{
+	t->count = 0;
+	t->in_quotes = 0;
+	t->args = NULL;
+	t->arg = NULL;
+}
 
 void    toggle_quotes(t_tokenize *t, char c)
 {
