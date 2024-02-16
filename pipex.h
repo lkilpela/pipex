@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 12:27:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:42:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ typedef struct s_tokenize
 	int		backslash;// a flag:current character is preceded by a backslash. This is useful for handling escape sequences in the command line.
 	int 	count;//a counter for the number of arguments found so far.
 	char	**args;//a dynamic array that holds the arguments found so far. Each argument is a string.
-	char	*arg;//a pointer to the current argument being processed.
-	char	*new_str;//a copy of the command line string that can be modified during the tokenization process.
 }				t_tokenize;
 
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
