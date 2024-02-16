@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 22:13:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:27:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ typedef struct s_tokenize
 	char	*new_str;//a copy of the command line string that can be modified during the tokenization process.
 }				t_tokenize;
 
-void	init(int argc, char **argv, char **envp, t_pipex *p);
+void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
+void	init_tokenize(t_tokenize *t);
+void	error(t_pipex *p, int e);
 void	free_paths(char **paths);
 char	*find_command(t_pipex *p, char *cmd);
+char	**resize_array(char **old_array, int old_count, int new_count);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 08:56:51 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:27:24 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	init(int argc, char **argv, char **envp, t_pipex *p)
+void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 {
 	p->argc = argc;
 	p->argv = argv;
