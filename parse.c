@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:13 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 22:32:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 08:47:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// grep Hello | awk "'{count++} END {print count}'" 
+// awk "'{count++} END {print count}'" 
 void	start_new_argument(t_tokenize *t)
 {
 	char	**new_args;
@@ -65,23 +65,25 @@ void	end_argument(t_tokenize *t)
 
 void	null_terminate_array(t_tokenize *t)
 {
-	t->arg_count++;
-	t->args = realloc(t->args, sizeof(char *) * t->arg_count);
+	t->count++;
+	t->args = malloc(t->args, sizeof(char *) * (t->count + 1));
 	if (t->args == NULL)
 		return (NULL);
-	t->args[t->arg_count - 1] = NULL;
+	t->args[t->count - 1] = NULL;
 }
 
-char	**tokenize(char *cmd)
+char	**parse_command(char *cmd)
 {
 	t_tokenize	t;
 
 	t.in_quotes = 0;
 	t.backslash = 0;
-	t.arg_count = 0;
+	t.count = 0;
 	t.args = NULL;
 	t.arg = NULL;
 	t.new_str = ft_strdup(cmd);
+	if (t.new_str == NULL)
+		error(ERR_MEM);
 	t.arg = t.new_str;
 	while (*t.arg)
 	{
@@ -90,6 +92,6 @@ char	**tokenize(char *cmd)
 		end_argument(&t);
 		t.arg++;
 	}
-	null_terminate_array(&t);
+	
 	return (t.args);
 }

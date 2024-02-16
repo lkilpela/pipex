@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/15 20:51:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 08:56:51 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,23 @@ void	error(t_pipex *p, int e)
 		e = 0;
 	perror(error_messages[e]);
 	exit(EXIT_FAILURE);
+}
+
+char	**resize_array(char **old_array, int old_count, int new_count)
+{
+	char	**new_array;
+	int		i;
+
+	i = 0;	
+	new_array = malloc(sizeof(char *) * (new_count + 1));
+	if (new_array == NULL)
+		return (NULL);
+	i = 0;
+	while(i < old_count)
+	{
+		new_array[i] = old_array[i];
+		i++;
+	}
+	free(old_array);
+	return (new_array);
 }
