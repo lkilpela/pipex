@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 13:50:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:19:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,18 @@ typedef struct s_tokenize
 	char	**args;//a dynamic array that holds the arguments found so far. Each argument is a string.
 }				t_tokenize;
 
+char	**get_envpaths(t_pipex *p);
+char	*find_executable(t_pipex *p, char *cmd);
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
 void	init_tokenize(t_tokenize *t);
 void	error(t_pipex *p, int e);
 void	free_paths(char **paths);
 char	*find_command(t_pipex *p, char *cmd);
 char	**resize_array(char **old_array, int old_count, int new_count);
+void	init_tokenize(t_tokenize *t);
+void	toggle_quotes(t_tokenize *t, char c);
+void	add_word(t_tokenize *t, char *start, char *end);
+void	split_on_space(t_tokenize *t, char *cmd);
+void	split_command(t_tokenize *t, char *cmd);
 
 #endif

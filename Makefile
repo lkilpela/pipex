@@ -6,8 +6,8 @@ UNITY = unity
 
 HDRS = -I./include -I $(LIBFT)/include -I $(UNITY)/src/unity.h
 LIBS = $(LIBFT)/build/libft.a
-SRCS = path.c pipex.c utils.c
-TEST_SRCS = test_path.c
+SRCS = path.c utils.c tokenize.c
+TEST_SRCS = test.c
 OBJS = $(SRCS:%.c=%.o)
 TEST_OBJS = $(TEST_SRCS:%.c=%.o)
 
