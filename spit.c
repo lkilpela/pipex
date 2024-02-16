@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 13:45:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:52:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    split_on_space(t_tokenize *t, char *cmd)
     end = cmd;
     while (*end)
     {
-        toggle_quotes(&t, *end);
+        toggle_quotes(t, *end);
         if (*end == ' ' && !t->in_quotes)
         {
             add_word(t, start, end);
