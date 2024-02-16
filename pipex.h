@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 14:19:36 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:39:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 
 # define MAX_TOKENS	100
 # define PERMISSIONS	0644
+
+enum	e_pipe
+{
+	RD_END,
+	WR_END
+};
 
 enum	e_error
 {
