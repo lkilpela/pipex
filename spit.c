@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 13:40:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:45:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,15 @@ void    split_on_space(t_tokenize *t, char *cmd)
         add_word(t, start, end);
 }
 
+void    split_command(t_tokenize *t, char *cmd)
+{
+    char    *start;
+    char    *end;
+
+    start = cmd;
+    end = cmd;
+
+    split_on_space(t, cmd);
+    t->args = resize_array(t->args, t->count, t->count + 1);
+    t->args[t->count] = NULL;
+}
