@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 15:49:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:52:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ void    execute_first_command(char *cmd, t_pipex *p)
             error(ERR_WAITPID);
     }
 }
-{
-    t->
-}
-
 void   redirect_output(char *outfile)
 {
     int fd;
