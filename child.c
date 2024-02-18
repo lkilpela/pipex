@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 15:54:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/18 12:02:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,10 @@ void cleanup(int pipefd[2], pid_t pid1, pid_t pid2)
 {
     // Close the pipe file descriptors
     if (close(pipefd[0]) == -1) {
-        perror("close");
-        exit(EXIT_FAILURE);
+        error(ERR_CLOSE);
     }
     if (close(pipefd[1]) == -1) {
-        perror("close");
-        exit(EXIT_FAILURE);
+        error(ERR_CLOSE);
     }
 
     // Wait for the child processes to finish
