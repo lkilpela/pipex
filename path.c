@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 23:13:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:23:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,20 @@ char	*find_command(t_pipex *p, char *cmd)
 		return (NULL);
 	return (find_executable(p, cmd));
 }
-
+// ? should have second param: char *cmd or use p->argv
 int	execute_child(t_pipex *p)
 {
 	int	status;
 
-	p->child_cmd = split_command(t->argv);
+	p->child_cmd = split_command(p->argv);
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
+		error(ERR_COMMAND);
+	p->child_path = find_command(p, p->argv); //child_cmd is an array **, is it right when the second param is *cmd?
+	if (!p->child_path)
+	{
+		free_paths(p->argv);
+		error(ERR_COMMAND);
+	}
+	status = execve(p->child_path, p->child_cmd, p->envp);
+	return (status);
 }
