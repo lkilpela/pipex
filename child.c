@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 13:43:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:45:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    redirect_input(t_pipex *p)
 {
-    p->infile = open(p->argv[1], O_RDONLY);
+    p->infile_fd = open(p->argv[1], O_RDONLY);
     if (p->infile == -1)
 		error(ERR_OPEN);
     if (dup2(p->infile_fd, STDIN_FILENO) == -1)
@@ -81,13 +81,13 @@ void execute_second_command(char *cmd, char **args, int pipefd[2])
 
 void   redirect_output(t_pipex *p)
 {
-    p->outfile = open(p->argv[p->argc - 1],
+    p->outfile_fd = open(p->argv[p->argc - 1],
 				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
 	if (p->outfile == -1)
 		error(ERR_OPEN);
-    if (dup2(fd, STDOUT_FILENO) == -1)
+    if (dup2(p->outfile_fd, STDOUT_FILENO) == -1)
         error(ERR_DUP2);
-    if (close(fd) == -1)
+    if (close(p->outfile_fd) == -1)
         error(ERR_CLOSE);    
 }
 
