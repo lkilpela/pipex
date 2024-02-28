@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 11:12:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:23:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ enum	e_error
 
 typedef struct s_pipex
 {
-	char	**argv;
-	int		argc;
-	char	**envp;
-	pid_t	*pids;
-	int		infile;
-	int		outfile;
-	char	**paths;
-	char	*child_path;
-	char    *parent_path;
-	char	**child_cmd;
-	char	**parent_cmd;
+	char	**argv;         // Command-line arguments
+	int		argc;           // Count of command-line arguments
+	char	**envp;         // Environment variables
+	pid_t	*pids;          // Array of process IDs
+	int		infile_fd;      // File descriptor for the input file
+	int		outfile_fd;     // File descriptor for the output file
+	char	**paths;        // Array of paths for executable lookup
+	char	*child_path;    // Path for the child process or command
+	char    *parent_path;   // Path for the parent process or command
+	char	**child_cmd;    // Array of command and arguments for child process
+	char	**parent_cmd;   // Array of command and arguments for parent process
 }				t_pipex;
 
 typedef struct s_tokenize

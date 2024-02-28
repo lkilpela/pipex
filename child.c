@@ -6,17 +6,15 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/18 12:02:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:23:24 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void    redirect_input(char *infile)
+void    redirect_input(t_pipex *p)
 {
-    int fd;
-
-    fd = open(infile, O_RDONLY);
+    p->infile_fd = open(infile, O_RDONLY);
     if (fd == -1)
         error(ERR_OPEN);
     if (dup2(fd, STDIN_FILENO) == -1)
