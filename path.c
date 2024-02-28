@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 23:05:36 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:13:14 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,12 @@ char	*find_command(t_pipex *p, char *cmd)
 	if (!p->paths)
 		return (NULL);
 	return (find_executable(p, cmd));
+}
+
+int	execute_child(t_pipex *p)
+{
+	int	status;
+
+	p->child_cmd = split_command(t->argv);
+	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
 }

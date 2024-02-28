@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 20:48:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:06:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ int main(int argc, char **argv, char **envp)
     init(argc, argv, envp, &p);
 	handle_syntax(&p);
     setup_pipe(&p);
-    redirect_input(p.argv[1]);
-    redirect_output(p.argv[p.argc - 1]);
+    
     execve(p.child_path, p.argv, p.envp);
     error(ERR_EXECVE);
     return (0);
