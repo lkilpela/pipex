@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 22:35:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:36:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void execute_second_command(char *cmd, t_pipex *p, t_tokenize *t)
         error(ERR_FORK);
     if (p->pids == 0)
     {
-        redirect_input(p);
+        setup_second_command(p);
         if (execve(cmd, t->args[3], NULL) == -1)
             error(ERR_EXECVE);
     }
