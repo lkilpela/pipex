@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 13:45:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:59:51 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void   redirect_output(t_pipex *p)
 {
     p->outfile_fd = open(p->argv[p->argc - 1],
 				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
-	if (p->outfile == -1)
+	if (p->outfile_fd == -1)
 		error(ERR_OPEN);
     if (dup2(p->outfile_fd, STDOUT_FILENO) == -1)
         error(ERR_DUP2);
@@ -118,6 +118,7 @@ int main(int argc, char **argv, char **envp)
     t_pipex p;
 
     init(argc, argv, envp, &p);
+    setup_pipe()
     redirect_input(p.argv[1]);
     redirect_output(p.argv[p.argc - 1]);
     execve(p.child_path, p.argv, p.envp);
