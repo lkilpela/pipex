@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 22:50:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:37:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    execute_first_command(char *cmd, t_pipex *p, t_tokenize *t)
     if (p->pids == 0)
     {
         setup_first_command(p);
-        if (execve(cmd, t->args[2], NULL) == -1)
+        if (execute_child(p, p->argv[2]) == -1)
             error(ERR_EXECVE);
     }
     else
@@ -72,7 +72,7 @@ void execute_second_command(char *cmd, t_pipex *p, t_tokenize *t)
     if (p->pids == 0)
     {
         setup_second_command(p);
-        if (execve(cmd, t->args[3], NULL) == -1)
+        if (execute_child(p, p->argv[3]) == -1)
             error(ERR_EXECVE);
     }
     else
