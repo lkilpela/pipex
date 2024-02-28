@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 15:39:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:12:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,43 @@ typedef struct s_tokenize
 	char	**args;//a dynamic array that holds the arguments found so far. Each argument is a string.
 }				t_tokenize;
 
+// Retrieves the environment paths for Unix commands
 char	**get_envpaths(t_pipex *p);
+
+// Finds the full path of an executable command
 char	*find_executable(t_pipex *p, char *cmd);
+
+// Initializes the pipex structure with command line arguments and environment variables
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
+
+// Initializes the tokenize structure
 void	init_tokenize(t_tokenize *t);
+
+// Handles errors based on the error code 'e'
 void	error(t_pipex *p, int e);
+
+// Frees the memory allocated for the paths
 void	free_paths(char **paths);
+
+// Finds the full path of a command
 char	*find_command(t_pipex *p, char *cmd);
+
+// Resizes an array to accommodate new elements
 char	**resize_array(char **old_array, int old_count, int new_count);
+
+// Initializes the tokenize structure
 void	init_tokenize(t_tokenize *t);
+
+// Toggles the 'in_quotes' field of the tokenize structure based on the character 'c'
 void	toggle_quotes(t_tokenize *t, char c);
+
+// Adds a word to the 'args' field of the tokenize structure
 void	add_word(t_tokenize *t, char *start, char *end);
+
+// Splits a command string into words based on spaces
 void	split_on_space(t_tokenize *t, char *cmd);
+
+// Splits a command string into words and stores them in the 'args' field of the tokenize structure
 void	split_command(t_tokenize *t, char *cmd);
 
 #endif
