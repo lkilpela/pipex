@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 10:12:01 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:30:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	error(t_pipex *p, int e)
 		"open failed",
 		"close failed",
 		"read failed",
-		"write failed"
+		"write failed",
+		"waitpid failed"
 	};
 
 	cleanup(p);

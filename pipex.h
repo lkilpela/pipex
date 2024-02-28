@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 20:44:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:30:00 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_READ,
-	ERR_WRITE	
+	ERR_WRITE,
+	ERR_WAITPID
 };
 
 typedef struct s_pipex
