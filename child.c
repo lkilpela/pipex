@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 15:06:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:45:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void    redirect_input(t_pipex *p)
 {
-    p->infile_fd = open(p->argv[1], O_RDONLY);
-    if (p->infile_fd == -1)
+    p->infilefd = open(p->argv[1], O_RDONLY);
+    if (p->infilefd == -1)
 		error(ERR_OPEN);
-    if (dup2(p->infile_fd, STDIN_FILENO) == -1)
+    if (dup2(p->pipefd[1], STDIN_FILENO) == -1)
         error(ERR_DUP2);
     if (close(p->infile_fd) == -1)
         error(ERR_CLOSE);    

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 13:23:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:44:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ typedef struct s_pipex
 	int		argc;           // Count of command-line arguments
 	char	**envp;         // Environment variables
 	pid_t	*pids;          // Array of process IDs
-	int		infile_fd;      // File descriptor for the input file
-	int		outfile_fd;     // File descriptor for the output file
+	int		infilefd;      // File descriptor for the input file
+	int		outfilefd;     // File descriptor for the output file
 	char	**paths;        // Array of paths for executable lookup
 	char	*child_path;    // Path for the child process or command
 	char    *parent_path;   // Path for the parent process or command
 	char	**child_cmd;    // Array of command and arguments for child process
 	char	**parent_cmd;   // Array of command and arguments for parent process
+	int		pipefd[2];		// Array to hold the file descriptors for the pipe
 }				t_pipex;
 
 typedef struct s_tokenize
