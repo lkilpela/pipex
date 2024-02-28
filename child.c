@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 22:36:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:50:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void    execute_first_command(char *cmd, t_pipex *p, t_tokenize *t)
             error(ERR_WAITPID);
     }
 }
-// second child process read its input from the pipe
+//2nd child: any reads from STDIN: read from the pipe, 
+//any writes to STDOUT: write to the output file.
 void   setup_second_command(t_pipex *p)
 {
     p->outfilefd = open(p->argv[p->argc - 1],
