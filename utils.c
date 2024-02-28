@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/16 12:27:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:12:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char	**resize_array(char **old_array, int old_count, int new_count)
 	new_array = malloc(sizeof(char *) * (new_count + 1));
 	if (new_array == NULL)
 		return (NULL);
-	i = 0;
 	while(i < old_count)
 	{
 		new_array[i] = old_array[i];
