@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 08:32:02 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:38:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*find_executable(t_pipex *p, char *cmd)
 	char	*path;
 	char	*command;
 	int		i;
-	
+
 	command = ft_strjoin("/", cmd); //"/ls" or "/grep"
 	if (!command)
 		return (NULL);
@@ -54,17 +54,16 @@ char	*find_executable(t_pipex *p, char *cmd)
 // determining the full path of a command
 char	*find_command(t_pipex *p, char *cmd)
 {
-	int		i;
+	int	i;
 
-	i = 0; 
+	i = 0;
 	if (!cmd)
 		return (NULL);
 	else if (ft_strchr(cmd, '/')) //"/usr/bin/grep"
 		return (cmd);
-	if(!p->paths)
+	if (!p->paths)
 		p->paths = get_envpaths(p);
 	if (!p->paths)
 		return (NULL);
 	return (find_executable(p, cmd));
 }
-// ? should have second param: char *cmd or use p->argv
