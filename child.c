@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 23:37:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 08:35:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,39 @@ void    setup_first_command(t_pipex *p)
         error(ERR_DUP2);
     if (close(p->infilefd) == -1 || close(p->pipefd[1]) == -1)
         error(ERR_CLOSE);    
+}
+
+//2nd child: any reads from STDIN: read from the pipe, 
+//any writes to STDOUT: write to the output file.
+void   setup_second_command(t_pipex *p)
+{
+    p->outfilefd = open(p->argv[p->argc - 1],
+				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
+	if (p->outfilefd == -1)
+		error(ERR_OPEN);
+    if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
+        error(ERR_DUP2);
+    if (dup2(p->outfilefd, STDOUT_FILENO) == -1)
+        error(ERR_DUP2);
+    if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
+        error(ERR_CLOSE);    
+}
+
+int	execute_child(t_pipex *p, char *cmd)
+{
+	int	status;
+
+	p->child_cmd = split_command(cmd);
+	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
+		error(ERR_COMMAND);
+	p->child_path = find_command(p, p->child_cmd[0]);
+    if(!p->child_path)
+	{
+		free_paths(p->child_cmd);
+		error(ERR_COMMAND);
+	}
+	if (execve(p->child_path, p->child_cmd, p->envp) == -1);
+	    error (ERR_EXECVE);
 }
 
 void    execute_first_command(char *cmd, t_pipex *p, t_tokenize *t)
@@ -46,21 +79,6 @@ void    execute_first_command(char *cmd, t_pipex *p, t_tokenize *t)
             error(ERR_WAITPID);
     }
 }
-//2nd child: any reads from STDIN: read from the pipe, 
-//any writes to STDOUT: write to the output file.
-void   setup_second_command(t_pipex *p)
-{
-    p->outfilefd = open(p->argv[p->argc - 1],
-				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
-	if (p->outfilefd == -1)
-		error(ERR_OPEN);
-    if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
-        error(ERR_DUP2);
-    if (dup2(p->outfilefd, STDOUT_FILENO) == -1)
-        error(ERR_DUP2);
-    if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
-        error(ERR_CLOSE);    
-}
 
 void execute_second_command(char *cmd, t_pipex *p, t_tokenize *t)
 {
@@ -81,4 +99,3 @@ void execute_second_command(char *cmd, t_pipex *p, t_tokenize *t)
             error(ERR_WAITPID);
     }
 }
-
