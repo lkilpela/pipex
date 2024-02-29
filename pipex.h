@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:28:34 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:30:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_pipex
 	char	**argv;         // Command-line arguments
 	int		argc;           // Count of command-line arguments
 	char	**envp;         // Environment variables
-	pid_t	*pids;          // Array of process IDs
+	pid_t	pid;          // Single process IDs
 	int		infilefd;      // File descriptor for the input file
 	int		outfilefd;     // File descriptor for the output file
 	char	**paths;        // Array of paths for executable lookup

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:26:08 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:34:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
-	p->pids = fork();
-	if (p->pids == -1)
+	p->pid = fork();
+	if (p->pid == -1)
 		error(ERR_FORK);
-	if (p->pids == 0)
+	if (p->pid == 0)
 	{
 		setup_first_command(p);
-		if (execute_child(p, p->argv[2]) == -1)
+		if (execute_child(p, t, p->argv[2]) == -1)
 			error(ERR_EXECVE);
 	}
 	else
 	{
-		if (waitpid(p->pids, &status, 0) == -1)
+		if (waitpid(p->pid, &status, 0) == -1)
 			error(ERR_WAITPID);
 	}
 }
@@ -84,18 +84,18 @@ void	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
-	p->pids = fork();
-	if (p->pids == -1)
+	p->pid = fork();
+	if (p->pid == -1)
 		error(ERR_FORK);
-	if (p->pids == 0)
+	if (p->pid == 0)
 	{
 		setup_second_command(p);
-		if (execute_child(p, p->argv[3]) == -1)
+		if (execute_child(p, t, p->argv[3]) == -1)
 			error(ERR_EXECVE);
 	}
 	else
 	{
-		if (waitpid(t->pids, &status, 0) == -1)
+		if (waitpid(p->pid, &status, 0) == -1)
 			error(ERR_WAITPID);
 	}
 }
