@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 23:14:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 08:58:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,11 @@ void	split_on_space(t_tokenize *t, char *cmd);
 
 // Splits a command string into words and stores them in the 'args' field of the tokenize structure
 void	split_command(t_tokenize *t, char *cmd);
+void    setup_first_command(t_pipex *p);
+void   setup_second_command(t_pipex *p);
+int		execute_child(t_pipex *p, char *cmd);
+void    execute_first_command(t_pipex *p, t_tokenize *t, char *cmd);
+void 	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd);
+
 
 #endif
