@@ -52,14 +52,13 @@ void test_paths(void)
         }
         i++;
     }
-    // Free allocated memory
-    free_paths(p.paths);
 }
 
-/*void test_tokenize(void) 
+void test_tokenize(void) 
 {
     t_tokenize t;
-
+    char *cmds[] = {"grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL}
+    
     // Test with "grep Hello"
     init_tokenize(&t);
     split_command(&t, "grep Hello");
@@ -67,19 +66,11 @@ void test_paths(void)
     TEST_ASSERT_EQUAL_STRING("Hello", t.args[1]);
     TEST_ASSERT_NULL(t.args[2]);
 
-    // Reset the tokenizer for the next test
-    init_tokenize(&t);
-
-    // Test with "awk '{count++} END {print count}'"
-    split_command(&t, "awk '{count++} END {print count}'");
-    TEST_ASSERT_EQUAL_STRING("awk", t.args[0]);
-    TEST_ASSERT_EQUAL_STRING("'{count++} END {print count}'", t.args[1]);
-    TEST_ASSERT_NULL(t.args[2]);
-}*/
+}
 
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_paths);
-    //RUN_TEST(test_tokenize);
+    RUN_TEST(test_tokenize);
     return UNITY_END();
 }
