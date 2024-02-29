@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:30:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:43:00 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_tokenize
 char	**get_envpaths(t_pipex *p);
 
 // Finds the full path of an executable command
-char	*find_executable(t_pipex *p, char *cmd);
+char	*find_executsble(t_pipex *p, char *cmd);
 
 // Initializes the pipex structure with command line arguments and environment variables
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
