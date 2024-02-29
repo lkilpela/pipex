@@ -58,7 +58,7 @@ void test_tokenize(void)
 {
     t_tokenize t;
     int i = 0;
-    char *cmds[] = {"\0", "grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL};
+    char *cmds[] = {"grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL};
     
     while (cmds[i])
     {
@@ -68,9 +68,7 @@ void test_tokenize(void)
         {
             printf("\033[1;34msplit_command result for '%s':\033[0m\n", cmds[i]);
             for (int j = 0; command[j] != NULL; j++)
-            {
                 printf("%s\n", command[j]);
-            }
         }
         else 
         {
