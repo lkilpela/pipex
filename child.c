@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:22:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:36:39 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ void	setup_first_command(t_pipex *p)
 
 //2nd child: any reads from STDIN: read from the pipe, 
 //any writes to STDOUT: write to the output file.
-void   setup_second_command(t_pipex *p)
+void	setup_second_command(t_pipex *p)
 {
-    p->outfilefd = open(p->argv[p->argc - 1],
-				O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
+	p->outfilefd = open(p->argv[p->argc - 1],
+			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
 	if (p->outfilefd == -1)
 		error(ERR_OPEN);
-    if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
-        error(ERR_DUP2);
-    if (dup2(p->outfilefd, STDOUT_FILENO) == -1)
-        error(ERR_DUP2);
-    if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
-        error(ERR_CLOSE);    
+	if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
+		error(ERR_DUP2);
+	if (dup2(p->outfilefd, STDOUT_FILENO) == -1)
+		error(ERR_DUP2);
+	if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
+		error(ERR_CLOSE);
 }
 
-int execute_child(t_pipex *p, char *cmd)
+int	execute_child(t_pipex *p, char *cmd)
 {
 	int	status;
 
@@ -51,51 +51,51 @@ int execute_child(t_pipex *p, char *cmd)
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
 		error(ERR_COMMAND);
 	p->child_path = find_command(p, p->child_cmd[0]);
-    if(!p->child_path)
+	if (!p->child_path)
 	{
 		free_paths(p->child_cmd);
 		error(ERR_COMMAND);
 	}
-	if (execve(p->child_path, p->child_cmd, p->envp) == -1);
-	    error (ERR_EXECVE);
+	if (execve(p->child_path, p->child_cmd, p->envp) == -1)
+		error(ERR_EXECVE);
 }
 
-void    execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
+void	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
-    int     status;
-    
-    p->pids = fork();
-    if (p->pids == -1)
-        error(ERR_FORK);
-    if (p->pids == 0)
-    {
-        setup_first_command(p);
-        if (execute_child(p, p->argv[2]) == -1)
-            error(ERR_EXECVE);
-    }
-    else
-    {
-        if (waitpid(p->pids, &status, 0) == -1)
-            error(ERR_WAITPID);
-    }
+	int	status;
+
+	p->pids = fork();
+	if (p->pids == -1)
+		error(ERR_FORK);
+	if (p->pids == 0)
+	{
+		setup_first_command(p);
+		if (execute_child(p, p->argv[2]) == -1)
+			error(ERR_EXECVE);
+	}
+	else
+	{
+		if (waitpid(p->pids, &status, 0) == -1)
+			error(ERR_WAITPID);
+	}
 }
 
-void    execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
+void	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
-    int     status;
-    
-    p->pids = fork();
-    if (p->pids == -1)
-        error(ERR_FORK);
-    if (p->pids == 0)
-    {
-        setup_second_command(p);
-        if (execute_child(p, p->argv[3]) == -1)
-            error(ERR_EXECVE);
-    }
-    else
-    {
-        if (waitpid(t->pids, &status, 0) == -1)
-            error(ERR_WAITPID);
-    }
+	int	status;
+
+	p->pids = fork();
+	if (p->pids == -1)
+		error(ERR_FORK);
+	if (p->pids == 0)
+	{
+		setup_second_command(p);
+		if (execute_child(p, p->argv[3]) == -1)
+			error(ERR_EXECVE);
+	}
+	else
+	{
+		if (waitpid(t->pids, &status, 0) == -1)
+			error(ERR_WAITPID);
+	}
 }
