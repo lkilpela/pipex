@@ -46,7 +46,7 @@ void test_paths(void)
             TEST_ASSERT_NOT_NULL(command);
         } else {
             char *full_path = find_executable(&p, cmds[i]);
-            printf("\033[1;32mfind_executable result: %s %s\033[0m\n", cmds[i], full_path);
+            printf("\033[1;32mfind_executable result for '%s': %s\033[0m\n", cmds[i], full_path);
             TEST_ASSERT_NOT_NULL(full_path);
         }
         free(command);
