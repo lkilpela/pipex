@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:06:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:07:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	setup_second_command(t_pipex *p)
 		error(ERR_CLOSE);
 }
 
-int	execute_child( t_pipex *p, t_tokenize *t, char *cmd)
+void	execute_child( t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
