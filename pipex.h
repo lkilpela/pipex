@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 08:58:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:15:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ enum	e_error
 	ERR_READ,
 	ERR_WRITE,
 	ERR_WAITPID,
-	ERR_COMMAND
+	ERR_COMMAND,
+	LAST_ERROR
 };
 
 typedef struct s_pipex

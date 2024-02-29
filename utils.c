@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:08:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:21:02 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ const char	*get_error_messages(int e)
 
 void	error(int e)
 {
-	
-	cleanup(p);
-	if (e < 0 || e >= sizeof(error_messages) / sizeof(error_messages[0]))
-		e = 0;
-	perror(error_messages[e]);
+
+	if (e >= 0 || e < LAST_ERROR)
+		perror(get_error_messages(e));
+	else
+		perror ("Unknown error");
 	exit(EXIT_FAILURE);
 }
 
