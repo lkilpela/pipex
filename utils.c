@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:43:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:34:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 	p->argc = argc;
 	p->argv = argv;
 	p->envp = envp;
-	p->pids = -1;
+	p->pid = -1;
 	p->infilefd = -1;
 	p->outfilefd = -1;
 	p->paths = NULL;
