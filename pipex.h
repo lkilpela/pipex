@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:21:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:23:04 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_pipex
 typedef struct s_tokenize
 {
 	int		in_quotes;// a flag:current character is inside quotes. This is useful for handling quoted strings in the command line.
-	int		backslash;// a flag:current character is preceded by a backslash. This is useful for handling escape sequences in the command line.
+	//int		backslash;// a flag:current character is preceded by a backslash. This is useful for handling escape sequences in the command line.
 	int 	count;//a counter for the number of arguments found so far.
 	char	**args;//a dynamic array that holds the arguments found so far. Each argument is a string.
 }				t_tokenize;
