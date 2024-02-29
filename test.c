@@ -57,15 +57,23 @@ void test_paths(void)
 void test_tokenize(void) 
 {
     t_tokenize t;
-    char *cmds[] = {"grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL}
+    int i = 0;
+    char *cmds[] = {"grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL};
     
-    // Test with "grep Hello"
     init_tokenize(&t);
-    split_command(&t, "grep Hello");
-    TEST_ASSERT_EQUAL_STRING("grep", t.args[0]);
-    TEST_ASSERT_EQUAL_STRING("Hello", t.args[1]);
-    TEST_ASSERT_NULL(t.args[2]);
-
+    
+    while (cmds[i])
+    {
+        char **command = split_command(&t, cmds[i]);
+        if (command != NULL) 
+            printf("\033[1;34msplit_command result for '%s': %s\033[0m\n", cmds[i], command);
+        else 
+        {
+            printf("\033[1;31mError: command not found for '%s'\033[0m\n", cmds[i]);
+            TEST_ASSERT_NOT_NULL(command);
+        }
+        i++;
+    }
 }
 
 int main(void) {

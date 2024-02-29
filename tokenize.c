@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 12:02:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:14:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ void	toggle_quotes(t_tokenize *t, char c)
 		t->in_quotes = !t->in_quotes;
 }
 
-void	add_word(t_tokenize *t, char *start, char *end)
+int	add_word(t_tokenize *t, char *start, char *end)
 {
 	char	**new_args;
 	
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (!new_args)
-		return (NULL);
+		return (-1);
 	t->args = new_args;
 	t->args[t->count++] = ft_substr(start, 0, end - start);
+	return (0);
 }
 
 void	split_on_space(t_tokenize *t, char *cmd)
