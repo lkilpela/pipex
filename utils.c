@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/28 23:13:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:08:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 	p->argv = argv;
 	p->envp = envp;
 	p->pids = -1;
-	p->infile = -1;
-	p->outfile = -1;
+	p->infilefd = -1;
+	p->outfilefd = -1;
 	p->paths = NULL;
 	p->child_path = NULL;
 	p->parent_path = NULL;
@@ -50,9 +50,9 @@ static void	cleanup(t_pipex *p)
 		free_paths(p->paths);
 }
 
-void	error(t_pipex *p, int e)
+const char	*get_error_messages(int e)
 {
-	const char	*error_messages[] = {
+	static const char	*error_messages[] = {
 		"No error",
 		"Syntax: ./pipex infile cmd1 cmd2 outfile",
 		"Memory allocation failed",
@@ -69,6 +69,12 @@ void	error(t_pipex *p, int e)
 		"Command not found"
 	};
 
+	return (error_messages[e]);
+}
+
+void	error(int e)
+{
+	
 	cleanup(p);
 	if (e < 0 || e >= sizeof(error_messages) / sizeof(error_messages[0]))
 		e = 0;
