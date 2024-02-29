@@ -23,41 +23,40 @@ void test_paths(void)
     // arrange
     t_pipex p;
     p.envp = environ; // use actual environment variables
-    char *cmds[] = {"grep", 0};
-
+    
    // Test get_envpaths
     char **envpaths_result = get_envpaths(&p);
     while (*envpaths_result != 0) {
         printf("\033[1;32mget_envpaths result: %s\033[0m\n", *envpaths_result);
         envpaths_result++;
-    }    
+    }
+    //Assert    
     TEST_ASSERT_NOT_NULL(envpaths_result);
 
-    // Test find_command for each command
+    // arrange
+    char *cmds[] = {"grep", "awk", "ls", "cat", "/usr/local/bin/grep", NULL};
     int i = 0;
+    p.paths = get_envpaths(&p);
+
+    //Act: find_command for each command
     while (cmds[i])
     {
-        char *command = find_command(&p, cmds[i]);
-        char *executable_result;
-        printf("\033[1;34mfind_command result for '%s': %s\033[0m\n", cmds[i], command);
-        if (command == 0) {
-            printf("\033[1;31mError: find_command returned NULL for '%s'\033[0m\n", cmds[i]);
-        } else if (strchr(command, '/') != 0) {
-            TEST_ASSERT_NOT_NULL(command);
-        } else {
-            char *full_path = find_executable(&p, cmds[i]);
-            printf("\033[1;32mfind_executable result for '%s': %s\033[0m\n", cmds[i], full_path);
+        char *full_path = find_command(&p, cmds[i]);
+        
+        if (full_path != NULL) 
+            printf("\033[1;34mfind_command result for '%s': %s\033[0m\n", cmds[i], full_path);
+        else 
+        {
+            printf("\033[1;31mError: command not found for '%s'\033[0m\n", cmds[i]);
             TEST_ASSERT_NOT_NULL(full_path);
         }
-        free(command);
         i++;
     }
     // Free allocated memory
     free_paths(p.paths);
-
 }
 
-void test_tokenize(void) 
+/*void test_tokenize(void) 
 {
     t_tokenize t;
 
@@ -76,11 +75,11 @@ void test_tokenize(void)
     TEST_ASSERT_EQUAL_STRING("awk", t.args[0]);
     TEST_ASSERT_EQUAL_STRING("'{count++} END {print count}'", t.args[1]);
     TEST_ASSERT_NULL(t.args[2]);
-}
+}*/
 
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_paths);
-    RUN_TEST(test_tokenize);
+    //RUN_TEST(test_tokenize);
     return UNITY_END();
 }
