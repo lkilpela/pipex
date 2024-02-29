@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:20:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:51:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static const char	*get_error_messages(int e)
 		"read failed",
 		"write failed",
 		"waitpid failed",
-		"Command not found"
+		"Command not found",
+		"Failed to resize array"
 	};
 
 	return (error_messages[e]);

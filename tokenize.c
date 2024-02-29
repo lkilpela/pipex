@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 11:49:21 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:57:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	add_word(t_tokenize *t, char *start, char *end)
 	
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (new_args == NULL)
-		
+		error(ERR_ARRAY_RESIZE);
+	t->args = new_args;
 	t->args[t->count++] = ft_substr(start, 0, end - start);
 }
 
