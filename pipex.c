@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 13:01:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:54:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	handle_syntax(t_pipex *p)
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILENAME);
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
-		error(ERR_EMPTY_CMD);
+		error(ERR_COMMAND);
 	return (0);
 }
 
