@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:37:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:20:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-const char	*get_error_messages(int e)
+static const char	*get_error_messages(int e)
 {
 	static const char	*error_messages[] = {
 		"No error",
