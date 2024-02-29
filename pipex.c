@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:08:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:05:32 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ int	main(int argc, char **argv, char **envp)
 	init(argc, argv, envp, &p);
 	handle_syntax(&p);
 	setup_pipe(&p);
-	execve(p.child_path, p.argv, p.envp);
-	error(ERR_EXECVE);
 	return (0);
 }
