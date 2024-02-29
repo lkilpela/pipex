@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:08:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:16:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ enum	e_error
 	ERR_WAITPID,
 	ERR_CMD_INVALID,
 	ERR_FILENAME,
-	ERR_CMD_NOT_FOUND
+	ERR_CMD_NOT_FOUND,
 	LAST_ERROR
 };
 
