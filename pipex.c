@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 13:54:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:59:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	handle_syntax(t_pipex *p)
+static void	handle_syntax(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
@@ -20,7 +20,6 @@ static int	handle_syntax(t_pipex *p)
 		error(ERR_FILENAME);
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_COMMAND);
-	return (0);
 }
 
 void	setup_pipe(t_pipex *p)
