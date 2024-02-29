@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:25:50 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:37:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ const char	*get_error_messages(int e)
 
 void	error(int e)
 {
-
 	if (e >= 0 || e < LAST_ERROR)
 		perror(get_error_messages(e));
 	else
