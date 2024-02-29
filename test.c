@@ -58,19 +58,24 @@ void test_tokenize(void)
 {
     t_tokenize t;
     int i = 0;
-    char *cmds[] = {"grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL};
-    
-    init_tokenize(&t);
+    char *cmds[] = {"\0", "grep Hello", "ls -l", "wc -l", "grep a1", "cat -e", "awk '{count++} END {print count}'", NULL};
     
     while (cmds[i])
     {
+        init_tokenize(&t);
         char **command = split_command(&t, cmds[i]);
         if (command != NULL) 
-            printf("\033[1;34msplit_command result for '%s': %s\033[0m\n", cmds[i], command);
+        {
+            printf("\033[1;34msplit_command result for '%s':\033[0m\n", cmds[i]);
+            for (int j = 0; command[j] != NULL; j++)
+            {
+                printf("%s\n", command[j]);
+            }
+        }
         else 
         {
             printf("\033[1;31mError: command not found for '%s'\033[0m\n", cmds[i]);
-            TEST_ASSERT_NOT_NULL(command);
+            TEST_ASSERT_NOT_NULL(command);  // Assert that command is not NULL
         }
         i++;
     }

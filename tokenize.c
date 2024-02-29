@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 12:14:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:49:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
 
+	if (cmd[0] == '\0')  // Return NULL for empty command string
+        return NULL;
 	split_on_space(t, cmd);
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (!new_args)
