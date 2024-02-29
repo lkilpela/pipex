@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 13:58:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:06:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	execute_child( t_pipex *p, t_tokenize *t, char *cmd)
 
 	p->child_cmd = split_command(t, cmd);
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
-		return (NULL);
+		error(ERR_CMD_NOT_FOUND);
 	p->child_path = find_command(p, p->child_cmd[0]);
 	if (!p->child_path)
 	{
 		free_paths(p->child_cmd);
-		return (NULL);
+		error(ERR_CMD_NOT_FOUND);
 	}
 	if (execve(p->child_path, p->child_cmd, p->envp) == -1)
 		error(ERR_EXECVE);
