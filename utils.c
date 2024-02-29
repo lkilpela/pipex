@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:25:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:43:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 	p->paths = NULL;
 	p->child_path = NULL;
 	p->parent_path = NULL;
-	p->child_cmd= NULL;
+	p->child_cmd = NULL;
 	p->parent_cmd = NULL;
 }
 
@@ -55,11 +55,11 @@ char	**resize_array(char **old_array, int old_count, int new_count)
 	char	**new_array;
 	int		i;
 
-	i = 0;	
+	i = 0;
 	new_array = malloc(sizeof(char *) * (new_count + 1));
 	if (new_array == NULL)
 		return (NULL);
-	while(i < old_count)
+	while (i < old_count)
 	{
 		new_array[i] = old_array[i];
 		i++;
