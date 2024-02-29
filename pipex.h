@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:15:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:20:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
 void	init_tokenize(t_tokenize *t);
 
 // Handles errors based on the error code 'e'
-void	error(t_pipex *p, int e);
+void	error(t_pipex *p);
 
 // Frees the memory allocated for the paths
 void	free_paths(char **paths);
