@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:38:26 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:48:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ char	**split_command(t_tokenize *t, char *cmd);
 void    setup_first_command(t_pipex *p);
 void	setup_second_command(t_pipex *p);
 int		execute_child(t_pipex *p, t_tokenize *t, char *cmd);
-void    execute_first_command(t_pipex *p, t_tokenize *t, char *cmd);
+int    execute_first_command(t_pipex *p, t_tokenize *t, char *cmd);
 void 	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd);
 
 

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:38:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:50:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	execute_child( t_pipex *p, t_tokenize *t, char *cmd)
 	return (0);
 }
 
-void	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
+int	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
@@ -70,15 +70,15 @@ void	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 		error(ERR_FORK);
 	if (p->pid == 0)
 	{
-		setup_first_command(p);
-		if (execute_child(p, t, p->argv[2]) == -1)
+		status = setup_first_command(p);
+		if (status != 0)
+			return (status);
+		status = execute_child(p, t, p->argv[2]);
+		if (status == -1)
 			error(ERR_EXECVE);
 	}
-	else
-	{
-		if (waitpid(p->pid, &status, 0) == -1)
-			error(ERR_WAITPID);
-	}
+	close(p->infilefd);
+	return (0);
 }
 
 void	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
