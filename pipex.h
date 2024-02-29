@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 11:43:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:51:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ enum	e_error
 	ERR_WRITE,
 	ERR_WAITPID,
 	ERR_COMMAND,
+	ERR_ARRAY_RESIZE,
 	LAST_ERROR
 };
 
