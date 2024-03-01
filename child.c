@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 08:35:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:56:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	setup_second_command(t_pipex *p)
 		error(ERR_CLOSE);
 }
 
-int	execute_child( t_pipex *p, t_tokenize *t, char *cmd)
+int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
@@ -73,7 +73,7 @@ int	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 		status = setup_first_command(p);
 		if (status != 0)
 			return (status);
-		status = execute_child(p, t, p->argv[2]);
+		status = execute_command(p, t, p->argv[2]);
 		if (status == -1)
 			error(ERR_EXECVE);
 	}
@@ -93,7 +93,7 @@ int	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
 		status = setup_second_command(p);
 		if (status != 0)
 			return (status);
-		status = execute_child(p, t, p->argv[3]);
+		status = execute_command(p, t, p->argv[3]);
 		if (status == -1)
 			error(ERR_EXECVE);
 	}

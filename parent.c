@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 08:37:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:54:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int parent_process(t_pipex *p, t_tokenize *t, char *cmd)
+int wait_children(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	i;
 	int	status;
