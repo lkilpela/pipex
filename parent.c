@@ -6,28 +6,19 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:08:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:30:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-int handle_signal(int status)
-{
-	int	signal_number;
-
-	if (signal_number == WTERMSIG(status))
-}
 
 int wait_children(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	pid_t	pid;
 	int		i;
 	int		status;
-	int		exit_status;
 
 	i = 0;
-	exit_status = 0;
 	status = execute_first_command(p, t, cmd);
 	if (status != 0)
 		return (status);
@@ -40,10 +31,12 @@ int wait_children(t_pipex *p, t_tokenize *t, char *cmd)
 		if (pid == -1)
 			error(ERR_WAITPID);
 		else if (WIFEXITED(status)) 
-			exit_status = WEXITSTATUS(status);
+			ft_printf("Child with PID %d exited with status %d.\n", pid,
+				WEXITSTATUS(status));
 		else if (WIFSIGNALED(status))
-			handle_signal(status);
+			ft_printf("Child with PID %d was terminated by signal %d.\n", pid,
+				WTERMSIG(status));
 		i++;
 	}
-	return (exit_status);
+	return (0);
 }
