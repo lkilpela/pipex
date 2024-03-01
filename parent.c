@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 15:16:16 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:34:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int parent_process(t_pipex *p, t_tokenize *t, char *cmd)
 {
+	int	i;
 	int	status;
 	int	exit_status;
 
@@ -24,7 +25,7 @@ int parent_process(t_pipex *p, t_tokenize *t, char *cmd)
 	status = execute_second_command(p, t, cmd);
 	if (status != 0)
 		return (status);
-	if (p->pid > 0)
+	if (p->pids[0] > 0)
 	{
 		waitpid(p->pid, &status, 0);
 		if (WIFEXITED(status)) 
