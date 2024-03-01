@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 15:05:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:37:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ void	setup_pipe(t_pipex *p)
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	p;
+	int		status;
 
 	init(argc, argv, envp, &p);
 	handle_syntax(&p);
 	setup_pipe(&p);
+	status = wait_chi
+	
 	return (0);
 }
