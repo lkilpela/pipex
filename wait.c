@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:33:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:44:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	wait_children(t_pipex *p, t_tokenize *t, char *cmd)
 		return (status);
 	while (i < 2)
 	{
-		pid = waitpid(p->pid[i], &status, 0);
+		pid = waitpid(p->pids[i], &status, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);
 		else if (WIFEXITED(status))
