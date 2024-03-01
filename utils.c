@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 10:34:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:01:20 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 	p->argc = argc;
 	p->argv = argv;
 	p->envp = envp;
-	p->pid = -1;
 	p->infilefd = -1;
 	p->outfilefd = -1;
 	p->paths = NULL;
 	p->child_path = NULL;
-	p->parent_path = NULL;
 	p->child_cmd = NULL;
-	p->parent_cmd = NULL;
+	p->pids[0] = -1;
+	p->pids[1] = -1;
 }
 
 void	free_paths(char **paths)
@@ -44,8 +43,6 @@ static void	cleanup(t_pipex *p)
 {
 	if (p->child_path)
 		free(p->child_path);
-	if (p->parent_path)
-		free(p->parent_path);
 	if (p->paths)
 		free_paths(p->paths);
 }

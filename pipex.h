@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:55:04 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:02:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_pipex
 	char	**paths;        // Array of paths for executable lookup
 	char	*child_path;    // Path for the child process or command
 	char	**child_cmd;    // Array of command and arguments for child process
-	int		pipefd[2];		// Array to hold the file descriptors for the pipe
 }				t_pipex;
 
 typedef struct s_tokenize
