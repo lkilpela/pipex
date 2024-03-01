@@ -79,9 +79,37 @@ void test_tokenize(void)
     }
 }
 
+void test_setup_first_command(void)
+{
+    // Set up the t_pipex structure
+    t_pipex p;
+    p.argv = malloc(sizeof(char*) * 3);  // Allocate memory for argv
+    p.argv[0] = "pipex";
+    p.argv[1] = "infile.txt";
+    p.argv[2] = "grep Hello";
+    p.argc = 3;  // Update argc to reflect the number of arguments
+    pipe(p.pipefd);
+
+    // Run the function
+    int result = setup_first_command(&p);
+    TEST_ASSERT_EQUAL_INT(0, result);
+
+    // Read and check the pipe
+    char buf[50];
+    read(p.pipefd[0], buf, 50);
+    TEST_ASSERT_EQUAL_STRING("Hello, world!", buf);
+
+    // Clean up
+    close(p.pipefd[0]);
+    close(p.pipefd[1]);
+    free(p.argv);  // Free the allocated memory for argv
+}
+
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_paths);
     RUN_TEST(test_tokenize);
+    RUN_TEST(test_setup_first_command);
     return UNITY_END();
 }
