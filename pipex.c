@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 10:07:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:24:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	main(int argc, char **argv, char **envp)
 	setup_pipe(&p);
 	status = wait_children(&p, &t);
 	if (status != 0)
+	{
+		cleanup(&p);
 		return (status);
+	}
 	close(p.pipefd[0]);
     close(p.pipefd[1]);
 	free(t.args);
