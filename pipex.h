@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:43:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:45:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,6 @@ char	*find_command(t_pipex *p, char *cmd);
 // Resizes an array to accommodate new elements
 char	**resize_array(char **old_array, int old_count, int new_count);
 
-// Initializes the tokenize structure
-void	init_tokenize(t_tokenize *t);
-
 // Toggles the 'in_quotes' field of the tokenize structure based on the character 'c'
 void	toggle_quotes(t_tokenize *t, char c);
 
@@ -116,11 +113,11 @@ void	split_on_space(t_tokenize *t, char *cmd);
 // Splits a command string into words and stores them in the 'args' field of the tokenize structure
 char	**split_command(t_tokenize *t, char *cmd);
 
-int    setup_first_command(t_pipex *p);
-int	setup_second_command(t_pipex *p);
+int		setup_first_command(t_pipex *p);
+int		setup_second_command(t_pipex *p);
 int		execute_command(t_pipex *p, t_tokenize *t, char *cmd);
 int		execute_first_command(t_pipex *p, t_tokenize *t, char *cmd);
-int 	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd);
+int		execute_second_command(t_pipex *p, t_tokenize *t, char *cmd);
 int		wait_children(t_pipex *p, t_tokenize *t, char *cmd);
 
 #endif

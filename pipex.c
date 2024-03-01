@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:42:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:45:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 	int			status;
 	t_tokenize	t;
 
-	init(argc, argv, envp, &p);
+	init_pipex(argc, argv, envp, &p);
 	handle_syntax(&p);
 	setup_pipe(&p);
 	status = wait_children(&p, &t, t->argv);
