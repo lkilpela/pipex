@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:50:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:54:14 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	wait_children(t_pipex *p, t_tokenize *t)
 	int		status;
 
 	i = 0;
-	status = execute_first_command(p, t, cmd);
+	status = execute_first_command(p, t);
 	if (status != 0)
 		return (status);
-	status = execute_second_command(p, t, cmd);
+	status = execute_second_command(p, t);
 	if (status != 0)
 		return (status);
 	while (i < 2)
