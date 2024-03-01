@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 08:56:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:43:59 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //1st child: any reads from STDIN: read from the input file, 
 //any writes to STDOUT: write to the pipe.
-void	setup_first_command(t_pipex *p)
+int	setup_first_command(t_pipex *p)
 {
 	p->infilefd = open(p->argv[1], O_RDONLY);
 	if (p->infilefd == -1)
@@ -25,11 +25,12 @@ void	setup_first_command(t_pipex *p)
 		error(ERR_DUP2);
 	if (close(p->infilefd) == -1 || close(p->pipefd[1]) == -1)
 		error(ERR_CLOSE);
+	return (0);
 }
 
 //2nd child: any reads from STDIN: read from the pipe, 
 //any writes to STDOUT: write to the output file.
-void	setup_second_command(t_pipex *p)
+int	setup_second_command(t_pipex *p)
 {
 	p->outfilefd = open(p->argv[p->argc - 1],
 			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
@@ -41,6 +42,7 @@ void	setup_second_command(t_pipex *p)
 		error(ERR_DUP2);
 	if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
 		error(ERR_CLOSE);
+	return (0);
 }
 
 int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
