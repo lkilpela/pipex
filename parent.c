@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 08:34:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:37:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ int parent_process(t_pipex *p, t_tokenize *t, char *cmd)
 	status = execute_second_command(p, t, cmd);
 	if (status != 0)
 		return (status);
-	if (p->pids[0] > 0)
+	while (p->pids[i] < 2)
 	{
-		waitpid(p->pid, &status, 0);
+		waitpid(p->pid[i], &status, 0);
 		if (WIFEXITED(status)) 
 		{
 			exit_status = WEXITSTATUS(status);
 		}
+		i++;
 	}
 	return (exit_status);
 }
