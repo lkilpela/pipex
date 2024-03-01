@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 10:03:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:05:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static void	handle_syntax(t_pipex *p)
 
 void	setup_pipe(t_pipex *p)
 {
-	int	pipefd[2];
-	
 	if (pipe(pipefd) == -1)
 		error(ERR_PIPE);
 }
