@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:53:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:35:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ int	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
-	p->pid = fork();
-	if (p->pid == -1)
+	p->pids[0] = fork();
+	if (p->pids[0] == -1)
 		error(ERR_FORK);
-	if (p->pid == 0)
+	if (p->pids[0] == 0)
 	{
 		status = setup_first_command(p);
 		if (status != 0)
@@ -85,10 +85,10 @@ int	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
 {
 	int	status;
 
-	p->pid = fork();
-	if (p->pid == -1)
+	p->pids[1] = fork();
+	if (p->pids[1] == -1)
 		error(ERR_FORK);
-	if (p->pid == 0)
+	if (p->pids[1] == 0)
 	{
 		status = setup_second_command(p);
 		if (status != 0)
