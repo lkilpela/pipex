@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:53:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:20:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ int	setup_first_command(t_pipex *p)
 	if (p->infilefd == -1)
 		error(ERR_OPEN);
 	if (dup2(p->infilefd, STDIN_FILENO) == -1)
+	{
+		close(p->infilefd);
 		error(ERR_DUP2);
+	}
 	if (dup2(p->pipefd[1], STDOUT_FILENO) == -1)
+	{
+		close(p->pipefd[1]);
+		close(p->infilefd);
 		error(ERR_DUP2);
-	if (close(p->infilefd) == -1 || close(p->pipefd[1]) == -1)
-		error(ERR_CLOSE);
+	}
 	return (0);
 }
 
@@ -37,11 +42,16 @@ int	setup_second_command(t_pipex *p)
 	if (p->outfilefd == -1)
 		error(ERR_OPEN);
 	if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
+	{
+		close(p->pipefd[0]);
 		error(ERR_DUP2);
+	}
 	if (dup2(p->outfilefd, STDOUT_FILENO) == -1)
+	{
+		close(p->pipefd[0]);
+		close(p->outfilefd);
 		error(ERR_DUP2);
-	if (close(p->pipefd[0]) == -1 || close(p->outfilefd) == -1)
-		error(ERR_CLOSE);
+	}
 	return (0);
 }
 
@@ -60,7 +70,6 @@ int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 	}
 	if (execve(p->child_path, p->child_cmd, p->envp) == -1)
 		error(ERR_EXECVE);
-	return (0);
 }
 
 int	execute_first_command(t_pipex *p, t_tokenize *t)
