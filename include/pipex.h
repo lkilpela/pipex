@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 10:36:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:17:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "lib/libft/include/libft.h"
+# include "../lib/libft/include/libft.h"
 
 # include <fcntl.h> //open
 //close, read, write, access, dup, dup2, execve, fork, pipe, unlink
@@ -25,12 +25,6 @@
 
 # define MAX_TOKENS	100
 # define PERMISSIONS	0644
-
-enum	e_pipe
-{
-	RD_END,
-	WR_END
-};
 
 enum	e_error
 {
