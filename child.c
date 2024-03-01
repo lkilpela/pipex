@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 09:43:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:53:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 	return (0);
 }
 
-int	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
+int	execute_first_command(t_pipex *p, t_tokenize *t)
 {
 	int	status;
 
@@ -83,7 +83,7 @@ int	execute_first_command(t_pipex *p, t_tokenize *t, char *cmd)
 	return (0);
 }
 
-int	execute_second_command(t_pipex *p, t_tokenize *t, char *cmd)
+int	execute_second_command(t_pipex *p, t_tokenize *t)
 {
 	int	status;
 
