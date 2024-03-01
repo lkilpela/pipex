@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 10:36:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:45:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ int	execute_first_command(t_pipex *p, t_tokenize *t)
 	{
 		status = setup_first_command(p);
 		if (status != 0)
-			return (status);
+			exit(status);// Exit the child process with the error status
 		status = execute_command(p, t, p->argv[2]);
-		if (status == -1)
-			error(ERR_EXECVE);
+		exit(status);
 	}
 	close(p->infilefd);
+	close(p->pipefd[1]);// Close the write end of the pipe in the parent process
 	return (0);
 }
 
@@ -105,13 +105,14 @@ int	execute_second_command(t_pipex *p, t_tokenize *t)
 		error(ERR_FORK);
 	if (p->pids[1] == 0)
 	{
+		close(p->pipefd[1]);// Close the write end of the pipe in the second child process
 		status = setup_second_command(p);
 		if (status != 0)
-			return (status);
+			exit(status);
 		status = execute_command(p, t, p->argv[3]);
-		if (status == -1)
-			error(ERR_EXECVE);
+		exit(status);
 	}
 	close(p->outfilefd);
+	close(p->pipefd[0]); // Close the read end of the pipe in the parent process
 	return (0);
 }
