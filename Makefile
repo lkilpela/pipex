@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 LIBFT = lib/libft
 UNITY = unity
 
-HDRS = -I./include -I $(LIBFT)/include -I $(UNITY)/src/unity.h
+HDRS = -I./include -I $(LIBFT)/include
+#$(UNITY)/src/unity.h
 LIBS = $(LIBFT)/build/libft.a
 SRCS = src/child.c src/error.c src/path.c src/utils.c\
 		src/tokenize.c src/wait.c src/pipex.c
