@@ -28,7 +28,7 @@ test: libft $(TEST_OBJS) $(OBJS)
 
 %.o : %.c
 	@echo "\033[32m[pipex] Compiling $< into $@\033[0m"
-	@$(CC) $(CCFLAGS) -o $@ -c $< $(HDRS)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HDRS)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HDRS) -o $(NAME) -fsanitize=address
