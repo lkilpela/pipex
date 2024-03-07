@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:07:04 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:59:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 //Find the environment path for Unix commands (e.g grep, ls, cat, etc.)
-char	**get_envpaths(t_pipex *p)
+static char	**get_envpaths(t_pipex *p)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ char	**get_envpaths(t_pipex *p)
 }
 
 // concatenates the directory, '/' & cmd to form a full path to the executable
-char	*find_executable(t_pipex *p, char *cmd)
+static char	*find_executable(t_pipex *p, char *cmd)
 {
 	char	*path;
 	char	*command;
