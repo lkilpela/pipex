@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:49:25 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:02:42 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static const char	*get_error_messages(int e)
 		"waitpid failed",
 		"Command is not valid",
 		"Filename is not valid",
-		"Command not found"
+		"Command not found",
+		"No such file or directory"
 	};
 
 	return (error_messages[e]);
