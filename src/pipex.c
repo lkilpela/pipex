@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:04:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:29:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
-		error(ERR_SYNTAX);
+		error(ERR_SYNTAX, &p);
 	if (access(p->argv[1], (F_OK | R_OK) != 0))
-		error(ERR_FILE_NOT_FOUND);
+		error(ERR_FILE_NOT_FOUND, &p);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
-		error(ERR_FILENAME);
+		error(ERR_FILENAME, &p);
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
-		error(ERR_CMD_INVALID);
+		error(ERR_CMD_INVALID, &p);
 }
 
 void	setup_pipe(t_pipex *p)
 {
 	if (pipe(p->pipefd) == -1)
-		error(ERR_PIPE);
+		error(ERR_PIPE, &p);
 }
 
 int	main(int argc, char **argv, char **envp)
