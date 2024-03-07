@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:31:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:37:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		execute_second_command(t_pipex *p, t_tokenize *t);
 int		wait_children(t_pipex *p, t_tokenize *t);
 
 // error handler
-void	error(int e, t_pipex *p);
+void	error(int e, t_pipex *p, int arg_index);
 
 //untils
 void	cleanup(t_pipex *p);
