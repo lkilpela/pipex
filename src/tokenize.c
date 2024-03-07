@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:12:40 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:08:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	toggle_quotes(t_tokenize *t, char c)
 int	add_word(t_tokenize *t, char *start, char *end)
 {
 	char	**new_args;
-	
+
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (!new_args)
 		return (-1);
@@ -58,13 +58,13 @@ void	split_on_space(t_tokenize *t, char *cmd)
 	if (end != start)
 		add_word(t, start, end);
 }
-
+//line 66: Return NULL for empty command string
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
 
-	if (cmd[0] == '\0')  // Return NULL for empty command string
-        return NULL;
+	if (cmd[0] == '\0')
+        return (NULL);
 	split_on_space(t, cmd);
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (!new_args)
