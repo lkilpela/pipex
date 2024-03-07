@@ -6,12 +6,11 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:10:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:39:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <sys/errno.h>
 
 //1st child: any reads from STDIN: read from the input file, 
 //any writes to STDOUT: write to the pipe.
