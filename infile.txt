@@ -1,5 +1,0 @@
-Hello, this is a sample text file.
-It contains several lines of text.
-Hello again!!! Each line is separated by a newline character.
-This is the fourth line.
-Hello again!! And this is the fifth and final line.

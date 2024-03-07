@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:08:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:19:51 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ void	error(int e)
 	if (e >= 0 || e < LAST_ERROR)
 	{
 		message = get_error_messages(e);
-		write(1, message, ft_strlen(message));
+		write(2, message, ft_strlen(message));
 	}	
 	else
-		write (1, "Unknown error\n", 14);
+		write (2, "Unknown error", 14);
+	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }
