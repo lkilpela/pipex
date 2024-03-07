@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:08:29 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:05:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	setup_first_command(t_pipex *p)
 {
 	int ret;
-	
+
 	p->infilefd = open(p->argv[1], O_RDONLY);
 	if (p->infilefd == -1)
 		error(ERR_OPEN);
@@ -82,7 +82,7 @@ int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 int	execute_first_command(t_pipex *p, t_tokenize *t)
 {
 	int	status;
-	
+
 	p->pids[0] = fork();
 	if (p->pids[0] == -1)
 		error(ERR_FORK);
@@ -90,13 +90,13 @@ int	execute_first_command(t_pipex *p, t_tokenize *t)
 	{
 		status = setup_first_command(p);
 		if (status != 0)
-			exit(status);// Exit the child process with the error status
+			exit(status);
 		status = execute_command(p, t, p->argv[2]);
 		if (status != 0)
 			exit(status);
 	}
 	close(p->infilefd);
-	close(p->pipefd[1]);// Close the write end of the pipe in the parent process
+	close(p->pipefd[1]);
 	return (0);
 }
 
@@ -109,7 +109,7 @@ int	execute_second_command(t_pipex *p, t_tokenize *t)
 		error(ERR_FORK);
 	if (p->pids[1] == 0)
 	{
-		close(p->pipefd[1]);// Close the write end of the pipe in the second child process
+		close(p->pipefd[1]);/
 		status = setup_second_command(p);
 		if (status != 0)
 			exit(status);
@@ -117,6 +117,6 @@ int	execute_second_command(t_pipex *p, t_tokenize *t)
 		exit(status);
 	}
 	close(p->outfilefd);
-	close(p->pipefd[0]); // Close the read end of the pipe in the parent process
+	close(p->pipefd[0]);
 	return (0);
 }
