@@ -62,5 +62,7 @@ test/
 run_test
 unity/
 
-# test files
+# files
 test.c
+outfile
+infile
