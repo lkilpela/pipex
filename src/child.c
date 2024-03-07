@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 08:35:09 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:08:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ int	setup_second_command(t_pipex *p)
 
 int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 {
-	int	status;
-	int i;
-
 	p->child_cmd = split_command(t, cmd);
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
 		error(ERR_CMD_NOT_FOUND);

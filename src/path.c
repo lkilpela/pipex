@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 09:38:33 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:09:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ char	*find_executable(t_pipex *p, char *cmd)
 // determining the full path of a command
 char	*find_command(t_pipex *p, char *cmd)
 {
-	int	i;
-
-	i = 0;
 	if (!cmd)
 		return (NULL);
 	else if (ft_strchr(cmd, '/')) //"/usr/bin/grep"
