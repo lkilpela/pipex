@@ -57,6 +57,10 @@ dkms.conf
 # VS Code settings
 .vscode/
 
-# test directory
+# directory
 test/
 run_test
+unity/
+
+# test files
+test.c
