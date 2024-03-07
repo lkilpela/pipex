@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:58:59 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:05:09 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	validate_arguments(t_pipex *p)
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD_INVALID);
 	if (access(p->argv[2], X_OK) != 0 || access(p->argv[4], X_OK) != 0)
-		error(ERR_CMD_NOT_FOUND)
+		error(ERR_CMD_NOT_FOUND);
 }
 
 void	setup_pipe(t_pipex *p)
