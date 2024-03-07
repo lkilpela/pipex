@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:19:51 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:10:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	error(int e)
 	{
 		message = get_error_messages(e);
 		write(2, message, ft_strlen(message));
-	}	
+	}
 	else
 		write (2, "Unknown error", 14);
 	write(2, "\n", 1);

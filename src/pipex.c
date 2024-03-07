@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 08:25:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:09:44 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv, char **envp)
 		return (status);
 	}
 	close(p.pipefd[0]);
-    close(p.pipefd[1]);
+	close(p.pipefd[1]);
 	free(t.args);
 	cleanup(&p);
 	return (0);

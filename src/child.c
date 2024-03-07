@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:05:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:10:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //any writes to STDOUT: write to the pipe.
 int	setup_first_command(t_pipex *p)
 {
-	int ret;
+	int	ret;
 
 	p->infilefd = open(p->argv[1], O_RDONLY);
 	if (p->infilefd == -1)
@@ -109,7 +109,7 @@ int	execute_second_command(t_pipex *p, t_tokenize *t)
 		error(ERR_FORK);
 	if (p->pids[1] == 0)
 	{
-		close(p->pipefd[1]);/
+		close(p->pipefd[1]);
 		status = setup_second_command(p);
 		if (status != 0)
 			exit(status);

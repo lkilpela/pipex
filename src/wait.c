@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:34:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:09:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int	wait_children(t_pipex *p, t_tokenize *t)
 		if (pid == -1)
 			error(ERR_WAITPID);
 		else if (WIFEXITED(status))
-			ft_printf("Child with PID %u exited with status %u.\n", (unsigned int)pid, WEXITSTATUS(status));
+			ft_printf("Child with PID %u exited with status %u.\n",
+				(unsigned int)pid, WEXITSTATUS(status));
 		else if (WIFSIGNALED(status))
-			ft_printf("Child with PID %u was terminated by signal %u\n", (unsigned int)pid, WTERMSIG(status));
+			ft_printf("Child with PID %u was terminated by signal %u\n",
+				(unsigned int)pid, WTERMSIG(status));
 		i++;
 	}
 	return (0);
