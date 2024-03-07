@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:09:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:07:04 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*find_executable(t_pipex *p, char *cmd)
 	char	*command;
 	int		i;
 
-	command = ft_strjoin("/", cmd); //"/ls" or "/grep"
+	command = ft_strjoin("/", cmd);
 	if (!command)
 		return (NULL);
 	i = 0;
@@ -52,11 +52,12 @@ char	*find_executable(t_pipex *p, char *cmd)
 }
 
 // determining the full path of a command
+//line 60: parse whole path, return whole parsed command
 char	*find_command(t_pipex *p, char *cmd)
 {
 	if (!cmd)
 		return (NULL);
-	else if (ft_strchr(cmd, '/')) //"/usr/bin/grep"
+	else if (ft_strchr(cmd, '/'))
 		return (cmd);
 	if (!p->paths)
 		p->paths = get_envpaths(p);
