@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:59:02 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:01:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,31 @@ typedef struct s_tokenize
 	char	**args;//a dynamic array that holds string arguments found so far.
 }				t_tokenize;
 
-char	**get_envpaths(t_pipex *p);
-char	*find_executsble(t_pipex *p, char *cmd);
+// init
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
 void	init_tokenize(t_tokenize *t);
-// error handler
-void	error(int e);
-void	free_paths(char **paths);
+
+// path handler
 char	*find_command(t_pipex *p, char *cmd);
-char	**resize_array(char **old_array, int old_count, int new_count);
+
+// command handler
 void	toggle_quotes(t_tokenize *t, char c);
 int		add_word(t_tokenize *t, char *start, char *end);
 void	split_on_space(t_tokenize *t, char *cmd);
 char	**split_command(t_tokenize *t, char *cmd);
+
 //child process
 int		execute_first_command(t_pipex *p, t_tokenize *t);
 int		execute_second_command(t_pipex *p, t_tokenize *t);
+
 //parent process
 int		wait_children(t_pipex *p, t_tokenize *t);
+
+// error handler
+void	error(int e);
+
 //untils
 void	cleanup(t_pipex *p);
+void	free_paths(char **paths);
+char	**resize_array(char **old_array, int old_count, int new_count);
 #endif
