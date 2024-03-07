@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:58:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:59:02 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	**get_envpaths(t_pipex *p);
 char	*find_executsble(t_pipex *p, char *cmd);
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
 void	init_tokenize(t_tokenize *t);
+// error handler
 void	error(int e);
 void	free_paths(char **paths);
 char	*find_command(t_pipex *p, char *cmd);
