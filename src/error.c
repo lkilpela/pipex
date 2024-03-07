@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:17:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:21:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ static const char	*get_error_messages(int e)
 	return (error_messages[e]);
 }
 
-void	error(int e, t_pipex *p)
+void	error(int e)
 {
+	t_pipex		p;
 	const char	*message;
 	int			i;
 
@@ -43,13 +44,12 @@ void	error(int e, t_pipex *p)
 		message = get_error_messages(e);
 		write(2, "pipex: ", 7);
 		i = 0;
-		while (i < p->argc)
+		while (i < p.argc)
 		{
-			write(2, p->argv[i], ft_strlen(p->argv[i]));
+			write(2, p.argv[i], ft_strlen(p.argv[i]));
 			write(2, " ", 1);
 			i++;
 		}
-		write(2, ": ", 2);	
 		write(2, message, ft_strlen(message));
 	}
 	else
