@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 10:12:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:12:40 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	split_on_space(t_tokenize *t, char *cmd)
 
 	start = cmd;
 	end = cmd;
-	// Print the word before it's added
-    printf("Adding word: %.*s\n", (int)(end - start), start);
 	while (*end)
 	{
 		if (*end == '"' || *end == '\'')
