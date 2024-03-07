@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 21:31:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 22:02:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static const char	*get_error_messages(int e)
 		"No such file or directory",
 		"Permission denied",
 		"Permission denied",
+		"Is directory",
 		"last error"
 	};
 
