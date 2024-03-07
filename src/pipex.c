@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:01:49 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:04:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
-	if (access(p->argv[1], F_OK | R_OK != 0))
+	if (access(p->argv[1], (F_OK | R_OK) != 0))
 		error(ERR_FILE_NOT_FOUND);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILENAME);
