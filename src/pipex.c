@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 22:03:41 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 22:59:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_FILE_NOT_READABLE);
 	else if (access(p->argv[4], W_OK != 0))
 		error(ERR_FILE_NOT_WRITABLE);
-	if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
-		error(ERR_FILE_OR_CMD_NOT_FOUND);
-	else if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
+	//if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
+		//error(ERR_FILE_OR_CMD_NOT_FOUND);
+	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_CMD_IS_DIRECTORY);
-	else if (access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0)
-		error(ERR_CMD_NOT_EXECUTABLE);
+	//else if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
+		//error(ERR_CMD_NOT_EXECUTABLE);
 }
 
 void	setup_pipe(t_pipex *p)

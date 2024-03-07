@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 22:00:58 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 22:23:20 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ enum	e_error
 	ERR_FILE_NOT_READABLE,
 	ERR_FILE_NOT_WRITABLE,
 	ERR_CMD_IS_DIRECTORY,
+	ERR_CMD_NOT_FOUND,
 	LAST_ERROR
 };
 
