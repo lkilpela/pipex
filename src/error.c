@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/29 14:37:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 08:31:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,14 @@ static const char	*get_error_messages(int e)
 
 void	error(int e)
 {
+	char	*message;
+
 	if (e >= 0 || e < LAST_ERROR)
-		ft_printf("%s\n", get_error_messages(e));
+	{
+		message = get_error_messages(e);
+		write(1, message, ft_strlen(message));
+	}	
 	else
-		ft_printf ("Unknown error\n");
+		write (1, "Unknown error\n", 14);
 	exit(EXIT_FAILURE);
 }
