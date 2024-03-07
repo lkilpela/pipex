@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 16:05:09 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:29:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
-	if (access(p->argv[1], F_OK != 0))
-		error(ERR_FILE_NOT_FOUND);
-	else if (access(p->argv[1], R_OK != 0))
-		error(ERR_FILE_NOT_READABLE);
-	if (access(p->argv[4], W_OK != 0))
-		error(ERR_FILE_NOT_WRITABLE);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILENAME);
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD_INVALID);
-	if (access(p->argv[2], X_OK) != 0 || access(p->argv[4], X_OK) != 0)
-		error(ERR_CMD_NOT_FOUND);
+	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
+		error(ERR_FILE_NOT_FOUND);
+	else if (access(p->argv[1], R_OK != 0))
+		error(ERR_FILE_NOT_READABLE);
+	else if (access(p->argv[4], W_OK != 0))
+		error(ERR_FILE_NOT_WRITABLE);
+	if (access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0)
+		error(ERR_CMD_NOT_EXECUTABLE);
 }
 
 void	setup_pipe(t_pipex *p)
