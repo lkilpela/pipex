@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:39:34 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:57:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //1st child: any reads from STDIN: read from the input file, 
 //any writes to STDOUT: write to the pipe.
-int	setup_first_command(t_pipex *p)
+static int	setup_first_command(t_pipex *p)
 {
 	int	ret;
 
@@ -39,7 +39,7 @@ int	setup_first_command(t_pipex *p)
 
 //2nd child: any reads from STDIN: read from the pipe, 
 //any writes to STDOUT: write to the output file.
-int	setup_second_command(t_pipex *p)
+static int	setup_second_command(t_pipex *p)
 {
 	p->outfilefd = open(p->argv[p->argc - 1],
 			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
@@ -59,7 +59,7 @@ int	setup_second_command(t_pipex *p)
 	return (0);
 }
 
-int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
+static int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 {
 	p->child_cmd = split_command(t, cmd);
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)

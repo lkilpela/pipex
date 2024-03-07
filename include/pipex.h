@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:56:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:58:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void	toggle_quotes(t_tokenize *t, char c);
 int		add_word(t_tokenize *t, char *start, char *end);
 void	split_on_space(t_tokenize *t, char *cmd);
 char	**split_command(t_tokenize *t, char *cmd);
-int		setup_first_command(t_pipex *p);
-int		setup_second_command(t_pipex *p);
-int		execute_command(t_pipex *p, t_tokenize *t, char *cmd);
+//child process
 int		execute_first_command(t_pipex *p, t_tokenize *t);
 int		execute_second_command(t_pipex *p, t_tokenize *t);
+//parent process
 int		wait_children(t_pipex *p, t_tokenize *t);
+//untils
 void	cleanup(t_pipex *p);
 #endif
