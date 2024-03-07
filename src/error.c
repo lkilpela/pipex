@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 16:06:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:10:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static const char	*get_error_messages(int e)
 		"Filename is not valid",
 		"Command not found",
 		"No such file or directory",
+		"Permission denied",
 		"Permission denied"
 	};
 
@@ -38,11 +39,7 @@ void	error(int e)
 {
 	const char	*message;
 
-	if (e == ERR_CMD_NOT_FOUND || e == ERR_FILE_NOT_FOUND)
-        write(2, "No such file or directory", 25);
-    else if (e == ERR_FILE_NOT_READABLE || e == ERR_FILE_NOT_WRITABLE)
-        write(2, "Permission denied", 17);
-	else if (e >= 0 || e < LAST_ERROR)
+	if (e >= 0 || e < LAST_ERROR)
 	{
 		message = get_error_messages(e);
 		write(2, "pipex: ", 7);
