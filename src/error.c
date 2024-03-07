@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:10:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:49:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ static const char	*get_error_messages(int e)
 	static const char	*error_messages[] = {
 		"No error",
 		"Syntax: ./pipex infile cmd1 cmd2 outfile",
-		"Memory allocation failed",
 		"fork failed",
 		"pipe failed",
 		"dup2 failed",
 		"execve failed",
-		"malloc failed",
 		"open failed",
 		"close failed",
-		"read failed",
-		"write failed",
 		"waitpid failed",
 		"Command is not valid",
 		"Filename is not valid",

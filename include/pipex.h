@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/01 13:17:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:49:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ enum	e_error
 {
 	ERR_NONE,
 	ERR_SYNTAX,
-	ERR_MEM,
 	ERR_FORK,
 	ERR_PIPE,
 	ERR_DUP2,
 	ERR_EXECVE,
-	ERR_MALLOC,
 	ERR_OPEN,
 	ERR_CLOSE,
-	ERR_READ,
-	ERR_WRITE,
 	ERR_WAITPID,
 	ERR_CMD_INVALID,
 	ERR_FILENAME,
