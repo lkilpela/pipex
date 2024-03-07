@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 14:01:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:02:33 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,6 @@ void	init_tokenize(t_tokenize *t);
 char	*find_command(t_pipex *p, char *cmd);
 
 // command handler
-void	toggle_quotes(t_tokenize *t, char c);
-int		add_word(t_tokenize *t, char *start, char *end);
-void	split_on_space(t_tokenize *t, char *cmd);
 char	**split_command(t_tokenize *t, char *cmd);
 
 //child process
