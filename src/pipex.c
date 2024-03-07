@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:09:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:41:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <signal.h>
 
-static void	handle_syntax(t_pipex *p)
+static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
@@ -37,7 +37,7 @@ int	main(int argc, char **argv, char **envp)
 
 	init_pipex(argc, argv, envp, &p);
 	init_tokenize(&t);
-	handle_syntax(&p);
+	validate_arguments(&p);
 	setup_pipe(&p);
 	status = wait_children(&p, &t);
 	if (status != 0)
