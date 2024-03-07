@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 13:49:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:56:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,62 +45,37 @@ enum	e_error
 
 typedef struct s_pipex
 {
-	char	**argv;         // Command-line arguments
-	int		argc;           // Count of command-line arguments
-	char	**envp;         // Environment variables
-	pid_t	pids[2];        //an array of PIDs
-	int		infilefd;      // File descriptor for the input file
-	int		outfilefd;     // File descriptor for the output file
-	char	**paths;        // Array of paths for executable lookup
-	char	*child_path;    // Path for the child process or command
-	char	**child_cmd;    // Array of command and arguments for child process
-	int		pipefd[2];		// Array to hold the file descriptors for the pipe
+	char	**argv;// Command-line arguments
+	int		argc;// Count of command-line arguments
+	char	**envp;// Environment variables
+	pid_t	pids[2];//an array of PIDs
+	int		infilefd;// File descriptor for the input file
+	int		outfilefd;// File descriptor for the output file
+	char	**paths;// Array of paths for executable lookup
+	char	*child_path;// Path for the child process or command
+	char	**child_cmd;// Array of command and arguments for child process
+	int		pipefd[2];// Array to hold the file descriptors for the pipe
 }				t_pipex;
 
 typedef struct s_tokenize
 {
-	int		in_quotes;// a flag:current character is inside quotes. This is useful for handling quoted strings in the command line.
-	//int		backslash;// a flag:current character is preceded by a backslash. This is useful for handling escape sequences in the command line.
-	int 	count;//a counter for the number of arguments found so far.
-	char	**args;//a dynamic array that holds the arguments found so far. Each argument is a string.
+	int		in_quotes;//flag quoted string:current character is inside quotes.
+	int		count;//a counter for the number of arguments found so far.
+	char	**args;//a dynamic array that holds string arguments found so far.
 }				t_tokenize;
 
-// Retrieves the environment paths for Unix commands
 char	**get_envpaths(t_pipex *p);
-
-// Finds the full path of an executable command
 char	*find_executsble(t_pipex *p, char *cmd);
-
-// Initializes the pipex structure with command line arguments and environment variables
 void	init_pipex(int argc, char **argv, char **envp, t_pipex *p);
-
-// Initializes the tokenize structure
 void	init_tokenize(t_tokenize *t);
-
-// Handles errors based on the error code 'e'
 void	error(int e);
-
-// Frees the memory allocated for the paths
 void	free_paths(char **paths);
-
-// Finds the full path of a command
 char	*find_command(t_pipex *p, char *cmd);
-
-// Resizes an array to accommodate new elements
 char	**resize_array(char **old_array, int old_count, int new_count);
-
-// Toggles the 'in_quotes' field of the tokenize structure based on the character 'c'
 void	toggle_quotes(t_tokenize *t, char c);
-
-// Adds a word to the 'args' field of the tokenize structure
-int	add_word(t_tokenize *t, char *start, char *end);
-
-// Splits a command string into words based on spaces
+int		add_word(t_tokenize *t, char *start, char *end);
 void	split_on_space(t_tokenize *t, char *cmd);
-
-// Splits a command string into words and stores them in the 'args' field of the tokenize structure
 char	**split_command(t_tokenize *t, char *cmd);
-
 int		setup_first_command(t_pipex *p);
 int		setup_second_command(t_pipex *p);
 int		execute_command(t_pipex *p, t_tokenize *t, char *cmd);
