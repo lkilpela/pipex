@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:45:50 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:51:03 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static const char	*get_error_messages(int e)
 		"Command is not valid",
 		"Filename is not valid",
 		"Command not found",
-		"No such file or directory"
+		"No such file or directory",
+		"Permission denied"
 	};
 
 	return (error_messages[e]);
