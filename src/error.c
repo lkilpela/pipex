@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:51:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:04:45 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	error(int e)
 {
 	const char	*message;
 
+	if (e == ERR_CMD_NOT_FOUND || e == ERR_FILE_NOT_FOUND)
+        write(2, "No such file or directory", 25);
+    else if (e == ERR_FILE_NOT_READABLE || e == ERR_FILE_NOT_WRITABLE)
+        write(2, "Permission denied", 17);
 	if (e >= 0 || e < LAST_ERROR)
 	{
 		message = get_error_messages(e);
