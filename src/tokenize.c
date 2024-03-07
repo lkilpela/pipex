@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 14:02:02 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:02:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	add_word(t_tokenize *t, char *start, char *end)
 	return (0);
 }
 
-void	split_on_space(t_tokenize *t, char *cmd)
+static void	split_on_space(t_tokenize *t, char *cmd)
 {
 	char	*end;
 	char	*start;
