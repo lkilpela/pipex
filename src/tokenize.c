@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 14:02:21 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/07 23:14:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,15 @@ static void	split_on_space(t_tokenize *t, char *cmd)
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
+	char	*trimmed_cmd;
 
+	trimmed_cmd = ft_strtrim(cmd, " ");
+	if(trimmed_cmd && trimmed_cmd[0] == '\0')
+	{
+		free(trimmed_cmd);
+		return (NULL);
+	}
+	free(trimmed_cmd);
 	if (cmd[0] == '\0')
 		return (NULL);
 	split_on_space(t, cmd);
