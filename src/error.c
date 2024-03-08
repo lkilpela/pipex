@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 22:30:42 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 08:31:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static const char	*get_error_messages(int e)
 		"open failed",
 		"close failed",
 		"waitpid failed",
-		"Command is not valid",
 		"Filename is not valid",
 		"Permission denied",
 		"No such file or directory",
@@ -45,11 +44,11 @@ void	error(int e)
 	if (e >= 0 || e < LAST_ERROR)
 	{
 		message = get_error_messages(e);
-		write(2, "pipex: ", 7);
-		write(2, message, ft_strlen(message));
+		ft_putstr_fd("pipex: ", STDERR_FILENO);
+		ft_putstr_fd(message, STDERR_FILENO);
 	}
 	else
-		write (2, "pipex: Unknown error", 21);
+		ft_putstr_fd ("pipex: Unknown error", STDERR_FILENO);
 	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }

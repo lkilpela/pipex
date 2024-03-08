@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 22:23:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 08:31:05 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
-	ERR_CMD_INVALID,
 	ERR_FILENAME,
 	ERR_CMD_NOT_EXECUTABLE,
 	ERR_FILE_OR_CMD_NOT_FOUND,
