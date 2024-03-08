@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/07 15:47:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:11:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	wait_children(t_pipex *p, t_tokenize *t)
 		pid = waitpid(p->pids[i], &status, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);
-		else
+		else if (status == ERR_PIPE || status == ERR_FORK)
 			child_status(pid, status);
 		i++;
 	}
