@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:37:04 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/02 12:09:57 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:31:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	if (s == NULL || fd < 0)
 		return ;
