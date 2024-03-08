@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 09:55:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:56:57 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ enum	e_error
 	ERR_CMD,
 	ERR_DIR,
 	ERR_PERM,
-	
 	ERR_FORK,
 	ERR_PIPE,
 	ERR_DUP2,
@@ -42,7 +41,6 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
-	
 	LAST_ERROR
 };
 
