@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 10:05:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:14:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,29 @@ static char *trim_cmd(char *cmd)
 	return (trimmed_cmd);
 }
 
+static void trim_and_check_two_cmds(char *cmd1, char *cmd2)
+{
+    char *trimmed_cmd1 = trim_cmd(cmd1);
+    char *trimmed_cmd2 = trim_cmd(cmd2);
+
+    if (trimmed_cmd1 == NULL || trimmed_cmd2 == NULL)
+    {
+        error(ERR_CMD);
+        free(trimmed_cmd1);
+        free(trimmed_cmd2);
+    }
+}
+
 static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
-	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
+	else if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
-	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
+	else if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD);
-
+	else
+		trim_and_check_two_cmds(p->argv[2], p->argv[3]);
 
 	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
 		error(ERR_FILE_OR_CMD_NOT_FOUND);
