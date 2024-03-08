@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 14:10:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:17:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,41 +69,23 @@ int	is_valid_command(t_pipex *p, char *cmd)
 
 static void	validate_arguments(t_pipex *p)
 {
-	printf("argv[2]: %s\n", p->argv[2]);
 	// Syntax errors
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
-	printf("Start checking argv 2\n");
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD);// "" "wc"
 
-	
-	printf("Start checking File existence errors\n");
 	//File existence errors
 	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
 		error(ERR_FILE);
-	printf("Start checking is directory errors argv2\n");
 	if (is_directory(p->argv[2]) && access(p->argv[2], F_OK) != 0)
 		error(ERR_FILE);
-	printf("Start checking is directory errors argv3\n");
 	if (is_directory(p->argv[3]) && access(p->argv[3], F_OK) != 0)
 		error(ERR_FILE);
-	printf("Finish File existence errors check\n");
 	
-	printf("Start Permission errors\n");
-	// Permission errors
-	if (access(p->argv[1], R_OK != 0))
-		error(ERR_PERM);
-	if (access(p->argv[4], W_OK != 0))
-		error(ERR_PERM);
-	printf("Finnish Permission errors\n");
 
-	printf("Start is_valid_commnand check\n");
-	if (!is_valid_command(p, p->argv[2]) || !is_valid_command(p, p->argv[3]))
-		error(ERR_CMD);
-	printf("Finnish is_valid_commnand check\n");
 	//else if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
 		//error(ERR_CMD_NOT_EXECUTABLE);*/
 }
@@ -156,4 +138,9 @@ int	main(int argc, char **argv, char **envp)
 		free(trimmed_argv3);
 		printf("Finish checking trimmed argv 2\n");
 	}
-	printf("Finish syntax errors check\n");*/
+	printf("Finish syntax errors check\n");
+	
+	printf("Start is_valid_commnand check\n");
+	if (!is_valid_command(p, p->argv[2]) || !is_valid_command(p, p->argv[3]))
+		error(ERR_CMD);
+	printf("Finnish is_valid_commnand check\n");*/
