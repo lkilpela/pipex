@@ -6,14 +6,14 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 08:41:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:05:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <signal.h>
 
-static int is_directory (const char *cmd)
+static int is_directory (char *cmd)
 {
 	int	fd;
 
@@ -26,14 +26,29 @@ static int is_directory (const char *cmd)
 	return (0);
 }
 
+static char *trim_cmd(char *cmd)
+{
+	char *trimmed_cmd;
+
+	trimmed_cmd = ft_strtrim(cmd, " ");
+	if(trimmed_cmd && trimmed_cmd[0] == '\0')
+	{
+		free(trimmed_cmd);
+		return (NULL);
+	}
+	return (trimmed_cmd);
+}
+
 static void	validate_arguments(t_pipex *p)
 {
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
-		error(ERR_FILENAME);
+		error(ERR_FILE);
 	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD);
+
+
 	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
 		error(ERR_FILE_OR_CMD_NOT_FOUND);
 	else if (access(p->argv[1], R_OK != 0))
