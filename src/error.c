@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 08:31:08 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:55:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ static const char	*get_error_messages(int e)
 	static const char	*error_messages[] = {
 		"No error",
 		"Syntax: ./pipex infile cmd1 cmd2 outfile",
+		"No such file or directory",
+		"Command not found",
+		"Is a directory",
+		"Permission denied",
+
 		"fork failed",
 		"pipe failed",
 		"dup2 failed",
@@ -24,13 +29,7 @@ static const char	*get_error_messages(int e)
 		"open failed",
 		"close failed",
 		"waitpid failed",
-		"Filename is not valid",
-		"Permission denied",
-		"No such file or directory",
-		"Permission denied",
-		"Permission denied",
-		"Is directory",
-		"Command not found",
+
 		"last error"
 	};
 

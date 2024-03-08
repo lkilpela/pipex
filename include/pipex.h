@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 08:31:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:55:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ enum	e_error
 {
 	ERR_NONE,
 	ERR_SYNTAX,
+	ERR_FILE,
+	ERR_CMD,
+	ERR_DIR,
+	ERR_PERM,
+	
 	ERR_FORK,
 	ERR_PIPE,
 	ERR_DUP2,
@@ -37,13 +42,7 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
-	ERR_FILENAME,
-	ERR_CMD_NOT_EXECUTABLE,
-	ERR_FILE_OR_CMD_NOT_FOUND,
-	ERR_FILE_NOT_READABLE,
-	ERR_FILE_NOT_WRITABLE,
-	ERR_CMD_IS_DIRECTORY,
-	ERR_CMD_NOT_FOUND,
+	
 	LAST_ERROR
 };
 
