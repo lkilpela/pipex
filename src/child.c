@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 10:33:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:08:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static int	execute_command( t_pipex *p, t_tokenize *t, char *cmd)
 {
 	p->child_cmd = split_command(t, cmd);
 	if (p->child_cmd == NULL || p->child_cmd[0] == NULL)
-		error(ERR_CMD);
+		error(ERR_FILE);
 	p->child_path = find_command(p, p->child_cmd[0]);
 	if (!p->child_path)
 	{
 		free_paths(p->child_cmd);
-		error(ERR_CMD);
+		error(ERR_FILE);
 	}
 	if (ft_strchr(p->child_path, '/') && access(p->child_path, X_OK) != 0)
 		error(ERR_FILE);
