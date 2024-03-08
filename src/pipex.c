@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 12:08:05 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:44:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,32 @@ static void check_trimmed_cmd(char *cmd)
 
 static void	validate_arguments(t_pipex *p)
 {
+	// Syntax errors
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
-	else if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
+	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
-	else if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
+	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
 		error(ERR_CMD);
-	else
-	{
-		check_trimmed_cmd(p->argv[2]);
-		check_trimmed_cmd(p->argv[3]);
-	}
 
-	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
-		error(ERR_DIR);
+
+	check_trimmed_cmd(p->argv[2]);
+	check_trimmed_cmd(p->argv[3]);
+
+	//File existence errors
+	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
+		error(ERR_FILE);
+	if (is_directory(p->argv[2]) || access(p->argv[2], F_OK) != 0)
+		error(ERR_FILE);
+	if (!is_directory(p->argv[3]) || access(p->argv[3], F_OK) != 0)
+		error(ERR_FILE);
 	
-/*	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
-		error(ERR_FILE_OR_CMD_NOT_FOUND);
-	else if (access(p->argv[1], R_OK != 0))
-		error(ERR_FILE_NOT_READABLE);
-	else if (access(p->argv[4], W_OK != 0))
-		error(ERR_FILE_NOT_WRITABLE);
+	// Permission errors
+	if (access(p->argv[1], R_OK != 0))
+		error(ERR_PERM);
+	if (access(p->argv[4], W_OK != 0))
+		error(ERR_PERM);
+	
 	//if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
 		//error(ERR_FILE_OR_CMD_NOT_FOUND);
 
