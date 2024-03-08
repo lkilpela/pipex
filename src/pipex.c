@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 10:26:45 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:32:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	validate_arguments(t_pipex *p)
 		check_trimmed_cmd(p->argv[3]);
 	}
 	
-	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
+/*	if (access(p->argv[1], F_OK != 0) || access(p->argv[4], F_OK != 0))
 		error(ERR_FILE_OR_CMD_NOT_FOUND);
 	else if (access(p->argv[1], R_OK != 0))
 		error(ERR_FILE_NOT_READABLE);
@@ -75,7 +75,7 @@ static void	validate_arguments(t_pipex *p)
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_CMD_IS_DIRECTORY);
 	//else if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
-		//error(ERR_CMD_NOT_EXECUTABLE);
+		//error(ERR_CMD_NOT_EXECUTABLE);*/
 }
 
 void	setup_pipe(t_pipex *p)
