@@ -1,43 +1,31 @@
-1. Empty input: Test your program with no arguments. 
+Command not found
 
-Error message indicating that the empty input.
+Invalid cmd1				./pipex infile “xxx” “wc” outfile 	
+Invalid cmd2				./pipex infile “wc” “xxx” outfile 
+Invalid cmd1, invalid cmd2 (PATH)	./pipex infile “xxx” “/xxx/xxx” outfile  -> invalid cmd1 is command not found
+Null string cmd1			./pipex infile “ ” “wc” outfile 
+Empty cmd2				./pipex infile “wc” “        ” outfile 
+Null string cmd1, empty cmd2	./pipex infile “ ” “       ” outfile 
 
-2. Non-existent files: Test your program with file names that do not exist. 
+No such file or directory
 
-`./pipex nonexistentfile "ls -l" outfile`
+Infile does not exist			./pipex noinfile “ls” “wc” outfile
+Infile does not exist, invalid cmd1	./pipex noinfile “xxx” “wc” outfile
+Cmd1 is folder, valid cmd2		./pipex infile “./libft/” “ls” outfile
+Valid cmd1, cmd2 is folder		./pipex infile “ls” “./libft/” outfile
+Invalid cmd1 or cmd2 path		./pipex infile “/xxx/xxx” “wc” outfile
+PATH envp does not exist		./pipex infile “ ls” “wc” outfile
+No PATH envp	, cm1 path		./pipex infile “/bin/ls” “wc” outfile
+No PATH envp, cmd1 path, cmd1 path	./pipex infile “/bin/ls” “/bin/cat” outfile
 
-Error message indicating that the input file does not exist.
+Permission denied (check in setup_command)
 
-3. Non-readable or non-writable files: Test your program with files that exist but are not readable (for the input file) or not writable (for the output file).
+Infile no read permission
+Outfile no write permission
+No exec permission cmd1
+No exec permission cmd2
 
-`./pipex nonreadablefile "ls -l" outfile`
+Bad arguments, invalid options
 
-Error message indicating that the input file is not readable.
-
-4. Non-existent commands: Test your program with command names that do not exist. 
-
-`./pipex infile "nonexistentcommand -l" outfile`
-
-Error message indicating that the command does not exist.
-
-5. Commands that fail: Test your program with commands that exist but fail when run (for example, a command that always exits with a non-zero status). 
-
-`./pipex infile "ls nonexistentdirectory" outfile`
-
-Error message from `ls` indicating that the directory does not exist.
-
-6. Large files: Test your program with very large input files to ensure it can handle them without running out of memory or taking too long.
-
-`./pipex largefile "wc -l" outfile`
-
-7. Special characters in file names: Test your program with file names that contain spaces, special characters, or characters that need to be escaped in a shell. Your program should handle these file names correctly.
-
-`./pipex "file with spaces" "ls -l" "out file"`
-
-The correct output of `ls -l file with spaces` in `out file`.
-
-8. Piping multiple commands: Test your program with more than two commands to ensure it handles multiple pipes correctly.
-
-`./pipex infile "grep pipex" "wc -l" outfile`
-
-The correct line count of lines containing `pipex` in `infile` in `outfile`.
+Bad args cmd1, valid cmd2		./pipex infile “ls -?” “grep c” outfile
+Bad args cmd1, bad args cmd2	./pipex infile “ls -?” “wc -9001” outfile

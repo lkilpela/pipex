@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 14:17:48 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:21:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ static void	validate_arguments(t_pipex *p)
 	if (is_directory(p->argv[3]) && access(p->argv[3], F_OK) != 0)
 		error(ERR_FILE);
 	
-
-	//else if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
-		//error(ERR_CMD_NOT_EXECUTABLE);*/
+	if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
+		error(ERR_PERM);
 }
 
 void	setup_pipe(t_pipex *p)
