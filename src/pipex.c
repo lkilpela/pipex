@@ -6,12 +6,11 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:58:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:04:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <signal.h>
 
 static int is_directory (char *cmd)
 {
