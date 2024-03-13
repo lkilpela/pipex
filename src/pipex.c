@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:21:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:58:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,6 @@ static int is_directory (char *cmd)
 	}
 	return (0);
 }
-
-/*static char *trim_cmd(char *cmd)
-{
-	char *trimmed_cmd;
-
-	if (cmd[0] == ' ')
-		return (NULL);
-	trimmed_cmd = ft_strtrim(cmd, " ");
-	if(trimmed_cmd && trimmed_cmd[0] == '\0')
-	{
-		free(trimmed_cmd);
-		return (NULL);
-	}
-	return (trimmed_cmd);
-}
-
-static void check_trimmed_cmd(char *cmd)
-{
-	char *trimmed_cmd;
-
-	trimmed_cmd = trim_cmd(cmd);
-	if (trimmed_cmd == NULL)
-		error(ERR_CMD);
-	else
-		free(trimmed_cmd);
-}
-*/
 
 static void	validate_arguments(t_pipex *p)
 {

@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:57:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:57:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	*trim_cmd(char *cmd)
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
-	char *trimmed_cmd;
+	char	*trimmed_cmd;
 
 	if (!cmd)
 		return (NULL);
