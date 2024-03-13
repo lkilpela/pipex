@@ -8,7 +8,7 @@ HDRS = -I./include -I $(LIBFT)/include
 #$(UNITY)/src/unity.h
 LIBS = $(LIBFT)/build/libft.a
 SRCS = src/child.c src/error.c src/path.c src/utils.c\
-		src/tokenize.c src/wait.c src/pipex.c
+		src/tokenize.c src/wait.c src/pipex.c src/init.c
 TEST_SRCS = test.c
 OBJS = $(SRCS:%.c=%.o)
 TEST_OBJS = $(TEST_SRCS:%.c=%.o)

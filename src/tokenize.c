@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:54:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:57:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,38 @@ static void	split_on_space(t_tokenize *t, char *cmd)
 	if (end != start)
 		add_word(t, start, end);
 }
+static char	*trim_cmd(char *cmd)
+{
+	char *trimmed_cmd;
+
+	if (cmd[0] == ' ')
+		return (NULL);
+	trimmed_cmd = ft_strtrim(cmd, " ");
+	if(trimmed_cmd && trimmed_cmd[0] == '\0')
+	{
+		free(trimmed_cmd);
+		return (NULL);
+	}
+	return (trimmed_cmd);
+}
 
 //line 66: Return NULL for empty command string
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
-	
+	char *trimmed_cmd;
+
 	if (!cmd)
 		return (NULL);
+	trimmed_cmd = trim_cmd(cmd);
+	if (trimmed_cmd == NULL)
+		error(ERR_CMD);
 	split_on_space(t, cmd);
 	new_args = resize_array(t->args, t->count, t->count + 1);
 	if (!new_args)
 		return (NULL);
 	t->args = new_args;
 	t->args[t->count] = NULL;
+	free(trimmed_cmd);
 	return (t->args);
 }
