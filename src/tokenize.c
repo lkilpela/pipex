@@ -6,13 +6,11 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:53:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:54:10 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-
 
 static void	toggle_quotes(t_tokenize *t, char c)
 {
