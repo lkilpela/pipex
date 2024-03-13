@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:04:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:21:00 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,7 @@ static void check_trimmed_cmd(char *cmd)
 	else
 		free(trimmed_cmd);
 }
-
-int	is_valid_command(t_pipex *p, char *cmd)
-{
-	char	*path;
-	
-	if (cmd == NULL || cmd[0] == '\0')
-		return (0);
-	path = find_command(p, cmd);
-	if (path != NULL)
-	{
-		free(path);
-		return (1);
-	}
-	return (0);
-}*/
+*/
 
 static void	validate_arguments(t_pipex *p)
 {
