@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:57:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/27 08:19:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	*trim_cmd(char *cmd)
 	return (trimmed_cmd);
 }
 
-//line 66: Return NULL for empty command string
+//line 76: Return NULL for empty command string
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;

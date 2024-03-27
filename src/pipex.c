@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 15:51:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/27 08:20:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,29 +77,3 @@ int	main(int argc, char **argv, char **envp)
 	cleanup(&p);
 	return (0);
 }
-
-
-	/*if (ft_strncmp(p->argv[2], " ", 1 ) == 0 || ft_strncmp(p->argv[3], " ", 1 ) == 0)
-		error(ERR_CMD);//" ls" "wc" or " " "wc"
-	else
-	{
-		printf("Start checking trimmed argv 2\n");
-		char *trimmed_argv2 = trim_cmd(p->argv[2]);
-		char *trimmed_argv3 = trim_cmd(p->argv[3]);
-		if (trimmed_argv2 == NULL || trimmed_argv3 == NULL)
-			error(ERR_CMD); // "  " "wc" or "   " "wc"
-		else
-		{
-			check_trimmed_cmd(trimmed_argv2);
-			check_trimmed_cmd(trimmed_argv3);
-		}
-		free(trimmed_argv2);
-		free(trimmed_argv3);
-		printf("Finish checking trimmed argv 2\n");
-	}
-	printf("Finish syntax errors check\n");
-	
-	printf("Start is_valid_commnand check\n");
-	if (!is_valid_command(p, p->argv[2]) || !is_valid_command(p, p->argv[3]))
-		error(ERR_CMD);
-	printf("Finnish is_valid_commnand check\n");*/
