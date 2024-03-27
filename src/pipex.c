@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/27 08:20:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/03/27 08:31:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_FILE);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_DIR);
-	if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
-		error(ERR_CMD); // Invalid cmd1/cmd2
+	//if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
+		//error(ERR_CMD); // Invalid cmd1/cmd2
 	
-	if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
-		error(ERR_PERM);
+	//if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
+		//error(ERR_PERM);
 }
 
 void	setup_pipe(t_pipex *p)
