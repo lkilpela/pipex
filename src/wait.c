@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/08 14:11:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:26:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ void	child_status(pid_t pid, int status)
 			(unsigned int)pid, WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
 		ft_printf("Child with PID %u was terminated by signal %u\n",
-				(unsigned int)pid, WTERMSIG(status));
+			(unsigned int)pid, WTERMSIG(status));
 }
 
-int	wait_children(t_pipex *p, t_tokenize *t)
+int	wait_children(t_pipex *p)
 {
 	pid_t	pid;
 	int		i;
 	int		status;
 
 	i = 0;
-	status = execute_first_command(p, t);
+	status = execute_first_command(p);
 	if (status != 0)
 		return (status);
-	status = execute_second_command(p, t);
+	status = execute_second_command(p);
 	if (status != 0)
 		return (status);
 	while (i < 2)

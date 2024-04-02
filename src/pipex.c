@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:22:46 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:24:15 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv, char **envp)
 	init_pipex(argc, argv, envp, &p);
 	validate_arguments(&p);
 	setup_pipe(&p);
-	status = wait_children(&p, &t);
+	status = wait_children(&p);
 	if (status != 0)
 	{
 		cleanup(&p);

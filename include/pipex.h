@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:08:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:26:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ char	*find_command(t_pipex *p, char *cmd);
 char	**split_command(t_tokenize *t, char *cmd);
 
 //child process
-int		execute_first_command(t_pipex *p, t_tokenize *t);
-int		execute_second_command(t_pipex *p, t_tokenize *t);
+int		execute_first_command(t_pipex *p);
+int		execute_second_command(t_pipex *p);
 
 //parent process
-int		wait_children(t_pipex *p, t_tokenize *t);
+int		wait_children(t_pipex *p);
 
 // error handler
 void	error(int e);
