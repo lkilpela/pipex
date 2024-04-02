@@ -2,24 +2,17 @@ NAME = pipex
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 LIBFT = lib/libft
-UNITY = unity
 
 HDRS = -I./include -I $(LIBFT)/include
-#$(UNITY)/src/unity.h
 LIBS = $(LIBFT)/build/libft.a
 SRCS = src/child.c src/error.c src/path.c src/utils.c\
 		src/tokenize.c src/wait.c src/pipex.c src/init.c
-TEST_SRCS = test.c
 OBJS = $(SRCS:%.c=%.o)
-TEST_OBJS = $(TEST_SRCS:%.c=%.o)
 
 all: libft $(NAME)
 
 libft:
 	@make -C $(LIBFT)
-
-unity:
-	@cmake $(UNITY) -B $(UNITY)/build && make -C $(UNITY)/build
 
 test: libft $(TEST_OBJS) $(OBJS)
 	$(CC) $(CFLAGS) $(TEST_OBJS) $(OBJS) $(UNITY)/libunity.a $(LIBS) $(HDRS) -o run_test
