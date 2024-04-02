@@ -6,13 +6,13 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:47:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:52:54 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int is_directory (char *cmd)
+static int	is_directory(char *cmd)
 {
 	int	fd;
 
@@ -50,7 +50,7 @@ static void	validate_arguments(t_pipex *p)
 
 	parse_and_validate_command(p, &p->cmds[0], p->argv[2]);
 	parse_and_validate_command(p, &p->cmds[1], p->argv[3]);
-	//File existence errors
+	// File existence errors
 	if (access(p->argv[1], F_OK != 0))
 		error(ERR_FILE);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
@@ -65,9 +65,13 @@ void	setup_pipe(t_pipex *p)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_pipex		p;
-	int			status;
+	t_pipex	p;
+	int		status;
 
+	for (int i = 0; envp[i]; i++)
+	{
+		printf("envp: %s\n", envp[i]);
+	}
 	init_pipex(argc, argv, envp, &p);
 	validate_arguments(&p);
 	setup_pipe(&p);
