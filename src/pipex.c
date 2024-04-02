@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/27 08:31:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:22:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static int is_directory (char *cmd)
 {
 	int	fd;
 
-	//if (access(cmd, F_OK) != 0)
-		//error(ERR_FILE);
 	fd = open(cmd, O_DIRECTORY);
 	if (fd != -1)
 	{
@@ -27,6 +25,21 @@ static int is_directory (char *cmd)
 	return (0);
 }
 
+static void	parse_and_validate_command(t_pipex *p, t_command *c, char *cmd)
+{
+	t_tokenize	t;
+
+	init_tokenize(&t);
+	c->args = split_command(&t, cmd);
+	if (c->args == NULL || c->args[0] == NULL)
+		error(ERR_CMD);
+	c->path = find_command(p, c->args[0]);
+	if (!c->path)
+		error(ERR_CMD);
+	if (access(c->path, X_OK) != 0)
+		error(ERR_CMD);
+}
+
 static void	validate_arguments(t_pipex *p)
 {
 	// Syntax errors
@@ -34,19 +47,12 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_SYNTAX);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
-	if (ft_strlen(p->argv[2]) == 0 || ft_strlen(p->argv[3]) == 0)
-		error(ERR_CMD);// "" "wc"
 
 	//File existence errors
 	if (access(p->argv[1], F_OK != 0))
 		error(ERR_FILE);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_DIR);
-	//if (access(p->argv[2], F_OK) != 0 || access(p->argv[3], F_OK) != 0)
-		//error(ERR_CMD); // Invalid cmd1/cmd2
-	
-	//if ((access(p->argv[2], X_OK) != 0 || access(p->argv[3], X_OK) != 0))
-		//error(ERR_PERM);
 }
 
 void	setup_pipe(t_pipex *p)
@@ -59,10 +65,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex		p;
 	int			status;
-	t_tokenize	t;
 
 	init_pipex(argc, argv, envp, &p);
-	init_tokenize(&t);
 	validate_arguments(&p);
 	setup_pipe(&p);
 	status = wait_children(&p, &t);
@@ -73,7 +77,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	close(p.pipefd[0]);
 	close(p.pipefd[1]);
-	free(t.args);
 	cleanup(&p);
 	return (0);
 }
