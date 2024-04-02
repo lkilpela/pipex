@@ -54,8 +54,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# VS Code settings
-.vscode/
 
 # directory
 test/
