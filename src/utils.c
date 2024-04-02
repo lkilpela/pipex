@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/13 11:54:24 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:37:00 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ void	free_paths(char **paths)
 
 void	cleanup(t_pipex *p)
 {
-	if (p->child_path)
-		free(p->child_path);
+	int	i;
+
+	i = 0;
 	if (p->paths)
 		free_paths(p->paths);
-	if (p->child_cmd)
-		free_paths(p->child_cmd);
+	while(i != 2)
+	{
+		if (p->cmds[1].args)
+			free_paths(p->cmds[i].args);
+		if (p->cmds[i].path)
+			free(p->cmds[i].path);
+		i++;
+	}
 }
 
 char	**resize_array(char **old_array, int old_count, int new_count)
