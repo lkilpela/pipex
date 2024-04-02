@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 13:52:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:11:07 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ int	main(int argc, char **argv, char **envp)
 	t_pipex	p;
 	int		status;
 
-	for (int i = 0; envp[i]; i++)
-	{
-		printf("envp: %s\n", envp[i]);
-	}
 	init_pipex(argc, argv, envp, &p);
 	validate_arguments(&p);
 	setup_pipe(&p);
