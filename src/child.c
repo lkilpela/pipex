@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:44:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:45:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	setup_second_command(t_pipex *p)
 
 static int	execute_command( t_pipex *p, t_command *c)
 {
-	if (exeve(c->path, c->args, p->envp) == -1);
+	if (execve(c->path, c->args, p->envp) == -1)
 	{
 		error(ERR_EXECVE);
 		return (-1);
