@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/03 09:40:13 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:41:34 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	validate_arguments(t_pipex *p)
 	parse_and_validate_command(p, &p->cmds[1], p->argv[3]);
 }
 
-void	setup_pipe(t_pipex *p)
+static void	setup_pipe(t_pipex *p)
 {
 	if (pipe(p->pipefd) == -1)
 		error(ERR_PIPE);
