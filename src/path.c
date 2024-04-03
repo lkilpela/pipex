@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 12:08:08 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 14:29:03 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 08:08:51 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static char	**get_envpaths(t_pipex *p)
 	i = 0;
 	while (p->envp[i] && ft_strncmp(p->envp[i], "PATH=", 5) != 0)
 		i++;
-	printf("PATH: %s\n", p->envp[i]);
 	if (!p->envp[i] || ft_strlen(p->envp[i]) < 5)
 		return (NULL);
 	return (ft_split(p->envp[i] + 5, ':'));
