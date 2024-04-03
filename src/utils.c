@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:37:00 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:52:29 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	cleanup(t_pipex *p)
 	i = 0;
 	if (p->paths)
 		free_paths(p->paths);
-	while(i != 2)
+	while (i != 2)
 	{
 		if (p->cmds[1].args)
 			free_paths(p->cmds[i].args);
