@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/03/27 08:19:54 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:50:30 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	split_on_space(t_tokenize *t, char *cmd)
 	if (end != start)
 		add_word(t, start, end);
 }
+
 static char	*trim_cmd(char *cmd)
 {
 	char *trimmed_cmd;
@@ -66,7 +67,7 @@ static char	*trim_cmd(char *cmd)
 	return (trimmed_cmd);
 }
 
-//line 76: Return NULL for empty command string
+//line 77: Return NULL for empty command string
 char	**split_command(t_tokenize *t, char *cmd)
 {
 	char	**new_args;
