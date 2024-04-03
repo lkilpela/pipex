@@ -23,14 +23,13 @@ $(NAME): $(OBJS)
 	@echo "[pipex] Built target pipex"
 
 clean:
-	@rm -rf $(OBJS) $(TEST_OBJS)
+	@rm -rf $(OBJS)
 	@make clean -C $(LIBFT)
 	@echo "[pipex] Object files cleaned."
 
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)/build
-	@rm -rf $(UNITY)/build
 	@rm -rf run_test
 	@echo "[pipex] Everything deleted."
 
