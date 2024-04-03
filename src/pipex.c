@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/03 09:39:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:40:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ static void	parse_and_validate_command(t_pipex *p, t_command *c, char *cmd)
 
 static void	validate_arguments(t_pipex *p)
 {
-	// Syntax errors
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
-
-	// File existence errors
 	if (access(p->argv[1], F_OK) != 0)
 		error(ERR_FILE);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
