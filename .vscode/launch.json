@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/pipex",
-			"args": ["infile.txt", "grep hello", "wc -l", "outfile"],
+			"args": ["infile.txt", "./libft/", "ls", "outfile"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [{ "name": "PATH", "value": "/usr/bin" }],
