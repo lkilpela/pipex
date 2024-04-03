@@ -1,5 +1,5 @@
 NAME = pipex
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT = lib/libft
 
@@ -19,7 +19,7 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HDRS)
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HDRS) -o $(NAME) -fsanitize=address
+	@$(CC) $(OBJS) $(LIBS) $(HDRS) -o $(NAME)
 	@echo "[pipex] Built target pipex"
 
 clean:

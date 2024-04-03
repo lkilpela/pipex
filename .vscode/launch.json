@@ -6,7 +6,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/pipex",
-			"args": ["infile.txt", "./libft/", "ls", "outfile"],
+			"args": ["infile", "./libft/", "ls", "outfile"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [{ "name": "PATH", "value": "/usr/bin"}],
