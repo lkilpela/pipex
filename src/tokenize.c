@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/03 09:51:07 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:53:01 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char	*trim_cmd(char *cmd)
 	if (cmd[0] == ' ')
 		return (NULL);
 	trimmed_cmd = ft_strtrim(cmd, " ");
-	if(trimmed_cmd && trimmed_cmd[0] == '\0')
+	if (trimmed_cmd && trimmed_cmd[0] == '\0')
 	{
 		free(trimmed_cmd);
 		return (NULL);
