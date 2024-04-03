@@ -6,9 +6,14 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/pipex",
-			"args": ["infile", "./libft/", "ls", "outfile"],
+			"args": [
+                "infile",
+                "./libft/",
+                "ls",
+                "outfile"
+            ],
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "${workspaceFolder}",
 			"environment": [{ "name": "PATH", "value": "/usr/bin"}],
 			"externalConsole": false,
 			"MIMode": "lldb"
