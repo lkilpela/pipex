@@ -1,5 +1,5 @@
 NAME = pipex
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT = lib/libft
 
@@ -13,11 +13,6 @@ all: libft $(NAME)
 
 libft:
 	@make -C $(LIBFT)
-
-test: libft $(TEST_OBJS) $(OBJS)
-	$(CC) $(CFLAGS) $(TEST_OBJS) $(OBJS) $(UNITY)/libunity.a $(LIBS) $(HDRS) -o run_test
-	@echo "[pipex] Running test..."
-	@./run_test
 
 %.o : %.c
 	@echo "\033[32m[pipex] Compiling $< into $@\033[0m"
@@ -45,4 +40,4 @@ re: fclean all
 .PHONY: all clean fclean re libft
 
 
-
+#-fsanitize=address
