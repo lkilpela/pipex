@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:45:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/03 09:48:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	execute_first_command(t_pipex *p)
 		if (status != 0)
 			exit(status);
 	}
-	//close(p->infilefd);
 	close(p->pipefd[1]);
 	return (0);
 }
@@ -106,7 +105,6 @@ int	execute_second_command(t_pipex *p)
 		status = execute_command(p, &p->cmds[1]);
 		exit(status);
 	}
-	//close(p->outfilefd);
 	close(p->pipefd[0]);
 	return (0);
 }
