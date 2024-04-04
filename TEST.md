@@ -5,9 +5,10 @@ Command not found
 < infile "xxx" | "wc" > outfile
 2. Invalid cmd2			
 ./pipex infile "wc" "xxx" outfile 
-
+< infile "wc" | "xxx" > outfile
 3. Invalid cmd1, invalid cmd2 (PATH)	
 ./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
+< infile "xxx" | "/xxx/xxx" > outfile
 
 4. Null string cmd1
 ./pipex infile " " "wc" outfile 
