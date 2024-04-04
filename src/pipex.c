@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 15:17:44 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:18:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	validate_arguments(t_pipex *p)
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
 	if (access(p->argv[1], F_OK) != 0)
-		error(ERR_FILE);
+		error_args(ERR_FILE, p->argv[1]);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_DIR);
 	cmd1_valid = validate_command(p, &p->cmds[0], p->argv[2]);

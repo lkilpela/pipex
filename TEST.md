@@ -28,13 +28,20 @@ pipex: command not found: /xxx/xxx
 < noinfile "ls" | "wc" > outfile
 2. Infile does not exist, invalid cmd1
 ./pipex noinfile "xxx" "wc" outfile
-
-3. Cmd1 is folder, valid cmd2		./pipex infile "./libft/" "ls" outfile
-Valid cmd1, cmd2 is folder		./pipex infile "ls" "./libft/" outfile
-Invalid cmd1 or cmd2 path		./pipex infile "/xxx/xxx" "wc” outfile
-PATH envp does not exist		./pipex infile " ls" "wc" outfile
-No PATH envp	, cm1 path		./pipex infile "/bin/ls” "wc" outfile
-No PATH envp, cmd1 path, cmd1 path	./pipex infile "/bin/ls" "/bin/cat" outfile
+< noinfile "xxx" | "wc" > outfile
+3. Cmd1 is folder, valid cmd2		
+./pipex infile "./libft/" "ls" outfile
+< infile "./libft/" | "ls" > outfile
+4. Valid cmd1, cmd2 is folder		
+./pipex infile "ls" "./libft/" outfile
+5. Invalid cmd1 or cmd2 path		
+./pipex infile "/xxx/xxx" "wc” outfile
+6. PATH envp does not exist		
+./pipex infile " ls" "wc" outfile
+7. No PATH envp	, cm1 path		
+./pipex infile "/bin/ls” "wc" outfile
+8. No PATH envp, cmd1 path, cmd1 path	
+./pipex infile "/bin/ls" "/bin/cat" outfile
 
 Permission denied (check in setup_command)
 
