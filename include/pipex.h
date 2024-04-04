@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 11:25:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:09:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,10 @@ enum	e_error
 	LAST_ERROR
 };
 
-enum	exit_code
-{
-	SUCCESS = 0,
-	GENERAL_ERROR = 1,
-	
-	INPUT_FILE_NOT_FOUND,
-	OUTPUT_FILE_NOT_FOUND,
-	
-	PIPE_FAILURE,
-	FORK_FAILURE,
-	COMMAND_EXECUTION_FAILURE = 126,
-	COMMAND_NOT_FOUND = 127,
-	INVALID_ARGUMENTS = 128,
-};
-
 typedef struct s_command
 {
-	char	*path;
-	char	**args;
+	char	*path;// String: the path to the command
+	char	**args;// Array of strings: the arguments to the command
 }				t_command;
 
 typedef struct s_pipex
@@ -75,7 +60,7 @@ typedef struct s_pipex
 	int			outfilefd;// File descriptor for the output file
 	char		**paths;// Array of paths for executable lookup
 	int			pipefd[2];// Array to hold the file descriptors for the pipe
-	t_command	cmds[2];
+	t_command	cmds[2];// Array if two t_command structures.
 }				t_pipex;
 
 typedef struct s_tokenize

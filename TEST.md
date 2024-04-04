@@ -1,6 +1,8 @@
 Command not found
 
-Invalid cmd1				./pipex infile "xxx" "wc" outfile 	
+1. Invalid cmd1				
+./pipex infile "xxx" "wc" outfile
+< infile "xxx" | "wc" > outfile
 Invalid cmd2				./pipex infile "wc" "xxx" outfile 
 Invalid cmd1, invalid cmd2 (PATH)	./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
 Null string cmd1			./pipex infile " " "wc" outfile 
@@ -66,7 +68,7 @@ then:
 
 ./pipex "/dev/urandom" "cat" "head -1" "test-xx.txt"
 < /dev/urandom cat | head -1 > outfile.txt
-# 31: The program does not timeout        
+31: The program does not timeout        
 
 ./pipex pipex.h "sleep 10000" "ls" "test-xx.txt"
 < pipex.h sleep 10000 | ls > outfile.txt    

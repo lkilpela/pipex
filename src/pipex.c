@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 12:21:36 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:02:56 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ static void	parse_and_validate_command(t_pipex *p, t_command *c, char *cmd)
 
 	init_tokenize(&t);
 	c->args = split_command(&t, cmd);
-	for(int i = 0; c->args; i++)
-	{
-		printf("c->args: %s\n", c->args[i]);
-	}
 	if (c->args == NULL || c->args[0] == NULL)
 		error(ERR_CMD);
 	c->path = find_command(p, c->args[0]);
