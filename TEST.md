@@ -1,4 +1,4 @@
-Command not found
+# Command not found
 
 1. Invalid cmd1				
 ./pipex infile "xxx" "wc" outfile
@@ -9,15 +9,19 @@ Command not found
 3. Invalid cmd1, invalid cmd2 (PATH)	
 ./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
 < infile "xxx" | "/xxx/xxx" > outfile
-
+pipex: command not found: xxx
+pipex: command not found: /xxx/xxx
 4. Null string cmd1
 ./pipex infile " " "wc" outfile 
 < infile " " "wc" > outfile
 5. Empty cmd2				
-./pipex infile "wc" "        " outfile 
-Null string cmd1, empty cmd2	./pipex infile " " "       " outfile 
+./pipex infile "wc" "        " outfile
+< infile "wc" | "        " > outfile
+6. Null string cmd1, empty cmd2
+./pipex infile " " "       " outfile
+< infile " " | "       " > outfile 
 
-No such file or directory
+# No such file or directory
 
 Infile does not exist			./pipex noinfile "ls" "wc" outfile
 Infile does not exist, invalid cmd1	./pipex noinfile "xxx" "wc" outfile
