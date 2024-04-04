@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 11:02:36 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:24:39 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ enum	exit_code
 	COMMAND_NOT_FOUND = 127,
 	INVALID_ARGUMENTS = 128,
 };
-
 
 typedef struct s_command
 {
