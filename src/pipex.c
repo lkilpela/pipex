@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 21:18:53 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:32:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_directory(char *cmd)
 	int	fd;
 
 	if (access(cmd, F_OK) != 0)
-		error(ERR_FILE);
+		error_args(ERR_FILE, cmd);
 	fd = open(cmd, O_DIRECTORY);
 	if (fd != -1)
 	{
@@ -41,6 +41,11 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 		print_error(ERR_CMD, c->args[0]);
 		return (0);
 	}
+	if (is_directory(c->path))
+	{
+		print_error(ERR_FILE, c->args[0]);
+		return (0);
+	}
 	if (c->path && access(c->path, F_OK | X_OK) != 0)
 	{
 		print_error(ERR_CMD, c->args[0]);
@@ -60,8 +65,8 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_FILE);
 	if (access(p->argv[1], F_OK) != 0)
 		error_args(ERR_FILE, p->argv[1]);
-	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
-		error(ERR_DIR);
+	//if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
+		//error(ERR_DIR);
 	cmd1_valid = validate_command(p, &p->cmds[0], p->argv[2]);
 	cmd2_valid = validate_command(p, &p->cmds[1], p->argv[3]);
 	if (!cmd1_valid || !cmd2_valid)

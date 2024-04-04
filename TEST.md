@@ -33,9 +33,11 @@ pipex: command not found: /xxx/xxx
 ./pipex infile "./libft/" "ls" outfile
 < infile "./libft/" | "ls" > outfile
 4. Valid cmd1, cmd2 is folder		
-./pipex infile "ls" "./libft/" outfile
+./pipex infile "ls" "./libft/"  outfile
+< infile "ls" | "./libft/" > outfile
 5. Invalid cmd1 or cmd2 path		
 ./pipex infile "/xxx/xxx" "wc” outfile
+< infile "/xxx/xxx" | "wc” > outfile
 6. PATH envp does not exist		
 ./pipex infile " ls" "wc" outfile
 7. No PATH envp	, cm1 path		
