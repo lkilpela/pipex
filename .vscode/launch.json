@@ -8,8 +8,8 @@
 			"program": "${workspaceFolder}/pipex",
 			"args": [
                 "infile",
-                "ls",
-                "./libft/",
+                "/bin/ls",
+                "wc",
                 "outfile"
             ],
 			"stopAtEntry": false,

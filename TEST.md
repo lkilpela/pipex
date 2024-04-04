@@ -5,43 +5,44 @@
 < infile "xxx" | "wc" > outfile
 2. Invalid cmd2			
 ./pipex infile "wc" "xxx" outfile 
-< infile "wc" | "xxx" > outfile
+< infile wc | xxx > outfile
 3. Invalid cmd1, invalid cmd2 (PATH)	
 ./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
-< infile "xxx" | "/xxx/xxx" > outfile
+< infile xxx | /xxx/xxx > outfile
 pipex: command not found: xxx
 pipex: command not found: /xxx/xxx
 4. Null string cmd1
 ./pipex infile " " "wc" outfile 
-< infile " " "wc" > outfile
+< infile    | wc > outfile
 5. Empty cmd2				
 ./pipex infile "wc" "        " outfile
-< infile "wc" | "        " > outfile
+< infile wc |          > outfile
 6. Null string cmd1, empty cmd2
 ./pipex infile " " "       " outfile
-< infile " " | "       " > outfile 
+< infile   |         > outfile 
 
 # No such file or directory
 
 1. Infile does not exist			
 ./pipex noinfile "ls" "wc" outfile
-< noinfile "ls" | "wc" > outfile
+< noinfile ls | wc > outfile
 2. Infile does not exist, invalid cmd1
 ./pipex noinfile "xxx" "wc" outfile
 < noinfile "xxx" | "wc" > outfile
 3. Cmd1 is folder, valid cmd2		
 ./pipex infile "./libft/" "ls" outfile
-< infile "./libft/" | "ls" > outfile
+< infile ./libft/ | ls > outfile
 4. Valid cmd1, cmd2 is folder		
 ./pipex infile "ls" "./libft/"  outfile
-< infile "ls" | "./libft/" > outfile
+< infile ls | ./libft/ > outfile
 5. Invalid cmd1 or cmd2 path		
-./pipex infile "/xxx/xxx" "wc” outfile
-< infile "/xxx/xxx" | "wc” > outfile
+./pipex infile "/xxx/xxx" "wc" outfile
+< infile /xxx/xxx | wc > outfile
 6. PATH envp does not exist		
-./pipex infile " ls" "wc" outfile
+./pipex infile " ls"  "wc" > outfile
+< infile  ls | wc outfile
 7. No PATH envp	, cm1 path		
-./pipex infile "/bin/ls” "wc" outfile
+./pipex infile "/bin/ls" "wc" outfile
 8. No PATH envp, cmd1 path, cmd1 path	
 ./pipex infile "/bin/ls" "/bin/cat" outfile
 
