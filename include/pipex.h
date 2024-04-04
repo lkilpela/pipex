@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 11:24:39 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:25:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct s_pipex
 	int			outfilefd;// File descriptor for the output file
 	char		**paths;// Array of paths for executable lookup
 	int			pipefd[2];// Array to hold the file descriptors for the pipe
-	int			arg_index;
 	t_command	cmds[2];
 }				t_pipex;
 
