@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 13:02:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:15:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	is_directory(char *cmd)
 	return (0);
 }
 
-static void	parse_and_validate_command(t_pipex *p, t_command *c, char *cmd)
+static void	validate_command(t_pipex *p, t_command *c, char *cmd)
 {
 	t_tokenize	t;
 
@@ -53,8 +53,8 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_FILE);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_DIR);
-	parse_and_validate_command(p, &p->cmds[0], p->argv[2]);
-	parse_and_validate_command(p, &p->cmds[1], p->argv[3]);
+	validate_command(p, &p->cmds[0], p->argv[2]);
+	validate_command(p, &p->cmds[1], p->argv[3]);
 }
 
 static void	setup_pipe(t_pipex *p)
