@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/03 14:15:56 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 10:56:37 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	parse_and_validate_command(t_pipex *p, t_command *c, char *cmd)
 		error(ERR_CMD);
 	c->path = find_command(p, c->args[0]);
 	if (!c->path)
-		error(ERR_CMD);
+		error_with_info(ERR_CMD, c->args[0]);
 	if (access(c->path, X_OK) != 0)
 		error(ERR_CMD);
 }

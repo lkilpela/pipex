@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 09:56:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 10:02:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,17 @@ enum	e_error
 
 enum	exit_code
 {
-	SUCCESS,
-	GENERAL_ERROR,
-	INVALID_ARGUMENTS,
+	SUCCESS = 0,
+	GENERAL_ERROR = 1,
+	
 	INPUT_FILE_NOT_FOUND,
 	OUTPUT_FILE_NOT_FOUND,
-	COMMAND_NOT_FOUND,
+	
 	PIPE_FAILURE,
 	FORK_FAILURE,
-	COMMAND_EXECUTION_FAILURE
+	COMMAND_EXECUTION_FAILURE = 126,
+	COMMAND_NOT_FOUND = 127,
+	INVALID_ARGUMENTS = 128,
 };
 
 
