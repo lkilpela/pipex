@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 11:37:42 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:21:36 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ int	main(int argc, char **argv, char **envp)
 	close(p.pipefd[0]);
 	close(p.pipefd[1]);
 	cleanup(&p);
+	system("leaks pipex");
 	return (0);
 }
