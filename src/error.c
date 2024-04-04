@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 14:29:26 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:32:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,7 @@ static const char	*get_error_messages(int e)
 
 void	error(int e)
 {
-	const char	*message;
-
-	if (e >= 0 || e < LAST_ERROR)
-	{
-		message = get_error_messages(e);
-		ft_putstr_fd("pipex: ", STDERR_FILENO);
-		ft_putstr_fd(message, STDERR_FILENO);
-	}
-	else
-		ft_putstr_fd ("pipex: Unknown error", STDERR_FILENO);
-	write(2, "\n", 1);
+	error_with_arg(e, NULL);
 	exit(EXIT_FAILURE);
 }
 
