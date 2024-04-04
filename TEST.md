@@ -3,10 +3,17 @@ Command not found
 1. Invalid cmd1				
 ./pipex infile "xxx" "wc" outfile
 < infile "xxx" | "wc" > outfile
-Invalid cmd2				./pipex infile "wc" "xxx" outfile 
-Invalid cmd1, invalid cmd2 (PATH)	./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
-Null string cmd1			./pipex infile " " "wc" outfile 
-Empty cmd2				./pipex infile "wc" "        " outfile 
+2. Invalid cmd2			
+./pipex infile "wc" "xxx" outfile 
+
+3. Invalid cmd1, invalid cmd2 (PATH)	
+./pipex infile "xxx" "/xxx/xxx" outfile  -> invalid cmd1 is command not found
+
+4. Null string cmd1
+./pipex infile " " "wc" outfile 
+< infile " " "wc" > outfile
+5. Empty cmd2				
+./pipex infile "wc" "        " outfile 
 Null string cmd1, empty cmd2	./pipex infile " " "       " outfile 
 
 No such file or directory
