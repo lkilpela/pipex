@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 16:02:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:18:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	is_directory(char *cmd)
 {
 	int	fd;
 
-	//if (access(cmd, F_OK) != 0)
-		//error(ERR_FILE);
+	if (access(cmd, F_OK) != 0)
+		error(ERR_FILE);
 	fd = open(cmd, O_DIRECTORY);
 	if (fd != -1)
 	{
@@ -60,12 +60,6 @@ static void	validate_arguments(t_pipex *p)
 		error(ERR_FILE);
 	if (access(p->argv[1], F_OK) != 0)
 		error_args(ERR_FILE, p->argv[1]);
-	if (access(p->argv[2], F_OK) != 0)
-		error_args(ERR_FILE, p->argv[2]);
-	if (access(p->argv[3], F_OK) != 0)
-		error_args(ERR_FILE, p->argv[3]);
-	if (access(p->argv[4], F_OK) != 0)
-		error_args(ERR_FILE, p->argv[4]);
 	if (is_directory(p->argv[2]) || is_directory(p->argv[3]))
 		error(ERR_DIR);
 	cmd1_valid = validate_command(p, &p->cmds[0], p->argv[2]);
