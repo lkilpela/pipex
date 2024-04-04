@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 13:40:26 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:40:53 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	validate_command(t_pipex *p, t_command *c, char *cmd)
 	init_tokenize(&t);
 	c->args = split_command(&t, cmd);
 	if (c->args == NULL || c->args[0] == NULL)
-		error_with_arg(ERR_CMD, c->args[0]);
+		error(ERR_CMD);
 	c->path = find_command(p, c->args[0]);
 	if (!c->path)
 		error_with_arg(ERR_CMD, c->args[0]);
