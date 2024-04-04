@@ -8,7 +8,7 @@
 			"program": "${workspaceFolder}/pipex",
 			"args": [
                 "infile",
-                "./libft/",
+                "xxx",
                 "ls",
                 "outfile"
             ],
