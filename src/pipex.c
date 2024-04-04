@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 14:27:18 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:30:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 	return (is_valid);		
 }
 
-static int	validate_arguments(t_pipex *p)
+static void	validate_arguments(t_pipex *p)
 {
 	int	cmd1_valid;
 	int	cmd2_valid;

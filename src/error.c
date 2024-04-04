@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 14:28:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:29:26 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	error(int e)
 	exit(EXIT_FAILURE);
 }
 
-int	error_with_arg(int e, const char *str)
+void	error_with_arg(int e, const char *str)
 {
 	const char	*message;
 
@@ -68,5 +68,4 @@ int	error_with_arg(int e, const char *str)
 	else
 		ft_putstr_fd ("pipex: Unknown error", STDERR_FILENO);
 	write(2, "\n", 1);
-	return e;
 }
