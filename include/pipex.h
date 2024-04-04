@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 13:09:37 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:28:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		wait_children(t_pipex *p);
 
 // error handler
 void	error(int e);
-void	error_with_arg(int e, const char *str);
+int		error_with_arg(int e, const char *str);
 
 //untils
 void	cleanup(t_pipex *p);
