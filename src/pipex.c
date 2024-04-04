@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 15:18:08 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:41:09 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,24 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 	c->args = split_command(&t, cmd);
 	if (c->args == NULL || c->args[0] == NULL)
 		return (0);
-	c->path = find_command(p, c->args[0]);
-	if (!c->path)
+	else
 	{
-		print_error(ERR_CMD, c->args[0]);
-		return (0);
-	}
-	if (c->path && access(c->path, X_OK) != 0)
-	{
-		print_error(ERR_CMD, c->args[0]);
-		return (0);
+		if (is_directory(c->args[0]))
+			error_args(ERR_DIR, c->args[0]);
+		else
+		{	
+			c->path = find_command(p, c->args[0]);
+			if (!c->path)
+			{
+				print_error(ERR_CMD, c->args[0]);
+				return (0);
+			}
+			if (c->path && access(c->path, X_OK) != 0)
+			{
+				print_error(ERR_CMD, c->args[0]);
+				return (0);
+			}
+		}
 	}
 	return (1);		
 }
