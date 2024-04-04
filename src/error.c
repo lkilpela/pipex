@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 14:32:21 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:55:46 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	error(int e)
 	exit(EXIT_FAILURE);
 }
 
-void	error_with_arg(int e, const char *str)
+void	print_error(int e, const char *str)
 {
 	const char	*message;
 

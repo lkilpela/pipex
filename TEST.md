@@ -23,9 +23,13 @@ pipex: command not found: /xxx/xxx
 
 # No such file or directory
 
-Infile does not exist			./pipex noinfile "ls" "wc" outfile
-Infile does not exist, invalid cmd1	./pipex noinfile "xxx" "wc" outfile
-Cmd1 is folder, valid cmd2		./pipex infile "./libft/" "ls" outfile
+1. Infile does not exist			
+./pipex noinfile "ls" "wc" outfile
+< noinfile "ls" | "wc" > outfile
+2. Infile does not exist, invalid cmd1
+./pipex noinfile "xxx" "wc" outfile
+
+3. Cmd1 is folder, valid cmd2		./pipex infile "./libft/" "ls" outfile
 Valid cmd1, cmd2 is folder		./pipex infile "ls" "./libft/" outfile
 Invalid cmd1 or cmd2 path		./pipex infile "/xxx/xxx" "wc” outfile
 PATH envp does not exist		./pipex infile " ls" "wc" outfile

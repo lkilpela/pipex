@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:30:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 14:40:19 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:56:21 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**split_command(t_tokenize *t, char *cmd)
 	trimmed_cmd = trim_cmd(cmd);
 	if (trimmed_cmd == NULL)
 	{
-		error_with_arg(ERR_CMD, cmd);
+		print_error(ERR_CMD, cmd);
 		return (NULL);
 	}
 	split_on_space(t, cmd);
