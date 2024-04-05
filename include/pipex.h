@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 13:04:10 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:40:12 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	init_tokenize(t_tokenize *t);
 
 // validate
 void	validate_arguments(t_pipex *p);
+
 // path handler
 char	*find_command(t_pipex *p, char *cmd);
 

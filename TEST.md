@@ -52,7 +52,7 @@ pipex: command not found: /xxx/xxx
 < infile  ls | wc outfile
 
 
-< infile "grep Now" | "wc -w" > outfile
+< infile grep Now | wc > outfile
 Permission denied (check in setup_command) 
 
 Infile no read permission
