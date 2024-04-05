@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 12:59:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:07:11 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,12 @@
 //any writes to STDOUT: write to the pipe.
 static int	setup_first_command(t_pipex *p)
 {
-	int	ret;
-
-	p->infilefd = open(p->argv[1], O_RDONLY);
-	if (p->infilefd == -1)
-	{
-		print_error(ERR_PERM, p->argv[1]);
-		return (0);
-	}
-	ret = dup2(p->infilefd, STDIN_FILENO);
-	if (ret == -1)
+	if (dup2(p->infilefd, STDIN_FILENO) == -1)
 	{
 		close(p->infilefd);
 		error(ERR_DUP2);
 	}
-	ret = dup2(p->pipefd[1], STDOUT_FILENO);
-	if (ret == -1)
+	if (dup2(p->pipefd[1], STDOUT_FILENO) == -1)
 	{
 		close(p->pipefd[1]);
 		close(p->infilefd);
@@ -44,13 +34,6 @@ static int	setup_first_command(t_pipex *p)
 //any writes to STDOUT: write to the output file.
 static int	setup_second_command(t_pipex *p)
 {
-	p->outfilefd = open(p->argv[p->argc - 1],
-			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
-	if (p->outfilefd == -1)
-	{
-		print_error(ERR_PERM, p->argv[p->argc - 1]);
-		return (0);
-	}
 	if (dup2(p->pipefd[0], STDIN_FILENO) == -1)
 	{
 		close(p->pipefd[0]);

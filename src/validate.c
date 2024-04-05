@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 13:03:17 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:08:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 	return (1);		
 }
 
+static int  validate_permission(t_pipex *p)
+{
+    p->infilefd = open(p->argv[1], O_RDONLY);
+	if (p->infilefd == -1)
+	{
+		print_error(ERR_PERM, p->argv[1]);
+		return (0);
+	}
+    p->outfilefd = open(p->argv[p->argc - 1],
+			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
+	if (p->outfilefd == -1)
+	{
+		print_error(ERR_PERM, p->argv[p->argc - 1]);
+		return (0);
+	}
+    return (1);
+}
+
 void	validate_arguments(t_pipex *p)
 {
 	int	cmd1_valid;
@@ -71,4 +89,5 @@ void	validate_arguments(t_pipex *p)
 	cmd2_valid = validate_command(p, &p->cmds[1], p->argv[3]);
 	if (!cmd1_valid || !cmd2_valid)
 		exit(EXIT_FAILURE);
+    validate_permission(p);
 }
