@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/03 09:48:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:17:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	setup_first_command(t_pipex *p)
 
 	p->infilefd = open(p->argv[1], O_RDONLY);
 	if (p->infilefd == -1)
-		error(ERR_PERM);
+		error_args(ERR_PERM, p->argv[1]);
 	ret = dup2(p->infilefd, STDIN_FILENO);
 	if (ret == -1)
 	{

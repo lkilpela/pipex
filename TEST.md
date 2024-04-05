@@ -25,6 +25,11 @@ pipex: command not found: /xxx/xxx
 ./pipex infile "/bin/ls" "wc" outfile
 < infile "/bin/ls" | "wc" > outfile
 
+8. No PATH envp, cmd1 path, cmd1 path	
+./pipex infile "/bin/ls" "/bin/cat" outfile
+< infile "/bin/ls" | "/bin/cat" > outfile
+
+
 # No such file or directory
 
 1. Infile does not exist			
@@ -46,8 +51,7 @@ pipex: command not found: /xxx/xxx
 ./pipex infile " ls"  "wc" outfile
 < infile  ls | wc outfile
 
-8. No PATH envp, cmd1 path, cmd1 path	
-./pipex infile "/bin/ls" "/bin/cat" outfile
+
 
 Permission denied (check in setup_command)
 
