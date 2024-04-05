@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:40:37 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 13:07:11 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:49:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	execute_first_command(t_pipex *p)
 		status = setup_first_command(p);
 		if (status != 0)
 			exit(status);
+		printf("Executing first command: %s\n", p->cmds[0].path);
 		status = execute_command(p, &p->cmds[0]);
 		if (status != 0)
 			exit(status);
@@ -91,8 +92,10 @@ int	execute_second_command(t_pipex *p)
 		status = setup_second_command(p);
 		if (status != 0)
 			exit(status);
+		printf("Executing second command: %s\n", p->cmds[1].path);
 		status = execute_command(p, &p->cmds[1]);
-		exit(status);
+		if (status != 0)
+			exit(status);
 	}
 	close(p->pipefd[0]);
 	return (0);
