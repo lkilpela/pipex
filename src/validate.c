@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 13:15:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:29:23 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,35 +51,34 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 		print_error(ERR_CMD, c->args[0]);
 		return (0);
 	}
-	return (1);		
+	return (1);
 }
 
-static void  validate_permission(t_pipex *p)
+static void	validate_permission(t_pipex *p)
 {
-    p->infilefd = open(p->argv[1], O_RDONLY);
+	p->infilefd = open(p->argv[1], O_RDONLY);
 	if (p->infilefd == -1)
-        error_args(ERR_PERM, p->argv[1]);
-    p->outfilefd = open(p->argv[p->argc - 1],
+		error_args(ERR_PERM, p->argv[1]);
+	p->outfilefd = open(p->argv[p->argc - 1],
 			O_CREAT | O_WRONLY | O_TRUNC, PERMISSIONS);
 	if (p->outfilefd == -1)
-        error_args(ERR_PERM, p->argv[p->argc - 1]);
+		error_args(ERR_PERM, p->argv[p->argc - 1]);
 }
 
 void	validate_arguments(t_pipex *p)
 {
 	int	cmd1_valid;
 	int	cmd2_valid;
-	
+
 	if (p->argc != 5)
 		error(ERR_SYNTAX);
 	if (ft_strlen(p->argv[1]) == 0 || ft_strlen(p->argv[4]) == 0)
 		error(ERR_FILE);
 	if (access(p->argv[1], F_OK) != 0)
 		error_args(ERR_FILE, p->argv[1]);
-    validate_permission(p);
+	validate_permission(p);
 	cmd1_valid = validate_command(p, &p->cmds[0], p->argv[2]);
 	cmd2_valid = validate_command(p, &p->cmds[1], p->argv[3]);
 	if (!cmd1_valid || !cmd2_valid)
 		exit(EXIT_FAILURE);
-    
 }
