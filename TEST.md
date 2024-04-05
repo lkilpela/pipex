@@ -19,7 +19,11 @@ pipex: command not found: /xxx/xxx
 < infile wc |          > outfile
 6. Null string cmd1, empty cmd2
 ./pipex infile " " "       " outfile
-< infile   |         > outfile 
+< infile   |         > outfile
+
+7. No PATH envp	, cm1 path		
+./pipex infile "/bin/ls" "wc" outfile
+< infile "/bin/ls" | "wc" > outfile
 
 # No such file or directory
 
@@ -39,10 +43,9 @@ pipex: command not found: /xxx/xxx
 ./pipex infile "/xxx/xxx" "wc" outfile
 < infile /xxx/xxx | wc > outfile
 6. PATH envp does not exist		
-./pipex infile " ls"  "wc" > outfile
+./pipex infile " ls"  "wc" outfile
 < infile  ls | wc outfile
-7. No PATH envp	, cm1 path		
-./pipex infile "/bin/ls" "wc" outfile
+
 8. No PATH envp, cmd1 path, cmd1 path	
 ./pipex infile "/bin/ls" "/bin/cat" outfile
 
