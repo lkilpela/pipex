@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 12:44:43 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:51:09 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_status(pid_t pid, int status)
 {
-	if (WIFEXITED(status) != 0)
+	if (WIFEXITED(status))
 		ft_printf("Child with PID %u exited with status %u.\n",
 			(unsigned int)pid, WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
