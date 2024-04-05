@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 15:16:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:36:58 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_error(int e, const char *str)
 		message = get_error_messages(e);
 		ft_putstr_fd("pipex: ", STDERR_FILENO);
 		ft_putstr_fd(message, STDERR_FILENO);
-		if(str) 
+		if(str)
 		{
 			ft_putstr_fd(": ", STDERR_FILENO);
 			ft_putstr_fd(str, STDERR_FILENO);
