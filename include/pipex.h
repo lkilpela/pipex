@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/04 15:17:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:20:56 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		execute_first_command(t_pipex *p);
 int		execute_second_command(t_pipex *p);
 
 // parent process
-int		wait_children(t_pipex *p);
+int		execute_commands(t_pipex *p);
 
 // error handler
 void	error(int e);
