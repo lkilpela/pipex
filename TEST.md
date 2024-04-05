@@ -20,15 +20,15 @@ pipex: command not found: /xxx/xxx
 6. Null string cmd1, empty cmd2
 ./pipex infile " " "       " outfile
 < infile   |         > outfile
-
 7. No PATH envp	, cm1 path		
 ./pipex infile "/bin/ls" "wc" outfile
-< infile "/bin/ls" | "wc" > outfile
-
+< infile /bin/ls | wc > outfile
 8. No PATH envp, cmd1 path, cmd1 path	
 ./pipex infile "/bin/ls" "/bin/cat" outfile
-< infile "/bin/ls" | "/bin/cat" > outfile
-
+< infile /bin/ls | /bin/cat > outfile
+9. PATH envp does not exist		
+./pipex infile " ls"  "wc" outfile
+< infile  ls | wc outfile
 
 # No such file or directory
 
@@ -47,23 +47,25 @@ pipex: command not found: /xxx/xxx
 5. Invalid cmd1 or cmd2 path		
 ./pipex infile "/xxx/xxx" "wc" outfile
 < infile /xxx/xxx | wc > outfile
-6. PATH envp does not exist		
-./pipex infile " ls"  "wc" outfile
-< infile  ls | wc outfile
+
 
 
 < infile grep Now | wc > outfile
 Permission denied (check in setup_command) 
 
 Infile no read permission
-Outfile no write permission
+Outfile no write permissionclear
 No exec permission cmd1
 No exec permission cmd2
 
-Bad arguments, invalid options
+# Bad arguments, invalid options
 
-Bad args cmd1, valid cmd2		./pipex infile "ls -?" "grep c" outfile
-Bad args cmd1, bad args cmd2	./pipex infile "ls -?" "wc -9001" outfile
+1. Bad args cmd1, valid cmd2		
+./pipex infile "ls -?" "grep c" outfile
+< infile ls -? | grep c > outfile
+2. Bad args cmd1, bad args cmd2	
+./pipex infile "ls -?" "wc -9001" outfile
+< infile ls -? | wc -9001 > outfile
 
 
 The next tests will use the following command:
