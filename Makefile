@@ -6,7 +6,7 @@ LIBFT = lib/libft
 HDRS = -I./include -I $(LIBFT)/include
 LIBS = $(LIBFT)/build/libft.a
 SRCS = src/child.c src/error.c src/path.c src/utils.c\
-		src/tokenize.c src/wait.c src/pipex.c src/init.c
+		src/tokenize.c src/wait.c src/pipex.c src/init.c src/validate.c
 OBJS = $(SRCS:%.c=%.o)
 
 all: libft $(NAME)
