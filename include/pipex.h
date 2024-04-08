@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 13:40:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/08 06:56:49 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <string.h> //strerror
 # include <sys/wait.h> // wait, waitpid
 
-# define MAX_TOKENS	100
 # define PERMISSIONS	0644
 
 enum	e_error
