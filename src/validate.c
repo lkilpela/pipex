@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:02:42 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 14:29:23 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/08 06:56:00 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	validate_command(t_pipex *p, t_command *c, char *cmd)
 	}
 	if (is_directory(c->path))
 	{
-		print_error(ERR_FILE, c->args[0]);
+		print_error(ERR_DIR, c->args[0]);
 		return (0);
 	}
 	if (c->path && access(c->path, F_OK | X_OK) != 0)
