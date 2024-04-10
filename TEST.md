@@ -78,5 +78,15 @@ No exec permission cmd2
 
 #file descriptor
 
+- lsof command-line utility to check if a file is open
+
 lsof -c pipex
-lsof command-line utility to check if a file is open
+
+ - check in the main 
+ char    lsof_cmd[256];
+ 	// Add a 1-second delay
+    sleep(1);
+
+    // Run lsof to check open files
+    sprintf(lsof_cmd, "lsof -p %d", getpid());
+    system(lsof_cmd);
