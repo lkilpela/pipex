@@ -9,7 +9,7 @@
             "args": [
                 "infile",
                 "/bin/ls",
-                "wc",
+                "/bin/cat",
                 "outfile"
             ],
             "stopAtEntry": false,
@@ -23,4 +23,5 @@
             "externalConsole": false,
             "MIMode": "lldb"
         },
+    ]
 }

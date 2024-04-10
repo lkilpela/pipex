@@ -20,13 +20,19 @@ pipex: command not found: /xxx/xxx
 6. Null string cmd1, empty cmd2
 ./pipex infile " " "       " outfile
 < infile   |         > outfile
-7. No PATH envp	, cm1 path		
+
+# unset PATH
+echo $PATH
+OLD_PATH=$PATH
+unset PATH
+export PATH=$OLD_PATH
+1. No PATH envp	, cm1 path		
 ./pipex infile "/bin/ls" "wc" outfile
 < infile /bin/ls | wc > outfile
-8. No PATH envp, cmd1 path, cmd1 path	
+2. No PATH envp, cmd1 path, cmd1 path	
 ./pipex infile "/bin/ls" "/bin/cat" outfile
 < infile /bin/ls | /bin/cat > outfile
-9. PATH envp does not exist		
+3. PATH envp does not exist		
 ./pipex infile " ls"  "wc" outfile
 < infile  ls | wc outfile
 
