@@ -76,4 +76,7 @@ No exec permission cmd2
 ./pipex infile "ls -?" "wc -9001" outfile
 < infile ls -? | wc -9001 > outfile
 
+#file descriptor
 
+lsof -c pipex
+lsof command-line utility to check if a file is open
