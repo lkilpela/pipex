@@ -21,18 +21,21 @@ pipex: command not found: /xxx/xxx
 ./pipex infile " " "       " outfile
 < infile   |         > outfile
 
-# unset PATH
-echo $PATH
-OLD_PATH=$PATH
-unset PATH
-export PATH=$OLD_PATH
+# FULL PATH
 1. No PATH envp	, cm1 path		
 ./pipex infile "/bin/ls" "wc" outfile
 < infile /bin/ls | wc > outfile
 2. No PATH envp, cmd1 path, cmd1 path	
 ./pipex infile "/bin/ls" "/bin/cat" outfile
 < infile /bin/ls | /bin/cat > outfile
-3. PATH envp does not exist		
+
+# unset PATH
+echo $PATH
+OLD_PATH=$PATH
+unset PATH
+export PATH=$OLD_PATH
+
+1. PATH envp does not exist		
 ./pipex infile " ls"  "wc" outfile
 < infile  ls | wc outfile
 
@@ -54,7 +57,7 @@ export PATH=$OLD_PATH
 ./pipex infile "/xxx/xxx" "wc" outfile
 < infile /xxx/xxx | wc > outfile
 
-
+# Permission
 
 < infile grep Now | wc > outfile
 Permission denied (check in setup_command) 
