@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 21:30:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 21:33:20 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	handle_signal(int status)
 			print_error(SIGTERM, "SIGTERM received");
 		return (ERR_SIG + signal);
 	}
+	else
+		return (status);
 }
 
 static int	check_status(int status)
