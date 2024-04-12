@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 12:14:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:52:48 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	close_all_fds(t_pipex *p)
 		close(p->infilefd);
 	if (p->outfilefd != -1)
 		close(p->outfilefd);
-	if(p->pipefd[0] != -1)
+	if (p->pipefd[0] != -1)
 		close(p->pipefd[0]);
-	if(p->pipefd[1] != -1)
+	if (p->pipefd[1] != -1)
 		close(p->pipefd[1]);
 }
