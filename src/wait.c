@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 21:25:33 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 21:30:22 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	handle_signal(int status)
 	}
 }
 
-static void	check_status(pid_t pid, int status)
+static int	check_status(int status)
 {
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
@@ -77,7 +77,7 @@ int	execute_commands(t_pipex *p)
 		pid = waitpid(p->pids[i], &wait_status, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);
-		check_status(pid, wait_status);
+		check_status(wait_status);
 		i++;
 	}
 	return (0);
