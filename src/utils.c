@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:37:58 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/10 12:17:30 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:14:55 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,18 @@ char	**resize_array(char **old_array, int old_count, int new_count)
 	}
 	free(old_array);
 	return (new_array);
+}
+
+void	close_all_fds(t_pipex *p)
+{
+	if (!p)
+		return ;
+	if (p->infilefd != -1)
+		close(p->infilefd);
+	if (p->outfilefd != -1)
+		close(p->outfilefd);
+	if(p->pipefd[0] != -1)
+		close(p->pipefd[0]);
+	if(p->pipefd[1] != -1)
+		close(p->pipefd[1]);
 }
