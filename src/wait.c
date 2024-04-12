@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 21:06:32 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 21:14:25 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 }*/
 static int	signal_exit(t_pipex *p, int status)
 {
-	if (WIFEXITED(status))
-        return WEXITSTATUS(status);
-    else if (WIFSIGNALED(status)) {
-        int signal = WTERMSIG(status);
+	int	signal;
+
+	if (WIFSIGNALED(status)) 
+	{
+        signal = WTERMSIG(status);
         if (signal == SIGINT || signal == SIGQUIT)
             print_error(SIGQUIT, "SIGQUIT or SIGINT received");
         else if (signal == SIGPIPE)
@@ -48,9 +49,10 @@ static int	signal_exit(t_pipex *p, int status)
         else
             print_error(LAST_ERROR, "Unknown signal received");
         return ERR_SIG + signal;
-    } else {
+    } else 
+	{
         ft_printf("Unexpected status %d\n", status);
-        return status;
+        return (status);
     }
 }
 
