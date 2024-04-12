@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:47 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/10 12:05:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:16:43 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,8 @@ int	main(int argc, char **argv, char **envp)
     sprintf(lsof_cmd, "lsof -p %d", getpid());
     system(lsof_cmd);
 
-	//close(p.pipefd[0]);
-	//close(p.pipefd[1]);
-	close(p.infilefd);
-	close(p.outfilefd);
+	close_all_fds(&p);
 	cleanup(&p);
-
 	    // Run lsof to check open files
     sprintf(lsof_cmd, "lsof -p %d", getpid());
     system(lsof_cmd);

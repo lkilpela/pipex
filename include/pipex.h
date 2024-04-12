@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/08 06:56:49 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:16:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	print_error(int e, const char *str);
 void	cleanup(t_pipex *p);
 void	free_paths(char **paths);
 char	**resize_array(char **old_array, int old_count, int new_count);
+void	close_all_fds(t_pipex *p);
 #endif
