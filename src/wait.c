@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 12:51:19 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 12:57:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	execute_commands(t_pipex *p)
 	exec_status = execute_second_command(p);
 	if (exec_status != 0)
 		return (exec_status);
-	if (kill(p->pids[i], SIGPIPE) == -1) {
+	if (kill(p->pids[i], SIGBUS) == -1) {
 		perror("kill");
 		return 1;
 	}
@@ -87,6 +87,7 @@ int	execute_commands(t_pipex *p)
 		if (pid == -1)
 			error(ERR_WAITPID);		
 		p->ecode = check_status(p);
+		ft_printf("Child %d exited with status %d\n", pid, p->ecode);
 		if (p->ecode > 255)
 			p->ecode = 255;
 		i++;
