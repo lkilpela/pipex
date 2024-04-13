@@ -58,7 +58,7 @@ char	*find_command(t_pipex *p, char *cmd)
 	if (!cmd)
 		return (NULL);
 	else if (ft_strchr(cmd, '/'))
-		return (cmd);
+		return (ft_strdup(cmd));
 	if (!p->paths)
 		p->paths = get_envpaths(p);
 	if (!p->paths)
