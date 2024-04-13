@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:08:12 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:30:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,20 @@ static char *join_arguments(t_pipex *p)
 		ft_strlcat(combined_args+pos, p->argv[i], 1024-pos);
 		pos += strlen(p->argv[i]);
 		if (i < p->argc - 1) {
-            ft_strlcat(combined_args+pos, " ", 1024-pos);  // Add a space between arguments
-            pos++;
-        }
+			ft_strlcat(combined_args+pos, " ", 1024-pos);  // Add a space between arguments
+			pos++;
+		}
 		i++;
 	}
 	return (combined_args);
 }
 
-static int	handle_signal(t_pipex *p)
+static int	handle_signal(t_pipex *p, int error_printed)
 {
-	if (p->wstatus == SIGINT || p->wstatus == SIGQUIT)
+	if (error_printed)
+        return (ERR_SIG + WTERMSIG(p->wstatus));
+
+	if ((p->wstatus == SIGINT || p->wstatus == SIGQUIT))
 		print_error(ERR_SIGQUIT, join_arguments(p));
 	else if (p->wstatus == SIGPIPE)
 		print_error(ERR_SIGPIPE, join_arguments(p));
@@ -49,17 +52,17 @@ static int	handle_signal(t_pipex *p)
 		print_error(ERR_SIGKILL, join_arguments(p));
 	else if (p->wstatus == SIGABRT)
 		print_error(ERR_SIGABRT, join_arguments(p));
-	else if (p->wstatus == SIGTERM)
+	else if (!error_printed && p->wstatus == SIGTERM)
 		print_error(ERR_SIGTERM, join_arguments(p));
 	else	
 		print_error(ERR_SIGOTHR, join_arguments(p));
 	return (ERR_SIG + WTERMSIG(p->wstatus));
 }
 
-static int	check_status(t_pipex *p)
+static int	check_status(t_pipex *p, int error_printed)
 {
 	if (WIFSIGNALED(p->wstatus) != 0)
-		return (handle_signal(p));
+		return (handle_signal(p, error_printed));
 	else
 		return (WEXITSTATUS(p->wstatus));		
 }
@@ -69,6 +72,7 @@ int	execute_commands(t_pipex *p)
 	pid_t	pid;
 	int		i;
 	int		exec_status;
+	int		error_printed = 0;
 
 	i = 0;
 	exec_status = execute_first_command(p);
@@ -79,16 +83,18 @@ int	execute_commands(t_pipex *p)
 		return (exec_status);
 	while (i < 2)
 	{
-		join_arguments(p);
-		if (kill(p->pids[i], SIGBUS) == -1) {
+		if (kill(p->pids[i], SIGTERM) == -1) {
 			perror("kill");
 			return 1;
 		}
 		pid = waitpid(p->pids[i], &p->wstatus, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);		
-		p->ecode = check_status(p);
+		p->ecode = check_status(p, error_printed);
 		ft_printf("Child %d exited with status %d\n", pid, p->ecode);
+		if (!error_printed && p->ecode > 0) {
+            error_printed = 1;  // Set the flag to true after printing the error message
+        }
 		if (p->ecode > 255)
 			p->ecode = 255;
 		i++;
