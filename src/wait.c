@@ -6,12 +6,11 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 11:44:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 11:56:27 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <signal.h>
 
 static int	handle_signal(t_pipex *p)
 {
@@ -59,17 +58,10 @@ int	execute_commands(t_pipex *p)
 		return (exec_status);
 	while (i < 2)
 	{
-		if (kill(p->pids[i], SIGTERM) == -1) {
-			perror("kill");
-			return 1;
-		}
 		pid = waitpid(p->pids[i], &p->wstatus, 0);
 		if (pid == -1)
-			error(ERR_WAITPID);
-			
+			error(ERR_WAITPID);		
 		p->ecode = check_status(p);
-		printf("check status returing %d\n", p->wstatus);
-		printf("check status returing %d\n", p->ecode);
 		if (p->ecode > 255)
 			p->ecode = 255;
 		i++;

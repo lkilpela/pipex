@@ -99,3 +99,11 @@ lsof -c pipex
     // Run lsof to check open files
     sprintf(lsof_cmd, "lsof -p %d", getpid());
     system(lsof_cmd);
+
+
+   # testing signal
+
+if (kill(p->pids[i], SIGINT) == -1) {
+perror("kill");
+return 1;
+}
