@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 12:51:52 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:45:35 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static const char	*get_error_messages(int e)
 		"pipe failed",
 		"dup2 failed",
 		"execve failed",
-		"open failed",
-		"close failed",
 		"waitpid failed",
 		"unhandled signal",
 		"quit",

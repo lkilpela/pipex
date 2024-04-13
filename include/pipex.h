@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 12:51:38 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:45:28 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ enum	e_error
 	ERR_PIPE,
 	ERR_DUP2,
 	ERR_EXECVE,
-	ERR_OPEN,
-	ERR_CLOSE,
 	ERR_WAITPID,
 	ERR_SIGOTHR,
 	ERR_SIGQUIT,
@@ -73,6 +71,8 @@ typedef struct s_pipex
 	t_command	cmds[2];// Array if two t_command structures.
 	int			wstatus;
 	int			ecode;
+	int			exec_status;
+	pid_t		pid;
 }				t_pipex;
 
 typedef struct s_tokenize
