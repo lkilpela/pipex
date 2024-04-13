@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:53:33 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/02 10:47:55 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 14:08:17 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	init_pipex(int argc, char **argv, char **envp, t_pipex *p)
 	p->pids[1] = -1;
 	p->pipefd[0] = -1;
 	p->pipefd[1] = -1;
+	p->wstatus = 0;
+	p->ecode = ERR_NONE;
+	p->exec_status = 0;
+	p->pid = 0;
+	
 }
 
 void	init_tokenize(t_tokenize *t)
