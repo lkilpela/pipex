@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 10:43:47 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 11:37:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
+	ERR_UNKNOWN,
 	ERR_SIG = 128,
 	LAST_ERROR
 };
@@ -62,6 +63,8 @@ typedef struct s_pipex
 	char		**paths;// Array of paths for executable lookup
 	int			pipefd[2];// Array to hold the file descriptors for the pipe
 	t_command	cmds[2];// Array if two t_command structures.
+	int			wstatus;
+	int			ecode;
 }				t_pipex;
 
 typedef struct s_tokenize
