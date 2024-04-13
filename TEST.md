@@ -103,7 +103,20 @@ lsof -c pipex
 
    # testing signal
 
-if (kill(p->pids[i], SIGINT) == -1) {
-perror("kill");
-return 1;
-}
+while (i < 2)
+	{
+      if (kill(p->pids[i], SIGINT) == -1) {
+         perror("kill");
+         return 1;
+      }  
+		p->pid = waitpid(p->pids[i], &p->wstatus, 0);
+		if (p->pid == -1)
+			error(ERR_WAITPID);
+		p->ecode = check_status(p, error_printed);
+		ft_printf("Child %d exited with status %u\n", p->pid, p->ecode);
+		if (!error_printed && p->ecode > 0)
+			error_printed = 1;
+		if (p->ecode > 255)
+			p->ecode = 255;
+		i++;
+	}

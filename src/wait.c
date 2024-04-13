@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:51:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:52:13 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	execute_commands(t_pipex *p)
 		if (p->pid == -1)
 			error(ERR_WAITPID);
 		p->ecode = check_status(p, error_printed);
-		ft_printf("Child %d exited with status %u\n", p->pid, p->ecode);
+		
 		if (!error_printed && p->ecode > 0)
 			error_printed = 1;
 		if (p->ecode > 255)
