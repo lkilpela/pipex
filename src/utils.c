@@ -36,6 +36,8 @@ void	cleanup(t_pipex *p)
 	{
 		if (p->cmds[i].args)
 			free_paths(p->cmds[i].args);
+		if (p->cmds[i].path)
+			free(p->cmds[i].path);
 		i++;
 	}
 }
