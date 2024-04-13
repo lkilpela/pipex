@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:44:15 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:51:31 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	handle_signal(t_pipex *p, int error_printed)
 		print_error(ERR_SIGKILL, join_arguments(p));
 	else if (p->wstatus == SIGABRT)
 		print_error(ERR_SIGABRT, join_arguments(p));
-	else if (!error_printed && p->wstatus == SIGTERM)
+	else if (p->wstatus == SIGTERM)
 		print_error(ERR_SIGTERM, join_arguments(p));
 	else
 		print_error(ERR_SIGOTHR, join_arguments(p));
