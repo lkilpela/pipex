@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 12:57:06 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:02:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ int	execute_commands(t_pipex *p)
 	exec_status = execute_second_command(p);
 	if (exec_status != 0)
 		return (exec_status);
-	if (kill(p->pids[i], SIGBUS) == -1) {
-		perror("kill");
-		return 1;
-	}
 	while (i < 2)
 	{
+		if (kill(p->pids[i], SIGBUS) == -1) {
+		perror("kill");
+		return 1;
+		}
 		pid = waitpid(p->pids[i], &p->wstatus, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);		
