@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:45:35 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:49:18 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static const char	*get_error_messages(int e)
 		"bus error",
 		"killed",
 		"abort",
-		"",
 		"last error"
 	};
 

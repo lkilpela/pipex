@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:45:28 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:50:14 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <stdio.h> // perror
 # include <string.h> //strerror
 # include <sys/wait.h> // wait, waitpid
-# include <sys/wait.h> // signal
 
 # define PERMISSIONS	0644
+# define ERR_SIG		128
 
 enum	e_error
 {
@@ -48,7 +48,6 @@ enum	e_error
 	ERR_SIGBUS,
 	ERR_SIGKILL,
 	ERR_SIGABRT,
-	ERR_SIG = 128,
 	LAST_ERROR
 };
 
