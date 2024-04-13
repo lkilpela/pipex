@@ -6,32 +6,53 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 11:56:27 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 12:51:19 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <signal.h>
+
+static char *join_arguments(t_pipex *p)
+{
+	static char	combined_args[1024] = "";
+	int 		i;
+	int 		pos = 0;
+
+	i = 0;
+	while (i < p->argc)
+	{
+		ft_strlcat(combined_args+pos, p->argv[i], 1024-pos);
+		pos += strlen(p->argv[i]);
+		if (i < p->argc - 1) {
+            ft_strlcat(combined_args+pos, " ", 1024-pos);  // Add a space between arguments
+            pos++;
+        }
+		i++;
+	}
+	return (combined_args);
+}
 
 static int	handle_signal(t_pipex *p)
 {
 	if (p->wstatus == SIGINT || p->wstatus == SIGQUIT)
-		print_error(SIGQUIT, "SIGQUIT or SIGINT received");
+		print_error(ERR_SIGQUIT, join_arguments(p));
 	else if (p->wstatus == SIGPIPE)
-		print_error(SIGPIPE, "SIGPIPE received");
+		print_error(ERR_SIGPIPE, join_arguments(p));
 	else if (p->wstatus == SIGCHLD)
-		print_error(SIGCHLD, "SIGCHLD received");
+		print_error(ERR_SIGCHLD, join_arguments(p));
 	else if (p->wstatus == SIGSEGV)
-		print_error(SIGSEGV, "SIGSEGV received");
+		print_error(ERR_SIGSEGV, join_arguments(p));
 	else if (p->wstatus == SIGBUS)
-		print_error(SIGBUS, "SIGBUS received");
+		print_error(ERR_SIGBUS, join_arguments(p));
 	else if (p->wstatus == SIGKILL)
-		print_error(SIGKILL, "SIGKILL received");
+		print_error(ERR_SIGKILL, join_arguments(p));
 	else if (p->wstatus == SIGABRT)
-		print_error(SIGABRT, "SIGABRT received");
+		print_error(ERR_SIGABRT, join_arguments(p));
 	else if (p->wstatus == SIGTERM)
-		print_error(SIGTERM, "terminated");
+		print_error(ERR_SIGTERM, join_arguments(p));
 	else	
-		print_error(ERR_UNKNOWN, "Unknown signal received");
+		print_error(ERR_SIGOTHR, join_arguments(p));
 	return (ERR_SIG + WTERMSIG(p->wstatus));
 }
 
@@ -56,6 +77,10 @@ int	execute_commands(t_pipex *p)
 	exec_status = execute_second_command(p);
 	if (exec_status != 0)
 		return (exec_status);
+	if (kill(p->pids[i], SIGPIPE) == -1) {
+		perror("kill");
+		return 1;
+	}
 	while (i < 2)
 	{
 		pid = waitpid(p->pids[i], &p->wstatus, 0);

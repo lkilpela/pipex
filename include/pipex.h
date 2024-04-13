@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 11:37:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 12:51:38 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,15 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
-	ERR_UNKNOWN,
+	ERR_SIGOTHR,
+	ERR_SIGQUIT,
+	ERR_SIGTERM,
+	ERR_SIGPIPE,
+	ERR_SIGCHLD,
+	ERR_SIGSEGV,
+	ERR_SIGBUS,
+	ERR_SIGKILL,
+	ERR_SIGABRT,
 	ERR_SIG = 128,
 	LAST_ERROR
 };

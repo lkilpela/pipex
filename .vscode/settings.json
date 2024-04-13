@@ -1,6 +1,7 @@
 {
 	"C_Cpp.errorSquiggles": "enabled",
 	"files.associations": {
-		"pipex.h": "c"
+		"pipex.h": "c",
+		"__locale": "c"
 	}
 }

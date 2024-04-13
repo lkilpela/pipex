@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:25:19 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/05 14:38:22 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 12:51:52 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ static const char	*get_error_messages(int e)
 		"open failed",
 		"close failed",
 		"waitpid failed",
+		"unhandled signal",
+		"quit",
+		"terminate",
+		"pipe broken",
+		"child terminated",
+		"segmentation fault",
+		"bus error",
+		"killed",
+		"abort",
+		"",
 		"last error"
 	};
 
