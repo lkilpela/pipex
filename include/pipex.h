@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 21:15:31 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 10:43:47 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ enum	e_error
 	ERR_OPEN,
 	ERR_CLOSE,
 	ERR_WAITPID,
-	ERR_SIG,
+	ERR_SIG = 128,
 	LAST_ERROR
 };
 

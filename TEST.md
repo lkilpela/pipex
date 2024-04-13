@@ -76,8 +76,17 @@ No exec permission cmd2
 ./pipex infile "ls -?" "wc -9001" outfile
 < infile ls -? | wc -9001 > outfile
 
-#file descriptor
+# file descriptor
 
+- find PID
+// after fork Child process: print its own PID and sleep for 7 seconds.
+      printf("Child process PID: %d\n", getpid());
+		sleep(15);
+
+- use the lsof command to list all open file descriptors for the process
+lsof -p <PID
+
+------
 - lsof command-line utility to check if a file is open
 
 lsof -c pipex

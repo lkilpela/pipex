@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:41:17 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/12 21:33:20 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/13 10:34:41 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 static int	handle_signal(int status)
 {
 	int	signal;
+	int exit_code;
 
 	if (WIFSIGNALED(status))
 	{
@@ -45,11 +46,14 @@ static int	handle_signal(int status)
 		else if (signal == SIGABRT)
 			print_error(SIGABRT, "SIGABRT received");
 		else if (signal == SIGTERM)
-			print_error(SIGTERM, "SIGTERM received");
-		return (ERR_SIG + signal);
+			print_error(SIGTERM, "terminated");
+		
+		exit_code = ERR_SIG + signal;
 	}
 	else
-		return (status);
+		exit_code = status;
+	ft_printf("handle_signal is returning: %d\n", exit_code);
+    return (exit_code);
 }
 
 static int	check_status(int status)
@@ -58,6 +62,11 @@ static int	check_status(int status)
 		return (WEXITSTATUS(status));
 	else
 		return (handle_signal(status));
+}
+void sigterm_handler(int signal) {
+    printf("Received signal %d\n", signal);
+	handle_signal(signal);
+    exit(signal);
 }
 
 int	execute_commands(t_pipex *p)
@@ -74,8 +83,11 @@ int	execute_commands(t_pipex *p)
 	exec_status = execute_second_command(p);
 	if (exec_status != 0)
 		return (exec_status);
+	signal(SIGTERM, sigterm_handler);
+	printf("PArent process PID: %d\n", getpid());
 	while (i < 2)
 	{
+        sleep(15);
 		pid = waitpid(p->pids[i], &wait_status, 0);
 		if (pid == -1)
 			error(ERR_WAITPID);
