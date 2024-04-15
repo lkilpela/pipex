@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:49:51 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/04/13 13:50:14 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/04/15 08:05:08 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "../lib/libft/include/libft.h"
 
+# include <sys/wait.h> // wait, waitpid
 # include <fcntl.h> //open
 //close, read, write, access, dup, dup2, execve, fork, pipe, unlink
 # include <unistd.h>  
 # include <stdlib.h> //malloc, free, exit
 # include <stdio.h> // perror
 # include <string.h> //strerror
-# include <sys/wait.h> // wait, waitpid
 
 # define PERMISSIONS	0644
 # define ERR_SIG		128
