@@ -85,10 +85,14 @@ void print_open_fds() {
     sprintf(lsof_cmd, "lsof -p %d", getpid());
     system(lsof_cmd);
 }
-printf("PID: %d\n", getpid());
-sleep(1);
-atexit(print_open_fds);
+int main()
+{
+   atexit(print_open_fds);
+   //Code ....
+}
 ```
+// The `atexit` function registers a function to be called at normal process termination, either via exit or via return from the main function.
+// `atexit` functions are not called if the program terminates abnormally (for example, due to a segmentation fault or if it's killed by a signal).
 --------------
 
 - find PID
