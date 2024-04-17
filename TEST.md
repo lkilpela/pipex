@@ -78,7 +78,8 @@ No exec permission cmd2
 
 # file descriptor
 
-- void print_open_fds() {
+```
+void print_open_fds() {
     // Run lsof to check open files
     char lsof_cmd[256];
     sprintf(lsof_cmd, "lsof -p %d", getpid());
@@ -87,21 +88,24 @@ No exec permission cmd2
 printf("PID: %d\n", getpid());
 sleep(1);
 atexit(print_open_fds);
+```
 --------------
 
 - find PID
+```
 // after fork Child process: print its own PID and sleep for 7 seconds.
       printf("Child process PID: %d\n", getpid());
 		sleep(15);
-
+```
 - use the lsof command to list all open file descriptors for the process
 lsof -p <PID
 
 ------
 - lsof command-line utility to check if a file is open
-
+```
 lsof -c pipex
-
+```
+```
  - check in the main 
  char    lsof_cmd[256];
  	// Add a 1-second delay
@@ -110,10 +114,10 @@ lsof -c pipex
     // Run lsof to check open files
     sprintf(lsof_cmd, "lsof -p %d", getpid());
     system(lsof_cmd);
-
+```
 
    # testing signal
-
+```
 while (i < 2)
 	{
       if (kill(p->pids[i], SIGINT) == -1) {
@@ -131,3 +135,4 @@ while (i < 2)
 			p->ecode = 255;
 		i++;
 	}
+```
