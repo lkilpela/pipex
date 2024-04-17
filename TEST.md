@@ -78,7 +78,7 @@ No exec permission cmd2
 
 # file descriptor
 
-void print_open_fds() {
+- void print_open_fds() {
     // Run lsof to check open files
     char lsof_cmd[256];
     sprintf(lsof_cmd, "lsof -p %d", getpid());
