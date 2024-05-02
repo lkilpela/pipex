@@ -1,5 +1,5 @@
 <h1 align="center">
-	[🚰 PIPEX](https://github.com/lkilpela/42-project-badges/blob/main/badges/pipexe.png)
+	<img src="https://github.com/lkilpela/42-project-badges/blob/main/badges/pipexe.png" />
 </h1>
 
 <p align="center">
