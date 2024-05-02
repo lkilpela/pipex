@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-    <img alt="score" src="https://img.shields.io/badge/score-96%2F100-brightgreen" />
+    <img alt="score" src="https://img.shields.io/badge/score-100%2F100-brightgreen" />
 <p align="center">
     <img alt="solo" src="https://img.shields.io/badge/solo-yellow" />
     <img alt="estimated time" src="https://img.shields.io/badge/estimation-50%20hours-blue" />
@@ -121,11 +121,11 @@ The `pipex` project was evaluated based on the following criteria:
 
 Here are some of the comments received during the peer evaluation of the `pipex` project:
 
-> **Peer 1**: "..."
+> **Peer 1**: "Lumi did magnificent job on her project. Everything was well organized and well defended. The error tests were impressive and the knowledge about the project was great! Thank you for showing me around your project and good luck on the future projects!"
 
-> **Peer 2**: "..."
+> **Peer 2**: "Thank you so much for showing your work! We tested many cases. I'm impressed by your error handlings. It is really solid and handled all the possible cases really nicely. Good luck with the next one!"
 
-> **Peer 3**: "..."
+> **Peer 3**: "Nice implementation and easy to follow explanation as well."
 
 ## 📜 License
 
