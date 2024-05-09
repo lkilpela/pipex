@@ -56,7 +56,7 @@ Main Process
 |    |--- close(pipefd[1])
 |    |--- execve(command path, command, envp)
 |
-|--- Parent Process
+|--- Child Process
 |    |
 |    |--- dup2(pipefd[0], STDIN)
 |    |--- close(pipefd[1])
