@@ -1,8 +1,0 @@
-{
-	"C_Cpp.errorSquiggles": "enabled",
-	"files.associations": {
-		"pipex.h": "c",
-		"__locale": "c",
-		"wait.h": "c"
-	}
-}
